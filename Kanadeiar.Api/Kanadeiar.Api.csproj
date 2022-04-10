@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-	<Version>0.0.1</Version>
+	<Version>0.0.2</Version>
 	<PackageReleaseNotes>
-		Первая версия
+		Исправление обработчика исключений
 	</PackageReleaseNotes>
   </PropertyGroup>
 	

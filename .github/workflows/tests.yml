@@ -1,0 +1,26 @@
+name: Tests
+
+on:
+  [ push, pull_request ]
+
+jobs:
+  test:
+    name: Test on dotnet 6
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup .NET 6
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Build
+      run: |
+        dotnet build Kanadeiar.Api  -c debug
+        dotnet build Tests/Kanadeiar.Api.Tests -c debug
+      
+    - name: Test
+      run: dotnet test Tests/Kanadeiar.Api.Tests --no-build -c debug -v normal
