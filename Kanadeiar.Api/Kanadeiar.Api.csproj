@@ -1,9 +1,53 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <PropertyGroup>
+	<Version>0.0.1</Version>
+	<PackageReleaseNotes>
+		Первая версия
+	</PackageReleaseNotes>
+  </PropertyGroup>
+	
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+	
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+	<Authors>Rassakhatskiy Andrey</Authors>
+	<Company>Kanadeiar</Company>
+	<Description>Библиотека 📚 прикладных полезностей для разработки Api-приложений.</Description>
+	<Copyright>Kanadeiar</Copyright>
+	<PackageProjectUrl>https://github.com/kanadeiar/Kanadeiar.Api</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/kanadeiar/Kanadeiar.Api</RepositoryUrl>
+	<PackageIcon>logo.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageTags>dotnet, aspnetcore, tools, instructions</PackageTags>
+    <SignAssembly>True</SignAssembly>
+	<DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyFile>Kanadeiar.snk</AssemblyOriginatorKeyFile>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+	<Language>C#</Language>
+	<Title>Kanadeiar.Api</Title>  
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+	
+  <ItemGroup>
+	 <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.0" />
+	 <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
