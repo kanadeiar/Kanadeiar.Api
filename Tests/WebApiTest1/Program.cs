@@ -9,6 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddServiceSwagger("WebApiTest1", filename:"info.xml");
 
+builder.Services.AddGrpc();
+
 builder.Services.AddScoped<PersonService>();
 
 var app = builder.Build();
@@ -21,5 +23,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+app.MapGrpcService<PersonInfoService>();
 
 app.Run();

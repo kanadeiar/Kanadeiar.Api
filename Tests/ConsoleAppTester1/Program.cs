@@ -10,7 +10,7 @@ var builder = new ConfigurationBuilder()
   .AddCommandLine(args);
 IConfigurationRoot configuration = builder.Build();
 
-Console.WriteLine("Нажми клавишу для начала тестирования связи с сервисом:");
+Console.WriteLine("Нажми клавишу для начала тестирования HTTP REST связи с сервисом:");
 Console.ReadKey();
 
 HttpClient httpClient = new HttpClient();

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using WebApiTest1.Models;
 using WebApiTest1.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApiTest1.Controllers;
 
@@ -24,8 +25,11 @@ public class ValuesController : ControllerBase
     [SwaggerOperation(Summary = "Получить сотрудников", Description = "Получить сотрудников в нужном количестве")]
     [SwaggerResponse(StatusCodes.Status200OK, "Сотрудники", Type = typeof(IEnumerable<Person>))]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найден")]
     public async Task<IActionResult> GetAllValues(int count)
     {
+        if (count == 0)
+            return NotFound();
         _logger.LogInformation("Получение тестовых данных");
         var persons = await _personService.GetPersons(count);
         return Ok(persons);

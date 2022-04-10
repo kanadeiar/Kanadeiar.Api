@@ -6,11 +6,10 @@
 
 [Фильтры](./Doc/Filters.md).
 
-
-
 ## HTTP REST-сервис
 
-[Памятка](./Doc/RESTEndpoints.md)
+[Памятка](./Doc/REST.md)
 
+## gRPC-сервис
 
-
+[Памятка]()
