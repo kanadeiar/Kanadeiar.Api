@@ -31,5 +31,5 @@ public async Task<IActionResult> GetAllValues(int count)
 }
 ```
 
-Тестовый клиент и тестовый сервис - в папке с образцами.
+Образцовые REST сервис и тестовый клиент - в папке с образцами.
 
