@@ -5,15 +5,20 @@
 Начальные шаги:
 
 1. В пустой проект в файл Program зарегистрировать необходимые сервисы:
+
 ```sharp
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 ```
+
 2. В этом же файле сконфигурировать конвейер запросов:
+
 ```sharp
 app.MapControllers();
 ```
+
 3. Написать обработчик запросов - контроллер:
+
 ```sharp
 [ApiController]
 [Route("api/test")]
@@ -28,6 +33,7 @@ public class ValuesController : ControllerBase
 ```xml
 <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
 ```
+
 > Не забывать регистрировать используемые в конечных точках контроллеров сервисы в зависимостях
 
 > Добавить пакет и зарегать сериализатор
