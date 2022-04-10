@@ -6,11 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddServiceSwagger("WebApiTest1");
+builder.Services.AddServiceSwagger("WebApiTest1", filename:"info.xml");
 
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
 
 if (app.Environment.IsDevelopment())
 {
@@ -18,5 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapControllers();
 
 app.Run();

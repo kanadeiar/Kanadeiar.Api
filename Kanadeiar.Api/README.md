@@ -13,3 +13,6 @@ builder.Services.AddServiceSwagger("WebApiTest1");
 app.UseSwagger();
 app.UseSwaggerUI();
 ```
+
+### Конечные точки
+
