@@ -2,17 +2,14 @@
 
 ## Использование библиотеки
 
-### Сваггер
+[Интерфейс API Swagger](./Doc/Swagger.md).
 
-Сервисы:
-```sharp
-builder.Services.AddServiceSwagger("WebApiTest1");
-```
-Конвейер:
-```sharp
-app.UseSwagger();
-app.UseSwaggerUI();
-```
+[Фильтры](./Doc/Filters.md).
 
-### Конечные точки
+## HTTP REST-сервис
 
+[Памятка](./Doc/REST.md)
+
+## gRPC-сервис
+
+[Памятка]()

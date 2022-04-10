@@ -1,17 +1,10 @@
-using Kanadeiar.Api;
 using Kanadeiar.Api.Registrations;
-using Microsoft.AspNetCore.Builder;
-using WebApiTest1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddServiceSwagger("WebApiTest1", filename:"info.xml");
-
-builder.Services.AddGrpc();
-
-builder.Services.AddScoped<PersonService>();
+builder.Services.AddServiceSwagger("WebApiTest1", filename: "info.xml");
 
 var app = builder.Build();
 
@@ -23,6 +16,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-app.MapGrpcService<PersonInfoService>();
 
 app.Run();

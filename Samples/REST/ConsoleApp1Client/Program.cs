@@ -1,20 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
-using WebApiTest1.Models;
+using WebApplication1Server.Models;
 
-var builder = new ConfigurationBuilder()
-  .SetBasePath(Directory.GetCurrentDirectory())
-  .AddJsonFile("appsettings.json")
-  .AddEnvironmentVariables()
-  .AddUserSecrets(typeof(Program).Assembly, optional: true)
-  .AddCommandLine(args);
-IConfigurationRoot configuration = builder.Build();
-
-Console.WriteLine("Нажми клавишу для начала тестирования HTTP REST связи с сервисом:");
+Console.WriteLine("Нажми клавишу для начала тестирования связи с сервисом:");
 Console.ReadKey();
 
 HttpClient httpClient = new HttpClient();
-string mapInfoUrl = configuration.GetValue<string>("MapInfoUrl");
+string mapInfoUrl = "https://localhost:6001";
 httpClient.BaseAddress = new Uri(mapInfoUrl);
 
 while (true)
