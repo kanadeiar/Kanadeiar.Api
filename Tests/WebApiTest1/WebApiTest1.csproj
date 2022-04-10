@@ -9,12 +9,9 @@
     <DocumentationFile>info.xml</DocumentationFile>
   </PropertyGroup>
 
-  <!--<ItemGroup>
-    <PackageReference Include="Kanadeiar.Api" Version="0.0.1" />
-  </ItemGroup>-->
-
   <ItemGroup>
-    <ProjectReference Include="..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
+    <PackageReference Include="Kanadeiar.Api" Version="0.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.3" />
   </ItemGroup>
 
 </Project>
