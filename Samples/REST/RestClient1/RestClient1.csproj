@@ -6,9 +6,5 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\WebApplication1Server\WebApplication1Server.csproj" />
-	</ItemGroup>
 	
 </Project>

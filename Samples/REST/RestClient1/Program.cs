@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
+using RestServer1.Models;
 using System.Net.Http.Json;
-using WebApplication1Server.Models;
 
 Console.WriteLine("Нажми клавишу для начала тестирования связи с сервисом:");
 Console.ReadKey();
+Console.WriteLine();
 
 HttpClient httpClient = new HttpClient();
 string mapInfoUrl = "https://localhost:6001";

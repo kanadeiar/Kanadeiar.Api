@@ -1,7 +1,6 @@
 using Grpc.Core;
-using GrpcService2;
 
-namespace GrpcService2.Services
+namespace GrpcService1.Services
 {
     public class PersonsService : Persons.PersonsBase
     {

@@ -6,7 +6,7 @@ namespace Kanadeiar.Api.Registrations;
 /// <summary>
 /// Регистрация сервисов
 /// </summary>
-public static class ServiceCollectionExtentions
+public static class ServiceCollectionExtensions
 {
     /// <summary>
     /// Добавить использование API-сервиса UI Swagger вместе со сгенерированной документации

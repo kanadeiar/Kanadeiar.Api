@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "GrpcService2";
+option csharp_namespace = "GrpcService1";
 
 package persons;
 

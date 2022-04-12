@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>WebApplication1Server</name>
+        <name>RestServer1</name>
     </assembly>
     <members>
     </members>

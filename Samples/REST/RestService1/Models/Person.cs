@@ -1,4 +1,4 @@
-﻿namespace WebApplication1Server.Models;
+﻿namespace RestServer1.Models;
 
 public class Person
 {

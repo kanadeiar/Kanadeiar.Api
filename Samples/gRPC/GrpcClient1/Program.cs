@@ -1,6 +1,6 @@
 ﻿
 using Grpc.Net.Client;
-using GrpcService2;
+using GrpcService1;
 
 Console.WriteLine("Нажать на кнопку для запуска");
 Console.ReadKey();

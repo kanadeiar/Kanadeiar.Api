@@ -1,9 +1,9 @@
 ﻿using Kanadeiar.Api.Filters;
 using Microsoft.AspNetCore.Mvc;
+using RestServer1.Models;
 using Swashbuckle.AspNetCore.Annotations;
-using WebApplication1Server.Models;
 
-namespace WebApplication1Server.Controllers;
+namespace RestServer1.Controllers;
 
 [ApiController]
 [Route("api/test")]
