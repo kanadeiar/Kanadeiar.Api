@@ -9,7 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
+    <ProjectReference Include="..\..\Application\Sample.Application\Sample.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="info.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

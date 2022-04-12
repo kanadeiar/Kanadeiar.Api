@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sample.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Sample.Application.Dtos.DepartmentDto">
+            <summary>
+            Отдел
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.DepartmentDto.Name">
+            <summary>
+            Название отдела
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.DepartmentDto.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.DepartmentDto.PersonsIds">
+            <summary>
+            Идентификаторы сотрудников
+            </summary>
+        </member>
+        <member name="T:Sample.Application.Dtos.PersonDto">
+            <summary>
+            Сотрудник
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.SurName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.Patronymic">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.BirthDay">
+            <summary>
+            День рождения
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.Salary">
+            <summary>
+            Зарплата
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.Groth">
+            <summary>
+            Рост
+            </summary>
+        </member>
+        <member name="P:Sample.Application.Dtos.PersonDto.DepartmentId">
+            <summary>
+            Отдел
+            </summary>
+        </member>
+    </members>
+</doc>

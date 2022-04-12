@@ -14,4 +14,8 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.44.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Sample.Application\Sample.Application.csproj" />
+  </ItemGroup>
+
 </Project>

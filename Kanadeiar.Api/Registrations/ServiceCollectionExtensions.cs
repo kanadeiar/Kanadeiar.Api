@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Mapster;
+using MapsterMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 namespace Kanadeiar.Api.Registrations;
 
@@ -17,7 +20,7 @@ public static class ServiceCollectionExtensions
     /// <param name="filename">главный xml файл</param>
     /// <param name="domainFilenames">дополнительные xml файлы</param>
     /// <returns></returns>
-    public static IServiceCollection AddServiceSwagger(this IServiceCollection services, string title, string version = "v1", string? filename = default, params string[] domainFilenames)
+    public static IServiceCollection KanadeiarAddSwagger(this IServiceCollection services, string title, string version = "v1", string? filename = default, params string[] domainFilenames)
     {
         services.AddSwaggerGen(options =>
         {
@@ -45,5 +48,19 @@ public static class ServiceCollectionExtensions
                 options.IncludeXmlComments(Path.Combine("bin/debug/net6.0", xmlFileName));
             }
         }
+    }
+
+    /// <summary>
+    /// Добавить использование сервиса преобразования данных Mapster
+    /// </summary>
+    /// <param name="services">Сервисы</param>
+    /// <returns>Сервисы</returns>
+    public static IServiceCollection KanadeiarAddMapster(this IServiceCollection services)
+    {
+        var config = TypeAdapterConfig.GlobalSettings;
+        config.Scan(Assembly.GetExecutingAssembly());
+        services.AddSingleton(config);
+        services.AddSingleton<IMapper, ServiceMapper>();
+        return services;
     }
 }

@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using RestServer1.Models;
+﻿using Mapster;
+using Sample.Application.Dtos;
+using Sample.Domain.Models;
 using System.Net.Http.Json;
 
 Console.WriteLine("Нажми клавишу для начала тестирования связи с сервисом:");
@@ -14,15 +15,15 @@ while (true)
 {
     try
     {
-        var count = 10;
+        var count = 3;
 
         var response = await httpClient.GetAsync($"/api/test/{count}");
-        var persons = await response.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<IEnumerable<Person>>();
-
+        var dtos = await response.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<IEnumerable<PersonDto>>();
+        var persons = dtos.Adapt<IEnumerable<Person>>();
         Console.WriteLine($"Response:{Environment.NewLine}");
         foreach (var item in persons)
         {
-            Console.Write($"[{item.Id}] {item.Surname} {item.Firstname} {item.Age}");
+            Console.WriteLine($"[{item.Id}] {item.SurName} {item.FirstName} {item.Patronymic} {item.BirthDay.ToString("dd.MM.yyyy")}г. {item.Salary.ToString()} {item.Groth.ToString("F2")}");
         }
         Console.WriteLine();
     }

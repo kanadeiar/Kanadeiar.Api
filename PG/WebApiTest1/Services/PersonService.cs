@@ -1,6 +1,4 @@
-﻿using WebApiTest1.Models;
-
-namespace WebApiTest1.Services;
+﻿namespace WebApiTest1.Services;
 
 public class PersonService
 {

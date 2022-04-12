@@ -1,10 +1,12 @@
-using Kanadeiar.Api.Registrations;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddServiceSwagger("WebApiTest1", filename: "info.xml");
+
+builder.Services.KanadeiarAddSwagger("WebApiTest1", filename: "info.xml", domainFilenames: new[] { "sample.application.xml" });
+builder.Services.KanadeiarAddMapster();
+
+builder.Services.AddScoped<GenPersonService>();
 
 var app = builder.Build();
 

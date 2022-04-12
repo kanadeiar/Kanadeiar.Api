@@ -1,31 +1,25 @@
-using Grpc.Core;
+namespace GrpcService1.Services;
 
-namespace GrpcService1.Services
+public class PersonsService : Persons.PersonsBase
 {
-    public class PersonsService : Persons.PersonsBase
-    {
-        private readonly ILogger<PersonsService> _logger;
-        public PersonsService(ILogger<PersonsService> logger)
-        {
-            _logger = logger;
-        }
+    private readonly ILogger<PersonsService> _logger;
+    private readonly GenPersonService _personService;
 
-        public override async Task<PersonsResult> GetPersons(PersonsRequest request, ServerCallContext context)
+    public PersonsService(ILogger<PersonsService> logger, GenPersonService personService)
+    {
+        _logger = logger;
+        _personService = personService;
+    }
+
+    public override async Task<PersonsResult> GetPersons(PersonsRequest request, ServerCallContext context)
+    {
+        var persons = await _personService.GetPersons(request.Count);
+        var result = new PersonsResult();
+        foreach (var item in persons)
         {
-            await Task.Delay(1000);
-            var persons = Enumerable.Range(0, request.Count).Select(i => new Person
-            {
-                Id = i,
-                Surname = $"Иванов_{i}",
-                Firstname = $"Иван_{i}",
-                Age = 18 + i,
-            }).ToArray();
-            var result = new PersonsResult();
-            foreach (var item in persons)
-            {
-                result.Persons.Add(item);
-            }
-            return result;
+            var person = item.Adapt<Person>();
+            result.Persons.Add(person);
         }
+        return result;
     }
 }

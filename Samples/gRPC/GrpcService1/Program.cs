@@ -1,7 +1,7 @@
-using GrpcService1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<GenPersonService>();
 
 builder.Services.AddGrpc();
 

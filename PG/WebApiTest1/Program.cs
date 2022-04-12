@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddServiceSwagger("WebApiTest1", filename:"info.xml");
+builder.Services.KanadeiarAddSwagger("WebApiTest1", filename:"info.xml");
 
 builder.Services.AddGrpc();
 

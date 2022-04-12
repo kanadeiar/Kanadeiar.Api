@@ -12,7 +12,7 @@ public class ServiceCollectionExtensionsTests
     {
         var services = Mock.Of<IServiceCollection>();
 
-        var actual = ServiceCollectionExtensions.AddServiceSwagger(services, "testTitle");
+        var actual = ServiceCollectionExtensions.KanadeiarAddSwagger(services, "testTitle");
 
         actual.Should().NotBeNull();
     }
