@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApiTest1</name>
+    </assembly>
+    <members>
+        <member name="T:ProtobufReflection">
+            <summary>Holder for reflection information generated from Protos/protobuf.proto</summary>
+        </member>
+        <member name="P:ProtobufReflection.Descriptor">
+            <summary>File descriptor for Protos/protobuf.proto</summary>
+        </member>
+        <member name="F:PersonRequest.CountFieldNumber">
+            <summary>Field number for the "count" field.</summary>
+        </member>
+        <member name="F:Person.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="F:Person.SurnameFieldNumber">
+            <summary>Field number for the "surname" field.</summary>
+        </member>
+        <member name="F:Person.FirstnameFieldNumber">
+            <summary>Field number for the "firstname" field.</summary>
+        </member>
+        <member name="F:Person.AgeFieldNumber">
+            <summary>Field number for the "age" field.</summary>
+        </member>
+        <member name="F:PersonsResponse.PersonsFieldNumber">
+            <summary>Field number for the "persons" field.</summary>
+        </member>
+        <member name="P:PersonInform.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:PersonInform.PersonInformBase">
+            <summary>Base class for server-side implementations of PersonInform</summary>
+        </member>
+        <member name="M:PersonInform.BindService(PersonInform.PersonInformBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:PersonInform.BindService(Grpc.Core.ServiceBinderBase,PersonInform.PersonInformBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+    </members>
+</doc>

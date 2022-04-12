@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GrpcService1";
+
+package persons;
+
+service Persons {
+  rpc GetPersons (PersonsRequest) returns (PersonsResult);
+}
+
+message PersonsRequest {
+  int32 count = 1;
+}
+
+message Person {
+	int32 id = 1;
+	string surName = 2;
+	string firstName = 3;
+	string patronymic = 4;
+	google.protobuf.Timestamp birthDay = 5;
+	double groth = 6;
+	int32 departmentId = 7;
+}
+
+message DecimalValue {
+	int64 units = 1;
+    sfixed32 nanos = 2;
+}
+
+message PersonsResult {
+    repeated Person persons = 1;
+}

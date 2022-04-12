@@ -50,7 +50,7 @@ public class PersonInfoService : PersonInform.PersonInformBase
 }
 ```
 
-5. Настроить серверное приложение для использования gRPC и сервиса-обработкичка:
+5. Настроить серверное приложение для использования gRPC и включить сервис-обработчик:
 
 ```sharp
 builder.Services.AddGrpc();
@@ -77,3 +77,5 @@ while (true)
     catch ...
 }
 ```
+
+Образцовые gRPC сервис и тестовый клиент - в папке с образцами.
