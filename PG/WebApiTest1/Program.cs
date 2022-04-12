@@ -1,6 +1,9 @@
 using Kanadeiar.Api;
 using Kanadeiar.Api.Registrations;
+using Mapster;
+using MapsterMapper;
 using Microsoft.AspNetCore.Builder;
+using System.Reflection;
 using WebApiTest1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,15 @@ builder.Services.AddServiceSwagger("WebApiTest1", filename:"info.xml");
 builder.Services.AddGrpc();
 
 builder.Services.AddScoped<PersonService>();
+
+
+
+var config = TypeAdapterConfig.GlobalSettings;
+config.Scan(Assembly.GetExecutingAssembly());
+builder.Services.AddSingleton(config);
+builder.Services.AddSingleton<IMapper, ServiceMapper>();
+
+
 
 var app = builder.Build();
 

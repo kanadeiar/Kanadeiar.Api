@@ -4,6 +4,8 @@ using Swashbuckle.AspNetCore.Annotations;
 using WebApiTest1.Models;
 using WebApiTest1.Services;
 using Microsoft.AspNetCore.Http;
+using MapsterMapper;
+using Mapster;
 
 namespace WebApiTest1.Controllers;
 
@@ -23,7 +25,7 @@ public class ValuesController : ControllerBase
 
     [HttpGet("{count}")]
     [SwaggerOperation(Summary = "Получить сотрудников", Description = "Получить сотрудников в нужном количестве")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Сотрудники", Type = typeof(IEnumerable<Person>))]
+    [SwaggerResponse(StatusCodes.Status200OK, "Сотрудники", Type = typeof(IEnumerable<PersonDto>))]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Плохой запрос", Type = typeof(string))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "Не найден")]
     public async Task<IActionResult> GetAllValues(int count)
@@ -31,7 +33,7 @@ public class ValuesController : ControllerBase
         if (count == 0)
             return NotFound();
         _logger.LogInformation("Получение тестовых данных");
-        var persons = await _personService.GetPersons(count);
+        var persons = (await _personService.GetPersons(count)).Adapt<IEnumerable<PersonDto>>();
         return Ok(persons);
     }
 }

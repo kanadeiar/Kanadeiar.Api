@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
 using WebApiTest1.Models;
+using Mapster;
 
 var builder = new ConfigurationBuilder()
   .SetBasePath(Directory.GetCurrentDirectory())
@@ -24,8 +25,8 @@ while (true)
         var count = 10;
 
         var response = await httpClient.GetAsync($"/api/test/{count}");
-        var persons = await response.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<IEnumerable<Person>>();
-
+        var dtos = await response.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<IEnumerable<PersonDto>>();
+        var persons = dtos.Adapt<IEnumerable<Person>>();
         Console.WriteLine($"Response:{Environment.NewLine}");
         foreach (var item in persons)
         {
