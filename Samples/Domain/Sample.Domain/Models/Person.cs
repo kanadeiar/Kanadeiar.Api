@@ -44,9 +44,4 @@ public class Person : Entity
     /// </summary>
     [Range(1, int.MaxValue)]
     public int DepartmentId { get; set; }
-    /// <summary>
-    /// Отдел
-    /// </summary>
-    [ForeignKey(nameof(DepartmentId))]
-    public Department Department { get; set; }
 }
