@@ -1,5 +1,5 @@
 # MassTransit (RabbitMQ) API
 
-[Назад](./../../README.md)
+[РќР°Р·Р°Рґ](./../../README.md)
 
-## Главное
+## Р“Р»Р°РІРЅРѕРµ
