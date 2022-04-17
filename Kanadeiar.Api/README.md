@@ -1,10 +1,12 @@
 # Библиотека инструментов
 
+[Назад](./../README.md)
+
 ## Быстрый старт :rocket:
 
 Установить NuGet пакет командой:
 ```sharp
-Install-Package Kanadeiar.Api
+dotnet add package Kanadeiar.Api
 ```
 
 ### Swagger
@@ -14,12 +16,19 @@ Install-Package Kanadeiar.Api
 Регистрация в сервисах:
 ```sharp
 builder.Services.KarAddSwagger("WebApiTest1");
+builder.Services.KarAddSwagger("WebApiTest1", filename: "info.xml");
+builder.Services.KarAddSwagger("WebApiTest1", filename: "info.xml", domainFilenames: new[] { "sample.application.xml" });
+
 ```
 
 Зарегистрировать использование в конвейере, желательно в самом начале, и в среде разработки приложения:
 ```sharp
-app.UseSwagger();
-app.UseSwaggerUI();
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 ```
 
 > Обязательно зарегать в сервисах для корректной работы Swagger: 
@@ -38,7 +47,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.KarAddMapster();
 ```
 
-Использование 
+Примеры использования 
 ```sharp
 var config = new TypeAdapterConfig().ForType<NewsUnitDto, NewsUnit>().Ignore(x => x.Id).Config; //конфигурация
 var item = request.Model.Adapt<NewsUnit>(config); //получение нового с учетом конфигурации

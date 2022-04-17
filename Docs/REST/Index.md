@@ -6,6 +6,10 @@
 
 Начальные шаги:
 
+```sharp
+dotnet new web
+```
+
 1. В пустой проект в файл Program зарегистрировать необходимые сервисы:
 
 ```sharp
@@ -19,19 +23,27 @@ builder.Services.AddEndpointsApiExplorer();
 app.MapControllers();
 ```
 
-3. Написать обработчик запросов - контроллер:
+3. Написать обработчик запросов - API-контроллер в папку "Controllers":
 
 ```sharp
 [ApiController]
-[Route("api/test")]
-public class ValuesController : ControllerBase
+[Route("value")]
+public class ValueController : ControllerBase
 {
 }
 ```
 
+4. Переиспользовать Swagger, Mapster, KarErrorHandler из библиотеки.
+
+5. Настроить запуск приложения:
+```sharp
+"launchUrl": "swagger",
+"applicationUrl": "https://localhost:6001;http://localhost:6000",
+```
+
 ## Напоминалки:
 
-Не забывать включить Api анализатор в файле cproj:
+Не забывать включить Api анализатор в файле cproj в раздел "PropertyGroup":
 ```xml
 <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
 ```
@@ -43,15 +55,15 @@ public class ValuesController : ControllerBase
 Разрешить запросы с других доменов:
 
 ```xml
-services.AddCors();
-app.UseCors(builder => builder.AllowAnyOrigin());
+services.AddCors(); //в вервисах
+app.UseCors(builder => builder.AllowAnyOrigin()); //в конвейере после роутинга перед контроллерами
 ```
 
 ### Сериализатор
 
 Добавить пакет 
-```charp
-пакет: Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```sharp
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```
 Зарегать сериализатор в контроллерах:
 
@@ -59,22 +71,17 @@ app.UseCors(builder => builder.AllowAnyOrigin());
 services.AddControllers().AddNewtonsoftJson();
 ```
 
-### Базовые образцы
+### Простые образцы
 
 Серверная часть:
 ```csharp
-[HttpGet("{count}")]
-[SwaggerOperation(Summary = "Получить сотрудников", Description = "Получить сотрудников в нужном количестве")]
-[SwaggerResponse(StatusCodes.Status200OK, "Сотрудники", Type = typeof(IEnumerable<Person>))]
+[HttpGet]
+[SwaggerOperation(Summary = "Получить значение", Description = "Получить ответ значение - ответ на запрос")]
+[SwaggerResponse(StatusCodes.Status200OK, "Ответ от сервера", Type = typeof(string))]
 [SwaggerResponse(StatusCodes.Status500InternalServerError, "Плохой запрос", Type = typeof(string))]
-[SwaggerResponse(StatusCodes.Status404NotFound, "Не найден")]
-public async Task<IActionResult> GetAllValues(int count)
+public string Value(string value)
 {
-    if (count == 0)
-        return NotFound();
-    _logger.LogInformation("Получение тестовых данных");
-    var persons = await _personService.GetPersons(count);
-    return Ok(persons);
+    return $"Hello, {value}!";
 }
 ```
 
@@ -82,6 +89,6 @@ public async Task<IActionResult> GetAllValues(int count)
 ```csharp
 HttpClient httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://localhost:6001");
-var response = await httpClient.GetAsync($"/api/test/{10}");
-var persons = await response.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<IEnumerable<Person>>();
+var response = await httpClient.GetAsync($"/value?value=Test");
+var message = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
 ```
