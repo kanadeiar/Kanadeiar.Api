@@ -8,11 +8,21 @@ namespace Kanadeiar.Api.Tests.Registrations;
 public class ServiceCollectionExtensionsTests
 {
     [Fact]
-    public void AddServiceSwagger_Correct_ShouldType()
+    public void KarAddSwagger_Correct_ShouldType()
     {
         var services = Mock.Of<IServiceCollection>();
 
-        var actual = ServiceCollectionExtensions.KanadeiarAddSwagger(services, "testTitle");
+        var actual = ServiceCollectionExtensions.KarAddSwagger(services, "testTitle");
+
+        actual.Should().NotBeNull();
+    }
+
+    [Fact]
+    public void KarAddMapster_Correct_ShoultDype()
+    {
+        var services = Mock.Of<IServiceCollection>();
+
+        var actual = ServiceCollectionExtensions.KarAddMapster(services);
 
         actual.Should().NotBeNull();
     }

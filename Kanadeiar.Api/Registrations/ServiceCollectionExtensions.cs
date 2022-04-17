@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
     /// <param name="filename">главный xml файл</param>
     /// <param name="domainFilenames">дополнительные xml файлы</param>
     /// <returns></returns>
-    public static IServiceCollection KanadeiarAddSwagger(this IServiceCollection services, string title, string version = "v1", string? filename = default, params string[] domainFilenames)
+    public static IServiceCollection KarAddSwagger(this IServiceCollection services, string title, string version = "v1", string? filename = default, params string[] domainFilenames)
     {
         services.AddSwaggerGen(options =>
         {
@@ -55,7 +55,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Сервисы</param>
     /// <returns>Сервисы</returns>
-    public static IServiceCollection KanadeiarAddMapster(this IServiceCollection services)
+    public static IServiceCollection KarAddMapster(this IServiceCollection services)
     {
         var config = TypeAdapterConfig.GlobalSettings;
         config.Scan(Assembly.GetExecutingAssembly());
