@@ -1,19 +1,59 @@
-# Быстрый старт
+# Библиотека инструментов
 
-## Использование библиотеки
+## Быстрый старт :rocket:
 
-[Конфигурирование приложения](./Doc/Program.md).
+Установить NuGet пакет командой:
+```sharp
+Install-Package Kanadeiar.Api
+```
 
-[Фильтры](./Doc/Filters.md).
+### Swagger
 
-## HTTP REST-сервис
+Удобный интерфейс пользователя для работы с REST API сервисами.
 
-[Памятка](./Doc/REST.md)
+Регистрация в сервисах:
+```sharp
+builder.Services.KarAddSwagger("WebApiTest1");
+```
 
-## gRPC-сервис
+Зарегистрировать использование в конвейере, желательно в самом начале, и в среде разработки приложения:
+```sharp
+app.UseSwagger();
+app.UseSwaggerUI();
+```
 
-[Памятка](./Doc/gRPC.md)
+> Обязательно зарегать в сервисах для корректной работы Swagger: 
 
-## Общее
+```sharp
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+```
 
-[Памятка]()
+### Mapster
+
+Удобный маппер
+
+Регистрация в сервисах:
+```sharp
+builder.Services.KarAddMapster();
+```
+
+Использование 
+```sharp
+var config = new TypeAdapterConfig().ForType<NewsUnitDto, NewsUnit>().Ignore(x => x.Id).Config; //конфигурация
+var item = request.Model.Adapt<NewsUnit>(config); //получение нового с учетом конфигурации
+request.Model.Adapt(entity, config); //обновление согласно конфигурации, не получение нового объекта
+var test = request.Model.Adapt<NewsUnit>(); //получение нового объекта
+persons.Adapt<IEnumerable<PersonDto>>(); //коллекция новых объектов
+```
+
+### Фильтры
+
+Свой удобный фильр для обработки исключений -> в коды ошибок
+
+Использование фильра в API-контроллере:
+```sharp
+[KarExceptionHandling]
+public class ValuesController : ControllerBase
+```
+
