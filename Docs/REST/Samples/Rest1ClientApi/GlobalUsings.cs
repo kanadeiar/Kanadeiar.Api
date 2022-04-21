@@ -3,6 +3,7 @@ global using Kanadeiar.Api.Registrations;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+global using Rest1ClientApi;
 global using Rest1ClientApplication.Queries;
 global using Rest1ClientInfrastructure.Data;
 global using Swashbuckle.AspNetCore.Annotations;

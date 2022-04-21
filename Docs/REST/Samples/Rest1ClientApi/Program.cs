@@ -1,7 +1,4 @@
 
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ClientContext>(options =>
@@ -13,6 +10,9 @@ builder.Services.AddDbContext<ClientContext>(options =>
 #endif
 });
 builder.Services.AddScoped<DbContext, ClientContext>();
+
+// TODO : в библиотеку - паттерн построитель
+builder.Services.AddTransient<TestData>();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
@@ -45,5 +45,13 @@ app.UseRouting();
 app.UseCors(builder => builder.AllowAnyOrigin());
 
 app.MapControllers();
+
+// TODO: в библиотеку
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider
+        .GetRequiredService<TestData>()
+        .SeedTestData(scope.ServiceProvider);
+}
 
 app.Run();
