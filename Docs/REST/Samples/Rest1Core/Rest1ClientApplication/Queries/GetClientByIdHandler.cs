@@ -1,15 +1,17 @@
-﻿namespace Rest1ClientApplication.Queries;
+﻿using Rest1ClientApplication.Interfaces.Repositories;
+
+namespace Rest1ClientApplication.Queries;
 
 /// <summary>
 /// Обработчик запроса одного элемента
 /// </summary>
 public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
 {
-    private readonly DbContext _context;
+    private readonly IClientRepository _clientRepository;
 
-    public GetClientByIdHandler(DbContext context)
+    public GetClientByIdHandler(IClientRepository clientRepository)
     {
-        _context = context;
+        _clientRepository = clientRepository;
     }
 
     /// <summary>
@@ -20,11 +22,16 @@ public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
     public async Task<ClientDto?> Handle(GetClientById request, CancellationToken cancellationToken)
-    {
-        if (await _context.Set<Client>().FindAsync(new object[] { request.Id }, cancellationToken) is Client item)
+    {        
+        if (await _clientRepository.GetByIdAsync(request.Id) is Client item)
         {
             return item.Adapt<ClientDto>();
         }
         return null;
+        //if (await _context.Set<Client>().FindAsync(new object[] { request.Id }, cancellationToken) is Client item)
+        //{
+        //    return item.Adapt<ClientDto>();
+        //}
+        //return null;
     }
 }

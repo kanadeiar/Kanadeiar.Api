@@ -21,6 +21,9 @@ builder.Services.AddCors();
 builder.Services.KndAddSwagger("Rest1ClientApi", "v1", "rest1clientapi.xml", new[] { "rest1clientapplication.xml" });
 builder.Services.KndAddMapster();
 
+// TODO : это на подумать - как то оптимизировать
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
 // TODO : это в библиотеку
 var handlersAssembly = typeof(GetClientByIdHandler).Assembly;
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), handlersAssembly);

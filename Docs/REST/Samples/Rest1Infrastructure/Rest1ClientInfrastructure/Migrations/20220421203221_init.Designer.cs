@@ -12,7 +12,7 @@ using Rest1ClientInfrastructure.Data;
 namespace Rest1ClientInfrastructure.Migrations
 {
     [DbContext(typeof(ClientContext))]
-    [Migration("20220421010233_init")]
+    [Migration("20220421203221_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

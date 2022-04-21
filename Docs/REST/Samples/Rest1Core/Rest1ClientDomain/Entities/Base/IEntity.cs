@@ -1,9 +1,9 @@
-﻿namespace Rest1Core.Entities.Base;
+﻿namespace Rest1ClientDomain.Entities.Base;
 
 /// <summary>
 /// База
 /// </summary>
-abstract public class Entity : IEntity
+public interface IEntity
 {
     /// <summary>
     /// Идентификатор
