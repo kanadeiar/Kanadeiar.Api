@@ -1,4 +1,4 @@
-﻿namespace Rest1ClientApplication.Queries;
+﻿namespace Rest1ClientApplication.Implementations.Queries;
 
 /// <summary>
 /// Обработчик запроса одного элемента
@@ -20,7 +20,7 @@ public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
     public async Task<ClientDto?> Handle(GetClientById request, CancellationToken cancellationToken)
-    {        
+    {
         if (await _clientRepository.GetByIdAsync(request.Id) is Client item)
         {
             return item.Adapt<ClientDto>();

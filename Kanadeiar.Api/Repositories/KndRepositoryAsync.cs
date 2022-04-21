@@ -1,4 +1,4 @@
-﻿using Kanadeiar.Api.Domain.Base;
+﻿using Kanadeiar.Core.Domain.Base;
 using Kanadeiar.Api.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
@@ -9,7 +9,7 @@ namespace Kanadeiar.Api.Repositories;
 /// Базовый репозиторий
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class KndRepositoryAsync<T, TId> : IKndRepositoryAsync<T, TId> where T : KndEntity<TId>
+public class KndRepositoryAsync<T, TId> : IKndRepositoryAsync<T, TId> where T : class, IKndEntity<TId>
 {
     private readonly DbContext _context;
     public KndRepositoryAsync(DbContext context)

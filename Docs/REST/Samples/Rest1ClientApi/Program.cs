@@ -1,4 +1,6 @@
 
+using Rest1ClientApplication.Implementations.Queries;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ClientContext>(options =>

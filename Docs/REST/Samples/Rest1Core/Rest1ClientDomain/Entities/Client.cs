@@ -1,9 +1,11 @@
-﻿namespace Rest1Core.Entities;
+﻿using Rest1ClientDomain.Entities.Base;
+
+namespace Rest1Core.Entities;
 
 /// <summary>
 /// Клиент
 /// </summary>
-public class Client : KndEntity<int>
+public class Client : Entity
 {
     /// <summary>
     /// Идентификатор пользователя системы авторизации

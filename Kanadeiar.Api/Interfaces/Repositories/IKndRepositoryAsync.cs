@@ -1,4 +1,4 @@
-﻿using Kanadeiar.Api.Domain.Base;
+﻿using Kanadeiar.Core.Domain.Base;
 
 namespace Kanadeiar.Api.Interfaces.Repositories;
 
