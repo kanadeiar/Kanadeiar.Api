@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rest1ClientApplication</name>
+    </assembly>
+    <members>
+        <member name="T:Rest1ClientApplication.Contracts.GetClientById">
+            <summary>
+            Контракт получения одного элемента
+            </summary>
+        </member>
+        <member name="P:Rest1ClientApplication.Contracts.GetClientById.Id">
+            <summary>
+            Идентификатор элемента
+            </summary>
+        </member>
+        <member name="M:Rest1ClientApplication.Contracts.GetClientById.#ctor(System.Int32)">
+            <summary>
+            Получение одного элемента
+            </summary>
+            <param name="id">Идентификатор элемента</param>
+        </member>
+        <member name="T:Rest1ClientApplication.Queries.GetClientByIdHandler">
+            <summary>
+            Обработчик запроса одного элемента
+            </summary>
+        </member>
+        <member name="M:Rest1ClientApplication.Queries.GetClientByIdHandler.Handle(Rest1ClientApplication.Contracts.GetClientById,System.Threading.CancellationToken)">
+            <summary>
+            Запрос одной записи
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Rest1Application.Dto.ClientDto">
+            <summary>
+            Просмотр и редактирование клиента
+            </summary>
+        </member>
+        <member name="P:Rest1Application.Dto.ClientDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Rest1Application.Dto.ClientDto.UserId">
+            <summary>
+            Идентификатор пользователя системы авторизации
+            </summary>
+        </member>
+        <member name="P:Rest1Application.Dto.ClientDto.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:Rest1Application.Dto.ClientDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:Rest1Application.Dto.ClientDto.Patronymic">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:Rest1Application.Dto.ClientDto.BirthDay">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+    </members>
+</doc>

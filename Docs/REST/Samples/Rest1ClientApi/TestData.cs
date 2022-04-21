@@ -9,13 +9,15 @@ public class TestData
 {
     private static class Data
     {
+        private static Random _rnd = new Random();
+
         public async static Task PopulateTestData(DbContext context, ILogger<TestData> logger)
-        {
+        {  
             logger.LogInformation("Начало заполнения тестовыми данными ...");
 
-            var clients = Enumerable.Range(1, 30).Select(x => new Client
+            var clients = Enumerable.Range(1, 100).Select(x => new Client
             {
-                UserId = x,
+                UserId = _rnd.Next(1, 10),
                 LastName = $"Иванов_{x}",
                 FirstName = $"Иван_{x}",
                 Patronymic = $"Иванович_{x}",
