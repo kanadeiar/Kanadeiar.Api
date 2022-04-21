@@ -9,7 +9,7 @@ namespace Kanadeiar.Api.Filters;
 /// <summary>
 /// Обрботчик исключений -> в статусные коды
 /// </summary>
-public class KarExceptionHandlingAttribute : ExceptionFilterAttribute
+public class KndExceptionHandlingAttribute : ExceptionFilterAttribute
 {
     /// <summary>
     /// Обработка исключений
@@ -17,7 +17,7 @@ public class KarExceptionHandlingAttribute : ExceptionFilterAttribute
     /// <param name="context"></param>
     public override void OnException(ExceptionContext context)
     {
-        var logger = context.HttpContext.RequestServices.GetService<ILogger<KarExceptionHandlingAttribute>>();
+        var logger = context.HttpContext.RequestServices.GetService<ILogger<KndExceptionHandlingAttribute>>();
         switch (context.Exception)
         {
             case ArgumentNullException ex:

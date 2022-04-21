@@ -1,7 +1,7 @@
 [![Tests](https://github.com/kanadeiar/Kanadeiar.Api/actions/workflows/tests.yml/badge.svg)](https://github.com/kanadeiar/Kanadeiar.Api/actions/workflows/tests.yml)
 [![Publish NuGet Package](https://github.com/kanadeiar/Kanadeiar.Api/actions/workflows/nuget.yml/badge.svg)](https://github.com/kanadeiar/Kanadeiar.Api/actions/workflows/nuget.yml)
 
-# Библиотека полезностей для разработки Api приложений :ok_hand:
+# Библиотека полезностей :ok_hand: для разработки Api приложений
 
 ## Библиотека :books:
 

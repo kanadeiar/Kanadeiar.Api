@@ -1,4 +1,4 @@
-# Библиотека инструментов
+# Библиотека полезностей :ok_hand:
 
 [Назад](./../README.md)
 
@@ -15,9 +15,9 @@ dotnet add package Kanadeiar.Api
 
 Регистрация в сервисах:
 ```sharp
-builder.Services.KarAddSwagger("WebApiTest1");
-builder.Services.KarAddSwagger("WebApiTest1", filename: "info.xml");
-builder.Services.KarAddSwagger("WebApiTest1", filename: "info.xml", domainFilenames: new[] { "sample.application.xml" });
+builder.Services.KndAddSwagger("WebApiTest1");
+builder.Services.KndAddSwagger("WebApiTest1", filename: "info.xml");
+builder.Services.KndAddSwagger("WebApiTest1", filename: "info.xml", domainFilenames: new[] { "sample.application.xml" });
 
 ```
 
@@ -29,12 +29,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHsts(); //если нужно
+}
 ```
 
 > Обязательно зарегать в сервисах для корректной работы Swagger: 
 
 ```sharp
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 ```
 

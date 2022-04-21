@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rest1ClientInfrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Rest1ClientInfrastructure.Data.ClientContext">
+            <summary>
+            База данных клиентов
+            </summary>
+        </member>
+        <member name="M:Rest1ClientInfrastructure.Data.ClientContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Rest1ClientInfrastructure.Data.ClientContext})">
+            <summary>
+            База данных клиентов
+            </summary>
+            <param name="options"></param>
+        </member>
+    </members>
+</doc>
