@@ -3,7 +3,7 @@
 /// <summary>
 /// Клиент
 /// </summary>
-public class Client : Entity
+public class Client : KndEntity<int>
 {
     /// <summary>
     /// Идентификатор пользователя системы авторизации

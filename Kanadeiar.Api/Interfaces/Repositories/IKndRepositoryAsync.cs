@@ -1,10 +1,13 @@
-﻿namespace Rest1ClientApplication.Interfaces.Repositories;
+﻿using Kanadeiar.Api.Domain.Base;
+
+namespace Kanadeiar.Api.Interfaces.Repositories;
 
 /// <summary>
 /// Базовый репозиторий
 /// </summary>
-/// <typeparam name="T"></typeparam>
-public interface IRepositoryAsync<T> where T : class, IEntity
+/// <typeparam name="T">сущность</typeparam>
+/// <typeparam name="TId">тип ключа сущности</typeparam>
+public interface IKndRepositoryAsync<T, in TId> where T : class, IKndEntity<TId>
 {
     /// <summary>
     /// Запрос
@@ -14,11 +17,11 @@ public interface IRepositoryAsync<T> where T : class, IEntity
     /// <summary>
     /// Все сущности с пагинацией
     /// </summary>
-    /// <param name="lastId">послдений идентификатор захватываемый</param>
+    /// <param name="offset">количество пропускаемых элементов</param>
     /// <param name="count">количество захватываемых</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    IAsyncEnumerable<T> GetPagedAsync(int lastId, int count, CancellationToken cancellationToken);
+    IAsyncEnumerable<T> GetPagedAsync(int offset, int count, CancellationToken cancellationToken);
 
     /// <summary>
     /// Получить один элемент
@@ -32,7 +35,7 @@ public interface IRepositoryAsync<T> where T : class, IEntity
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task<int> AddAsync(T entity);
+    Task<T> AddAsync(T entity);
 
     /// <summary>
     /// Обновить элемент

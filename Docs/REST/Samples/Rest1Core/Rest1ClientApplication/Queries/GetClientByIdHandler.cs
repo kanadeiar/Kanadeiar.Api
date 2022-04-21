@@ -1,6 +1,4 @@
-﻿using Rest1ClientApplication.Interfaces.Repositories;
-
-namespace Rest1ClientApplication.Queries;
+﻿namespace Rest1ClientApplication.Queries;
 
 /// <summary>
 /// Обработчик запроса одного элемента
@@ -28,10 +26,5 @@ public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
             return item.Adapt<ClientDto>();
         }
         return null;
-        //if (await _context.Set<Client>().FindAsync(new object[] { request.Id }, cancellationToken) is Client item)
-        //{
-        //    return item.Adapt<ClientDto>();
-        //}
-        //return null;
     }
 }

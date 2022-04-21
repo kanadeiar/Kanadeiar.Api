@@ -1,4 +1,3 @@
-﻿global using Rest1ClientDomain.Entities.Base;
-global using Rest1Core.Entities.Base;
+﻿global using Kanadeiar.Api.Domain.Base;
 global using System;
 global using System.ComponentModel.DataAnnotations;

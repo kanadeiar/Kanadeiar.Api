@@ -1,5 +1,7 @@
-﻿namespace Rest1ClientApplication.Interfaces.Repositories;
+﻿using Kanadeiar.Api.Interfaces.Repositories;
 
-public interface IClientRepository : IRepositoryAsync<Client>
+namespace Rest1ClientApplication.Interfaces.Repositories;
+
+public interface IClientRepository : IKndRepositoryAsync<Client, int>
 {
 }

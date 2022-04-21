@@ -1,25 +1,32 @@
-﻿namespace Rest1ClientInfrastructure.Repositories;
+﻿using Kanadeiar.Api.Domain.Base;
+using Kanadeiar.Api.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
+
+namespace Kanadeiar.Api.Repositories;
 
 /// <summary>
 /// Базовый репозиторий
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class RepositoryAsync<T> : IRepositoryAsync<T> where T : Entity
+public class KndRepositoryAsync<T, TId> : IKndRepositoryAsync<T, TId> where T : KndEntity<TId>
 {
     private readonly DbContext _context;
-    public RepositoryAsync(DbContext context)
+    public KndRepositoryAsync(DbContext context)
     {
         _context = context;
     }
 
     public IQueryable<T> Query => _context.Set<T>();
 
-    public async IAsyncEnumerable<T> GetPagedAsync(int lastId, int count, CancellationToken cancellationToken)
+    public async IAsyncEnumerable<T> GetPagedAsync(int offset, int count, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        foreach (var item in _context.Set<T>()
+        foreach (var item in _context
+            .Set<T>()
             .OrderByDescending(_ => _.Id)
-            .Where(_ => _.Id > lastId)
-            .Take(count).AsNoTracking())
+            .Skip(offset)
+            .Take(count)
+            .AsNoTracking())
         {
             if (cancellationToken.IsCancellationRequested)
                 yield break;
@@ -32,10 +39,10 @@ public class RepositoryAsync<T> : IRepositoryAsync<T> where T : Entity
         return await _context.Set<T>().FindAsync(id);
     }
 
-    public async Task<int> AddAsync(T entity)
+    public async Task<T> AddAsync(T entity)
     {
         await _context.Set<T>().AddAsync(entity);
-        return entity.Id;
+        return entity;
     }
 
     public async Task UpdateAsync(T entity)

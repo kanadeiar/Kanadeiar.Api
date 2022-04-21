@@ -3,11 +3,9 @@
 /// <summary>
 /// Реализация репозитория клиентов
 /// </summary>
-public class ClientRepository : RepositoryAsync<Client>, IClientRepository
+public class ClientRepository : KndRepositoryAsync<Client, int>, IClientRepository
 {
     public ClientRepository(DbContext context) : base(context)
     {
     }
-
-
 }

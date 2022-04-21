@@ -20,61 +20,6 @@
             </summary>
             <param name="id">Идентификатор элемента</param>
         </member>
-        <member name="T:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1">
-            <summary>
-            Базовый репозиторий
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.Query">
-            <summary>
-            Запрос
-            </summary>
-        </member>
-        <member name="M:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.GetPagedAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
-            <summary>
-            Все сущности с пагинацией
-            </summary>
-            <param name="lastId">послдений идентификатор захватываемый</param>
-            <param name="count">количество захватываемых</param>
-            <param name="cancellationToken"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.GetByIdAsync(System.Int32)">
-            <summary>
-            Получить один элемент
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.AddAsync(`0)">
-            <summary>
-            Добавить элемент
-            </summary>
-            <param name="entity"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.UpdateAsync(`0)">
-            <summary>
-            Обновить элемент
-            </summary>
-            <param name="entity"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.DeleteAsync(`0)">
-            <summary>
-            Удалить элемент
-            </summary>
-            <param name="entity"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Rest1ClientApplication.Interfaces.Repositories.IRepositoryAsync`1.CommitAsync(System.Threading.CancellationToken)">
-            <summary>
-            Сохранение изменений в базе данных
-            </summary>
-            <param name="cancellationToken"></param>
-            <returns></returns>
-        </member>
         <member name="T:Rest1ClientApplication.Queries.GetClientByIdHandler">
             <summary>
             Обработчик запроса одного элемента
