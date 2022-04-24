@@ -2,7 +2,20 @@
 
 [Назад](./Index.md)
 
-Все в слое Application
+Добавить пакет в Application:
+```sharp
+dotnet add package Kanadeiar.Api
+```
+
+Регистрация MediatR в сервисах приложения:
+
+```sharp
+builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
+```
+
+В параметрах - сборка, в которой находятся контракты и обработчики
+
+Все в слое Application:
 
 Образец сущности :
 ```csharp

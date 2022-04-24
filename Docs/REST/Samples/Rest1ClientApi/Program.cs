@@ -1,7 +1,4 @@
 
-using Rest1ClientApplication.Implementations.Queries;
-using Rest1ClientInfrastructure.Registrations;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ClientContext>(options =>
@@ -23,12 +20,9 @@ builder.Services.AddCors();
 
 builder.Services.KndAddSwagger("Rest1ClientApi", "v1", "rest1clientapi.xml", new[] { "rest1clientapplication.xml" });
 builder.Services.KndAddMapster();
+builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
 
 builder.Services.MyAddRepositories();
-
-// TODO : это в библиотеку
-var handlersAssembly = typeof(GetClientByIdHandler).Assembly;
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), handlersAssembly);
 
 var app = builder.Build();
 
@@ -54,9 +48,16 @@ app.MapControllers();
 // TODO: в библиотеку
 using (var scope = app.Services.CreateScope())
 {
-    var seeder = scope.ServiceProvider
-        .GetRequiredService<TestData>()
-        .SeedTestData(scope.ServiceProvider);
+    try
+    {
+        var seeder = scope.ServiceProvider
+            .GetRequiredService<TestData>()
+            .SeedTestData(scope.ServiceProvider);
+    }
+    catch
+    {
+        throw;
+    }
 }
 
 app.Run();

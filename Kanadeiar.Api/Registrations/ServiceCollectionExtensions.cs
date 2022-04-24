@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using MapsterMapper;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
@@ -63,6 +64,18 @@ public static class ServiceCollectionExtensions
         services.AddSingleton(config);
         services.AddSingleton<IMapper, ServiceMapper>();
 
+        return services;
+    }
+
+    /// <summary>
+    /// Регистрация медиатора MediatR в сервисах приложения
+    /// </summary>
+    /// <param name="services">Сервисы</param>
+    /// <param name="mediatrAssembly">Сборка, в которой расположены обработчики и контракты</param>
+    /// <returns>сервисы</returns>
+    public static IServiceCollection KndAddMediatR(this IServiceCollection services, Assembly mediatrAssembly)
+    {
+        services.AddMediatR(Assembly.GetExecutingAssembly(), mediatrAssembly);
         return services;
     }
 }

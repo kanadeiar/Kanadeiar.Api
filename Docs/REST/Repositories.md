@@ -4,7 +4,7 @@
 
 > Только одно ключевое поле
 
-Добавить пакеты в Domain:
+Добавить пакет в Domain:
 ```sharp
 dotnet add package Kanadeiar.Core
 ```
@@ -61,3 +61,21 @@ public class ClientRepository : KndRepositoryAsync<Client, int>, IClientReposito
 Наследовать реализацию базовую репозитрия, пре необходимости - дополнить, указать в параметрах-типах сущность и тип ключевого поля
 
 В конструкторе - передать контекст базы данных
+
+## Регистрация репозиториев в сервисах приложения:
+
+В слое Infrastructure
+```sharp
+public static IServiceCollection MyAddRepositories(this IServiceCollection services)
+{
+    services.AddScoped<IClientRepository, ClientRepository>();
+
+    return services;
+}
+```
+
+В сервисах приложения:
+
+```sharp
+builder.Services.MyAddRepositories();
+```

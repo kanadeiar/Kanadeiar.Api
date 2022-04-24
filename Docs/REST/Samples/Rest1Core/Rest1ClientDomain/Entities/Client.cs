@@ -1,6 +1,6 @@
 ﻿using Rest1ClientDomain.Entities.Base;
 
-namespace Rest1Core.Entities;
+namespace Rest1ClientDomain.Entities;
 
 /// <summary>
 /// Клиент
@@ -29,7 +29,7 @@ public class Client : Entity
     /// </summary>
     [MaxLength(100)]
     public string Patronymic { get; set; }
-    
+
     /// <summary>
     /// Дата рождения
     /// </summary>

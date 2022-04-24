@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Rest1ClientInfrastructure.Repositories;
-
-namespace Rest1ClientInfrastructure.Registrations;
+﻿namespace Rest1ClientInfrastructure.Registrations;
 
 /// <summary>
 /// Регистрация сервисов

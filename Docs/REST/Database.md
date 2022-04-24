@@ -37,7 +37,7 @@ services.AddDbContext<ClientContext>(options =>
 #endif
 });
 
-services.AddScoped<DbContext, ClientContext>(); //если одна база данных в приложении
+services.AddScoped<DbContext, ClientContext>(); //допустимо только если одна база данных в приложении
 ```
 
 > Если миграции находятся в той-же папке, что и определение базы данных, то можно не уточнять местонахождение миграций - MigrationsAssembly()

@@ -1,6 +1,4 @@
-﻿using Rest1Core.Entities;
-
-namespace Rest1ClientApi;
+﻿namespace Rest1ClientApi;
 
 /// <summary>
 /// Заполнение тестовыми данными
