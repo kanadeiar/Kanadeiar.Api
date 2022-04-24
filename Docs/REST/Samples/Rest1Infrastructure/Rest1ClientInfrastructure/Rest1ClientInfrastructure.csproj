@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
     <ProjectReference Include="..\..\Rest1Core\Rest1ClientApplication\Rest1ClientApplication.csproj" />
   </ItemGroup>
 

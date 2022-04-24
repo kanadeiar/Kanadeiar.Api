@@ -2,7 +2,9 @@
 
 [Назад](./Index.md)
 
-Образец сущности:
+Все в слое Application
+
+Образец сущности :
 ```csharp
 public class ClientDto
 {
@@ -14,6 +16,7 @@ public class ClientDto
     public DateTime BirthDay { get; set; }
 }
 ```
+
 Образец контракта:
 ```csharp
 public class GetClientById : IRequest<ClientDto?>

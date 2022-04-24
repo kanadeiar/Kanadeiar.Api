@@ -20,6 +20,8 @@
 dotnet new web
 ```
 
+1. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), бизнес-логика и общее - в Application (ссылки на Kanadeiar.Api и Domain), База данных и специфическое - в Infrastructure (ссылки на Application), детальная реализация - в Api (ссылки на Infrastructure)
+
 1. В пустой проект в файл Program зарегистрировать необходимые сервисы:
 
 ```sharp
@@ -78,19 +80,19 @@ app.UseHsts();
 
 ### База данных EF
 
-Не включена в Kanadeiar.Api.
+[Интрукции по базе данных](./Database.md).
 
-Добавить пакеты в приложение:
-```sharp
-dotnet add package Microsoft.EntityFrameworkCore.Design
-```
-Добавить пакет в инфраструктурную библиотеку:
-```sharp
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-```
+### Репозитории
 
-[Подробности по базе данных](./Database.md).
+Добавление слабосвязаности между бизнес-логикой и базой данных
 
+[Интрукции по репозиториям](./Repositories.md).
+
+### Медиатор MediatR
+
+Для использования шаблона CQRS в проекте. Уже включен в Kanadeiar.Api.
+
+[Инструкции по медиатору](./MediatR.md).
 
 ### Сериализатор
 
@@ -103,12 +105,6 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```sharp
 services.AddControllers().AddNewtonsoftJson();
 ```
-
-### Медиатор MediatR
-
-Для использования шаблона CQRS в проекте. Уже включен в Kanadeiar.Api.
-
-[Подробности](./MediatR.md).
 
 
 ### Простые образцы в api-контроллере приложения

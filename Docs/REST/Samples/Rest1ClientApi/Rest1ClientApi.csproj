@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
     <ProjectReference Include="..\Rest1Infrastructure\Rest1ClientInfrastructure\Rest1ClientInfrastructure.csproj" />
   </ItemGroup>
 

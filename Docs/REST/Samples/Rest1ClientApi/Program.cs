@@ -1,12 +1,13 @@
 
 using Rest1ClientApplication.Implementations.Queries;
+using Rest1ClientInfrastructure.Registrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ClientContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString"),
-        o => o.MigrationsAssembly("Rest1ClientInfrastructure"));
+        o => o.MigrationsAssembly("Rest1ClientInfrastructure")); //можно без этого
 #if DEBUG
     options.EnableSensitiveDataLogging();
 #endif
@@ -23,8 +24,7 @@ builder.Services.AddCors();
 builder.Services.KndAddSwagger("Rest1ClientApi", "v1", "rest1clientapi.xml", new[] { "rest1clientapplication.xml" });
 builder.Services.KndAddMapster();
 
-// TODO : это на подумать - как то оптимизировать
-builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.MyAddRepositories();
 
 // TODO : это в библиотеку
 var handlersAssembly = typeof(GetClientByIdHandler).Assembly;

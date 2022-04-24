@@ -2,6 +2,15 @@
 
 [Назад](./Index.md)
 
+Добавить пакеты в приложение:
+```sharp
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
+Добавить пакет в инфраструктурную библиотеку:
+```sharp
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+```
+
 Образец определения базы данных:
 ```sharp
 public class ClientContext : DbContext
@@ -12,7 +21,7 @@ public class ClientContext : DbContext
 }
 ```
 
-Строка подключения в файле конфигурации приложения:
+Строка подключения в файле конфигурации приложения appsettings.json:
 ```xml
 "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=ClientService;MultipleActiveResultSets=True;Integrated Security=true"
 ```
@@ -22,7 +31,7 @@ public class ClientContext : DbContext
 services.AddDbContext<ClientContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString"),
-        o => o.MigrationsAssembly("Rest1ClientInfrastructure"));
+        o => o.MigrationsAssembly("Rest1ClientInfrastructure")); 
 #if DEBUG
     options.EnableSensitiveDataLogging(); // писать в логи все сведения
 #endif
@@ -30,6 +39,8 @@ services.AddDbContext<ClientContext>(options =>
 
 services.AddScoped<DbContext, ClientContext>(); //если одна база данных в приложении
 ```
+
+> Если миграции находятся в той-же папке, что и определение базы данных, то можно не уточнять местонахождение миграций - MigrationsAssembly()
 
 ## Команды создания миграций
 

@@ -35,6 +35,7 @@ public static class ServiceCollectionExtensions
                 AddXmlFileToSwagger(options, item);
             }
         });
+
         return services;
 
         static void AddXmlFileToSwagger(SwaggerGenOptions options, string xmlFileName)
@@ -61,6 +62,7 @@ public static class ServiceCollectionExtensions
         config.Scan(Assembly.GetExecutingAssembly());
         services.AddSingleton(config);
         services.AddSingleton<IMapper, ServiceMapper>();
+
         return services;
     }
 }

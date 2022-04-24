@@ -20,12 +20,12 @@
             </summary>
             <param name="id">Идентификатор элемента</param>
         </member>
-        <member name="T:Rest1ClientApplication.Queries.GetClientByIdHandler">
+        <member name="T:Rest1ClientApplication.Implementations.Queries.GetClientByIdHandler">
             <summary>
             Обработчик запроса одного элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Queries.GetClientByIdHandler.Handle(Rest1ClientApplication.Contracts.GetClientById,System.Threading.CancellationToken)">
+        <member name="M:Rest1ClientApplication.Implementations.Queries.GetClientByIdHandler.Handle(Rest1ClientApplication.Contracts.GetClientById,System.Threading.CancellationToken)">
             <summary>
             Запрос одной записи
             </summary>

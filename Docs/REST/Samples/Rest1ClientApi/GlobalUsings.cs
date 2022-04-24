@@ -7,7 +7,6 @@ global using Rest1Application.Dto;
 global using Rest1ClientApi;
 global using Rest1ClientApplication.Contracts;
 global using Rest1ClientApplication.Interfaces.Repositories;
-global using Rest1ClientApplication.Queries;
 global using Rest1ClientInfrastructure.Data;
 global using Rest1ClientInfrastructure.Repositories;
 global using Swashbuckle.AspNetCore.Annotations;
