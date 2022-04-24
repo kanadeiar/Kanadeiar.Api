@@ -3,14 +3,14 @@
 /// <summary>
 /// Заполнение тестовыми данными
 /// </summary>
-public class TestData
+public class TestData : IKndTestData
 {
-    private static class Data
+    private class InternalData
     {
-        private static Random _rnd = new Random();
+        private Random _rnd = new Random();
 
-        public async static Task PopulateTestData(DbContext context, ILogger<TestData> logger)
-        {  
+        public async Task PopulateTestData(DbContext context, ILogger<TestData> logger)
+        {
             logger.LogInformation("Начало заполнения тестовыми данными ...");
 
             var clients = Enumerable.Range(1, 100).Select(x => new Client
@@ -38,11 +38,11 @@ public class TestData
     {
         var logger = provider.GetRequiredService<ILogger<TestData>>();
         using var context = new ClientContext(provider.GetRequiredService<DbContextOptions<ClientContext>>());
-        
-        if (context == null || context.Set<Client>() == null)
+
+        if (context == null || context.Clients == null)
         {
-            logger.LogError("Null ClientContext");
-            throw new ArgumentNullException("Null ClientContext");
+            logger.LogError("Контекст базы данных ClientContext = null");
+            throw new ArgumentNullException("Контекст базы данных ClientContext = null");
         }
         var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
         if (pendingMigrations.Any())
@@ -56,6 +56,6 @@ public class TestData
             return;
         }
 
-        await Data.PopulateTestData(context, logger);
+        await new InternalData().PopulateTestData(context, logger);
     }
 }

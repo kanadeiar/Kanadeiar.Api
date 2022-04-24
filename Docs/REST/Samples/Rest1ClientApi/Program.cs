@@ -1,4 +1,3 @@
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ClientContext>(options =>
@@ -10,8 +9,6 @@ builder.Services.AddDbContext<ClientContext>(options =>
 #endif
 });
 builder.Services.AddScoped<DbContext, ClientContext>();
-
-// TODO : в библиотеку - паттерн построитель
 builder.Services.AddTransient<TestData>();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
@@ -21,7 +18,6 @@ builder.Services.AddCors();
 builder.Services.KndAddSwagger("Rest1ClientApi", "v1", "rest1clientapi.xml", new[] { "rest1clientapplication.xml" });
 builder.Services.KndAddMapster();
 builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
-
 builder.Services.MyAddRepositories();
 
 var app = builder.Build();
@@ -45,19 +41,6 @@ app.UseCors(builder => builder.AllowAnyOrigin());
 
 app.MapControllers();
 
-// TODO: в библиотеку
-using (var scope = app.Services.CreateScope())
-{
-    try
-    {
-        var seeder = scope.ServiceProvider
-            .GetRequiredService<TestData>()
-            .SeedTestData(scope.ServiceProvider);
-    }
-    catch
-    {
-        throw;
-    }
-}
+app.KndSeedTestData<TestData>();
 
 app.Run();
