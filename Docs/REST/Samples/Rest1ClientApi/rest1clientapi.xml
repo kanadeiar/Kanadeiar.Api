@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rest1ClientApi</name>
+    </assembly>
+    <members>
+        <member name="T:Rest1ClientApi.TestData">
+            <summary>
+            Заполнение тестовыми данными
+            </summary>
+        </member>
+        <member name="M:Rest1ClientApi.TestData.SeedTestData(System.IServiceProvider)">
+            <summary>
+            Заполнение тестовыми данными
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+    </members>
+</doc>

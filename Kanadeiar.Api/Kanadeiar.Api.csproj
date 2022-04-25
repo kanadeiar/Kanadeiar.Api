@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-	<Version>0.0.4</Version>
+	<Version>0.0.5</Version>
 	<PackageReleaseNotes>
-		Небольшие переименования методов
+		Добавлено: валидация FluentValidation, репозитории, заполнение базы данных тестовыми данными
 	</PackageReleaseNotes>
   </PropertyGroup>
 	
@@ -39,7 +39,11 @@
   </ItemGroup>
 	
   <ItemGroup>
+	 <PackageReference Include="Kanadeiar.Core" Version="0.0.3" />
 	 <PackageReference Include="Mapster" Version="7.3.0" />
+	 <PackageReference Include="MediatR" Version="10.0.1" />
+	 <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+	 <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
 	 <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.0" />
 	 <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
 	 <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />

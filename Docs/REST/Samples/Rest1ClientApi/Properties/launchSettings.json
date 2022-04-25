@@ -3,12 +3,12 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5984",
-      "sslPort": 44307
+      "applicationUrl": "http://localhost:36569",
+      "sslPort": 44354
     }
   },
   "profiles": {
-    "RestService1": {
+    "Rest1ClientApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

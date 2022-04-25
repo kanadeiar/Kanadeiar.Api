@@ -2,6 +2,16 @@
 
 [Назад](./../../README.md)
 
+## Напоминалки:
+
+Не забывать включить Api анализатор в файле cproj в раздел "PropertyGroup":
+```xml
+<IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+```
+
+Не забывать регистрировать используемые в конечных точках контроллеров сервисы в зависимостях
+
+
 ## Главное
 
 Начальные шаги:
@@ -10,11 +20,12 @@
 dotnet new web
 ```
 
+1. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), бизнес-логика и общее - в Application (ссылки на Kanadeiar.Api и Domain), База данных и специфическое - в Infrastructure (ссылки на Application), детальная реализация - в Api (ссылки на Infrastructure)
+
 1. В пустой проект в файл Program зарегистрировать необходимые сервисы:
 
 ```sharp
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 ```
 
 2. В этом же файле сконфигурировать конвейер запросов:
@@ -32,32 +43,62 @@ public class ValueController : ControllerBase
 {
 }
 ```
+4. Разрешить запросы с других доменов:
 
-4. Переиспользовать Swagger, Mapster, KarErrorHandler из библиотеки.
+```xml
+services.AddCors(); //в вервисах
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()); //в конвейере после роутинга перед контроллерами
+```
 
-5. Настроить запуск приложения:
+5. Настроить запуск приложения в файле launchSettings.json:
+
 ```sharp
 "launchUrl": "swagger",
 "applicationUrl": "https://localhost:6001;http://localhost:6000",
 ```
 
-## Напоминалки:
+6. Включить составление документации.
 
-Не забывать включить Api анализатор в файле cproj в раздел "PropertyGroup":
-```xml
-<IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+Для главного проекта "*.xml" и библиотеки с дтошками "*.sample.xml", загерать их в Swagger
+
+7. Иcпользовать библиотеку Kanadeiar.Api.
+
+[Документация по библиотеке](./../../Kanadeiar.Api/README.md)
+
+### Если нужно:
+
+Принудительное перенаправление на https:
+
+```csharp
+app.UseHttpsRedirection(); //перед app.UseRouting()
+```
+Уведомление браузеров о https:
+
+```cshapr
+app.UseHsts();
 ```
 
-Не забывать регистрировать используемые в конечных точках контроллеров сервисы в зависимостях
+### База данных EF
 
-Включить составление документации для главного проекта "*.xml" и библиотеки с сущностями "**.xml", загерать их в Swagger
+[Интрукции по базе данных](./Database.md).
 
-Разрешить запросы с других доменов:
+### Репозитории
 
-```xml
-services.AddCors(); //в вервисах
-app.UseCors(builder => builder.AllowAnyOrigin()); //в конвейере после роутинга перед контроллерами
-```
+Добавление слабосвязаности между бизнес-логикой и базой данных
+
+[Интрукции по репозиториям](./Repositories.md).
+
+### Медиатор MediatR
+
+Для использования шаблона CQRS в проекте. Уже включен в Kanadeiar.Api.
+
+[Инструкции по медиатору](./MediatR.md).
+
+### Валидация FluentValidation
+
+Для проверки корректности вводимых данных
+
+[Инструкции по валидации](./FluentValidation.md).
 
 ### Сериализатор
 
@@ -71,7 +112,10 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 services.AddControllers().AddNewtonsoftJson();
 ```
 
-### Простые образцы
+
+
+
+### Простые образцы в api-контроллере приложения
 
 Серверная часть:
 ```csharp

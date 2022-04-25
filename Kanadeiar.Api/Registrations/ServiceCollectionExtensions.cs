@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using MapsterMapper;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
@@ -20,7 +21,7 @@ public static class ServiceCollectionExtensions
     /// <param name="filename">главный xml файл</param>
     /// <param name="domainFilenames">дополнительные xml файлы</param>
     /// <returns></returns>
-    public static IServiceCollection KarAddSwagger(this IServiceCollection services, string title, string version = "v1", string? filename = default, params string[] domainFilenames)
+    public static IServiceCollection KndAddSwagger(this IServiceCollection services, string title, string version = "v1", string? filename = default, params string[] domainFilenames)
     {
         services.AddSwaggerGen(options =>
         {
@@ -35,6 +36,7 @@ public static class ServiceCollectionExtensions
                 AddXmlFileToSwagger(options, item);
             }
         });
+
         return services;
 
         static void AddXmlFileToSwagger(SwaggerGenOptions options, string xmlFileName)
@@ -55,12 +57,25 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Сервисы</param>
     /// <returns>Сервисы</returns>
-    public static IServiceCollection KarAddMapster(this IServiceCollection services)
+    public static IServiceCollection KndAddMapster(this IServiceCollection services)
     {
         var config = TypeAdapterConfig.GlobalSettings;
         config.Scan(Assembly.GetExecutingAssembly());
         services.AddSingleton(config);
         services.AddSingleton<IMapper, ServiceMapper>();
+
+        return services;
+    }
+
+    /// <summary>
+    /// Регистрация медиатора MediatR в сервисах приложения
+    /// </summary>
+    /// <param name="services">Сервисы</param>
+    /// <param name="mediatrAssembly">Сборка, в которой расположены обработчики и контракты</param>
+    /// <returns>сервисы</returns>
+    public static IServiceCollection KndAddMediatR(this IServiceCollection services, Assembly mediatrAssembly)
+    {
+        services.AddMediatR(Assembly.GetExecutingAssembly(), mediatrAssembly);
         return services;
     }
 }

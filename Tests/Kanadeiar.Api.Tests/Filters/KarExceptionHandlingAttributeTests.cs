@@ -9,8 +9,8 @@ public class KarExceptionHandlingAttributeTests
     [Fact]
     public void InitAttrubute_Init_CorrectType()
     {
-        var attribute = new KarExceptionHandlingAttribute();
+        var attribute = new KndExceptionHandlingAttribute();
                 
-        attribute.Should().BeOfType<KarExceptionHandlingAttribute>();
+        attribute.Should().BeOfType<KndExceptionHandlingAttribute>();
     }
 }
