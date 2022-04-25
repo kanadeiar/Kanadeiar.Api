@@ -4,6 +4,11 @@
 
 ## Быстрый старт :rocket:
 
+Установить базовый NuGet пакет командой:
+```sharp
+dotnet add package Kanadeiar.Core
+```
+
 Установить NuGet пакет командой:
 ```sharp
 dotnet add package Kanadeiar.Api
@@ -13,51 +18,13 @@ dotnet add package Kanadeiar.Api
 
 Удобный интерфейс пользователя для работы с REST API сервисами.
 
-Регистрация в сервисах:
-```sharp
-builder.Services.KndAddSwagger("WebApiTest1");
-builder.Services.KndAddSwagger("WebApiTest1", filename: "info.xml");
-builder.Services.KndAddSwagger("WebApiTest1", filename: "info.xml", domainFilenames: new[] { "sample.application.xml" });
-
-```
-
-Зарегистрировать использование в конвейере, желательно в самом начале, и в среде разработки приложения:
-```sharp
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-else
-{
-    app.UseHsts(); //если нужно
-}
-```
-
-> Обязательно зарегать в сервисах для корректной работы Swagger: 
-
-```sharp
-builder.Services.AddEndpointsApiExplorer();
-```
+[Интрукции по Swagger](./Docs/Swagger.md).
 
 ### Mapster
 
-Удобный маппер
+Удобный маппер моделек
 
-Регистрация в сервисах:
-```sharp
-builder.Services.KarAddMapster();
-```
-
-Примеры использования 
-```sharp
-var config = new TypeAdapterConfig().ForType<NewsUnitDto, NewsUnit>().Ignore(x => x.Id).Config; //конфигурация
-var item = request.Model.Adapt<NewsUnit>(config); //получение нового с учетом конфигурации
-request.Model.Adapt(entity, config); //обновление согласно конфигурации, не получение нового объекта
-var test = request.Model.Adapt<NewsUnit>(); //получение нового объекта
-persons.Adapt<IEnumerable<PersonDto>>(); //коллекция новых объектов
-```
+[Интрукции по Swagger](./Docs/Mapster.md).
 
 ### Фильтры
 
