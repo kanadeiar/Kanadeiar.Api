@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-namespace Kanadeiar.Api.Interfaces;
+﻿namespace Kanadeiar.Api.Interfaces;
 
 /// <summary>
 /// Заполнение базы данных тестовыми данными

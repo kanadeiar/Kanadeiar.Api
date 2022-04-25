@@ -14,25 +14,42 @@ dotnet add package Kanadeiar.Core
 dotnet add package Kanadeiar.Api
 ```
 
-### Swagger
+## Swagger
 
 Удобный интерфейс пользователя для работы с REST API сервисами.
 
 [Интрукции по Swagger](./Docs/Swagger.md).
 
-### Mapster
+## Mapster
 
 Удобный маппер моделек
 
 [Интрукции по Swagger](./Docs/Mapster.md).
 
-### Фильтры
+## Фильтры
 
 Свой удобный фильр для обработки исключений -> в коды ошибок
 
 Использование фильра в API-контроллере:
 ```sharp
-[KarExceptionHandling]
+[KndExceptionHandling]
 public class ValuesController : ControllerBase
 ```
 
+## Репозиторий
+
+Базовые обобщенные интерфейс и реализация интерфейса
+
+[Интрукции по Репозиторию](./Docs/Repository.md).
+
+## Начальные тестовые данные
+
+Заполнение базы данных тестовыми данными начальными.
+
+[Интрукции по Тестовым данным](./Docs/TestData.md).
+
+## MediatR
+
+Для использования шаблона CQRS в проекте.
+
+[Интрукции по MediatR](./Docs/MediatR.md).

@@ -84,15 +84,35 @@ app.UseHsts();
 
 ### Репозитории
 
-Добавление слабосвязаности между бизнес-логикой и базой данных
+Добавление слабосвязаности между бизнес-логикой и базой данных.
 
-[Интрукции по репозиториям](./Repositories.md).
+Добавить пакет в Domain:
+```sharp
+dotnet add package Kanadeiar.Core
+```
+Добавить пакет в Application:
+```sharp
+dotnet add package Kanadeiar.Api
+```
+
+Остальные инструкции смотреть в инструкциях библиотеки.
+
+### Начальные тестовые данные
+
+Содержится в библиотеке.
+
+Инструкции смотреть в библиотеке.
 
 ### Медиатор MediatR
 
 Для использования шаблона CQRS в проекте. Уже включен в Kanadeiar.Api.
 
-[Инструкции по медиатору](./MediatR.md).
+Добавить пакет в Application:
+```sharp
+dotnet add package Kanadeiar.Api
+```
+
+Остальные инструкции смотреть в инструкциях библиотеки.
 
 ### Валидация FluentValidation
 
@@ -111,8 +131,6 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```sharp
 services.AddControllers().AddNewtonsoftJson();
 ```
-
-
 
 
 ### Простые образцы в api-контроллере приложения

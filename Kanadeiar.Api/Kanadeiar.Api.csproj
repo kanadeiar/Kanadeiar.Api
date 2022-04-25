@@ -20,7 +20,7 @@
 	<PackageProjectUrl>https://github.com/kanadeiar/Kanadeiar.Api</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/kanadeiar/Kanadeiar.Api</RepositoryUrl>
 	<PackageIcon>logo.png</PackageIcon>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReadmeFile>Index.md</PackageReadmeFile>
 	<PackageTags>dotnet, aspnetcore, tools, instructions</PackageTags>
     <SignAssembly>True</SignAssembly>
 	<DelaySign>False</DelaySign>
