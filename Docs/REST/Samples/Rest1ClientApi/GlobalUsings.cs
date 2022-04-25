@@ -12,3 +12,6 @@ global using Rest1ClientDomain.Entities;
 global using Rest1ClientInfrastructure.Data;
 global using Rest1ClientInfrastructure.Registrations;
 global using Swashbuckle.AspNetCore.Annotations;
+global using FluentValidation.AspNetCore;
+global using FluentValidation;
+global using Rest1ClientInfrastructure.Validators;

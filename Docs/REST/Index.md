@@ -47,7 +47,7 @@ public class ValueController : ControllerBase
 
 ```xml
 services.AddCors(); //в вервисах
-app.UseCors(builder => builder.AllowAnyOrigin()); //в конвейере после роутинга перед контроллерами
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()); //в конвейере после роутинга перед контроллерами
 ```
 
 5. Настроить запуск приложения в файле launchSettings.json:
@@ -94,6 +94,12 @@ app.UseHsts();
 
 [Инструкции по медиатору](./MediatR.md).
 
+### Валидация FluentValidation
+
+Для проверки корректности вводимых данных
+
+[Инструкции по валидации](./FluentValidation.md).
+
 ### Сериализатор
 
 Добавить пакет 
@@ -105,6 +111,8 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```sharp
 services.AddControllers().AddNewtonsoftJson();
 ```
+
+
 
 
 ### Простые образцы в api-контроллере приложения

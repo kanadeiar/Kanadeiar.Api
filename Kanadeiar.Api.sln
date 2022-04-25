@@ -51,6 +51,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D5E5E570-96F6-4743-9322-E495BAD0DB3B}"
 	ProjectSection(SolutionItems) = preProject
 		Docs\REST\Database.md = Docs\REST\Database.md
+		Docs\REST\FluentValidation.md = Docs\REST\FluentValidation.md
 		Docs\REST\MediatR.md = Docs\REST\MediatR.md
 		Docs\REST\Repositories.md = Docs\REST\Repositories.md
 	EndProjectSection

@@ -19,6 +19,7 @@ builder.Services.KndAddSwagger("Rest1ClientApi", "v1", "rest1clientapi.xml", new
 builder.Services.KndAddMapster();
 builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
 builder.Services.MyAddRepositories();
+builder.Services.MyAddFluentValidation();
 
 var app = builder.Build();
 
@@ -37,7 +38,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors(builder => builder.AllowAnyOrigin());
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 app.MapControllers();
 

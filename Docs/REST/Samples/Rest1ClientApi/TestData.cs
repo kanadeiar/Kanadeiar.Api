@@ -39,7 +39,7 @@ public class TestData : IKndTestData
         var logger = provider.GetRequiredService<ILogger<TestData>>();
         using var context = new ClientContext(provider.GetRequiredService<DbContextOptions<ClientContext>>());
 
-        if (context == null || context.Clients == null)
+        if (context == null || context.Set<Client>() == null)
         {
             logger.LogError("Контекст базы данных ClientContext = null");
             throw new ArgumentNullException("Контекст базы данных ClientContext = null");
@@ -50,7 +50,7 @@ public class TestData : IKndTestData
             logger.LogInformation($"Применение миграций: {string.Join(",", pendingMigrations)}");
             await context.Database.MigrateAsync();
         }
-        if (context.Clients.Any())
+        if (context.Set<Client>().Any())
         {
             logger.LogInformation("База данных уже содержит данные - заполнение данными пропущено");
             return;
