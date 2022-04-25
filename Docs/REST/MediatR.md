@@ -1,23 +1,23 @@
-# Медиатор MediatR
+# РњРµРґРёР°С‚РѕСЂ MediatR
 
-[Назад](./Index.md)
+[РќР°Р·Р°Рґ](./Index.md)
 
-Добавить пакет в Application:
+Р”РѕР±Р°РІРёС‚СЊ РїР°РєРµС‚ РІ Application:
 ```sharp
 dotnet add package Kanadeiar.Api
 ```
 
-Регистрация MediatR в сервисах приложения:
+Р РµРіРёСЃС‚СЂР°С†РёСЏ MediatR РІ СЃРµСЂРІРёСЃР°С… РїСЂРёР»РѕР¶РµРЅРёСЏ:
 
 ```sharp
 builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
 ```
 
-В параметрах - сборка, в которой находятся контракты и обработчики
+Р’ РїР°СЂР°РјРµС‚СЂР°С… - СЃР±РѕСЂРєР°, РІ РєРѕС‚РѕСЂРѕР№ РЅР°С…РѕРґСЏС‚СЃСЏ РєРѕРЅС‚СЂР°РєС‚С‹ Рё РѕР±СЂР°Р±РѕС‚С‡РёРєРё
 
-Все в слое Application:
+Р’СЃРµ РІ СЃР»РѕРµ Application:
 
-Образец сущности :
+РћР±СЂР°Р·РµС† СЃСѓС‰РЅРѕСЃС‚Рё :
 ```csharp
 public class ClientDto
 {
@@ -30,7 +30,7 @@ public class ClientDto
 }
 ```
 
-Образец контракта:
+РћР±СЂР°Р·РµС† РєРѕРЅС‚СЂР°РєС‚Р°:
 ```csharp
 public class GetClientById : IRequest<ClientDto?>
 {
@@ -42,7 +42,7 @@ public class GetClientById : IRequest<ClientDto?>
 }
 ```
 
-Образец обработчика:
+РћР±СЂР°Р·РµС† РѕР±СЂР°Р±РѕС‚С‡РёРєР°:
 ```csharp
 public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
 {
