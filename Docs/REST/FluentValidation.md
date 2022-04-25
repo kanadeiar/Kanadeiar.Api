@@ -1,31 +1,31 @@
-# Валидация FluentValidation
+# Р’Р°Р»РёРґР°С†РёСЏ FluentValidation
 
-[Назад](./Index.md)
+[РќР°Р·Р°Рґ](./Index.md)
 
-Добавить пакет в Infrastructure
+Р”РѕР±Р°РІРёС‚СЊ РїР°РєРµС‚ РІ Infrastructure
 ```sharp
 dotnet add package FluentValidation.AspNetCore
 ```
 
-В слое Infrastructure создать правила валидации дтошки:
+Р’ СЃР»РѕРµ Infrastructure СЃРѕР·РґР°С‚СЊ РїСЂР°РІРёР»Р° РІР°Р»РёРґР°С†РёРё РґС‚РѕС€РєРё:
 
 ```sharp
 public class ClientDtoValidator : AbstractValidator<ClientDto>
 {
     public ClientDtoValidator()
     {
-        RuleFor(x => x.LastName).NotEmpty().MinimumLength(3).WithMessage("Длинна фамилии должна быть больше 3 символов").WithErrorCode("400");
-        RuleFor(x => x.LastName).MaximumLength(100).WithMessage("Длинна фамилии должна быть меньше 100 символов").WithErrorCode("400");
-        RuleFor(x => x.FirstName).NotEmpty().MinimumLength(3).WithMessage("Длинна имени должна быть больше 3 символов").WithErrorCode("400");
-        RuleFor(x => x.FirstName).MaximumLength(100).WithMessage("Длинна имени должна быть меньше 100 символов").WithErrorCode("400");
-        RuleFor(x => x.Patronymic).NotEmpty().MinimumLength(3).WithMessage("Длинна отчества должна быть больше 3 символов").WithErrorCode("400");
-        RuleFor(x => x.Patronymic).MaximumLength(100).WithMessage("Длинна отчества должна быть меньше 100 символов").WithErrorCode("400");
-        RuleFor(x => x.BirthDay).LessThan(DateTime.Today).WithMessage("Дата рождения не может быть в будущем").WithErrorCode("400");
-        RuleFor(x => x.BirthDay).GreaterThan(DateTime.Today.AddYears(-200)).WithMessage("Возраст не может быть больше 200 лет").WithErrorCode("400");
+        RuleFor(x => x.LastName).NotEmpty().MinimumLength(3).WithMessage("Р”Р»РёРЅРЅР° С„Р°РјРёР»РёРё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 3 СЃРёРјРІРѕР»РѕРІ").WithErrorCode("400");
+        RuleFor(x => x.LastName).MaximumLength(100).WithMessage("Р”Р»РёРЅРЅР° С„Р°РјРёР»РёРё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 100 СЃРёРјРІРѕР»РѕРІ").WithErrorCode("400");
+        RuleFor(x => x.FirstName).NotEmpty().MinimumLength(3).WithMessage("Р”Р»РёРЅРЅР° РёРјРµРЅРё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 3 СЃРёРјРІРѕР»РѕРІ").WithErrorCode("400");
+        RuleFor(x => x.FirstName).MaximumLength(100).WithMessage("Р”Р»РёРЅРЅР° РёРјРµРЅРё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 100 СЃРёРјРІРѕР»РѕРІ").WithErrorCode("400");
+        RuleFor(x => x.Patronymic).NotEmpty().MinimumLength(3).WithMessage("Р”Р»РёРЅРЅР° РѕС‚С‡РµСЃС‚РІР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 3 СЃРёРјРІРѕР»РѕРІ").WithErrorCode("400");
+        RuleFor(x => x.Patronymic).MaximumLength(100).WithMessage("Р”Р»РёРЅРЅР° РѕС‚С‡РµСЃС‚РІР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 100 СЃРёРјРІРѕР»РѕРІ").WithErrorCode("400");
+        RuleFor(x => x.BirthDay).LessThan(DateTime.Today).WithMessage("Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІ Р±СѓРґСѓС‰РµРј").WithErrorCode("400");
+        RuleFor(x => x.BirthDay).GreaterThan(DateTime.Today.AddYears(-200)).WithMessage("Р’РѕР·СЂР°СЃС‚ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 200 Р»РµС‚").WithErrorCode("400");
     }
 }
 ```
-В слое Infrastructure создать регистратор валидации в сервисах:
+Р’ СЃР»РѕРµ Infrastructure СЃРѕР·РґР°С‚СЊ СЂРµРіРёСЃС‚СЂР°С‚РѕСЂ РІР°Р»РёРґР°С†РёРё РІ СЃРµСЂРІРёСЃР°С…:
 ```sharp
 public static IServiceCollection MyAddFluentValidation(this IServiceCollection services)
 {
@@ -36,7 +36,7 @@ public static IServiceCollection MyAddFluentValidation(this IServiceCollection s
 }
 ```
 
-Использовать в приложении:
+РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІ РїСЂРёР»РѕР¶РµРЅРёРё:
 ```sharp
 builder.Services.MyAddFluentValidation();
 ```
