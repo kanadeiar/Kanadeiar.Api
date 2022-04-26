@@ -53,3 +53,9 @@ public class ValuesController : ControllerBase
 Для использования шаблона CQRS в проекте.
 
 [Интрукции по MediatR](./Docs/MediatR.md).
+
+## Проверка работоспособности микросервиса
+
+Использование средств платформы
+
+[Интрукции по настройке проверки](./Docs/HealthCheck.md).

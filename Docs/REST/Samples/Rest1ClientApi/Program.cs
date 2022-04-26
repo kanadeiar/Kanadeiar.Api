@@ -10,6 +10,7 @@ builder.Services.AddCors();
 builder.Services.KndAddSwagger("Rest1ClientApi", "v1", "rest1clientapi.xml", new[] { "rest1clientapplication.xml" });
 builder.Services.KndAddMapster();
 builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
+builder.Services.KndAddHealthCheck();
 builder.Services.MyAddRepositories();
 builder.Services.MyAddFluentValidation();
 
@@ -51,5 +52,7 @@ app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(
 app.MapControllers();
 
 app.KndSeedTestData<TestData>();
+
+app.MapHealthChecks("/healthz");
 
 app.Run();
