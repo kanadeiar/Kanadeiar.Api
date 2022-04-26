@@ -1,8 +1,10 @@
 ﻿global using Kanadeiar.Api.Interfaces.Repositories;
 global using Mapster;
 global using MediatR;
+global using Microsoft.Extensions.Logging;
 global using Rest1Application.Dto;
-global using Rest1ClientApplication.Contracts;
+global using Rest1ClientApplication.Contracts.Commands;
+global using Rest1ClientApplication.Contracts.Queries;
 global using Rest1ClientApplication.Interfaces.Repositories;
 global using Rest1ClientDomain.Entities;
 global using System;

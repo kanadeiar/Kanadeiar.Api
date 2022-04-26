@@ -1,4 +1,4 @@
-﻿namespace Rest1ClientApplication.Contracts;
+﻿namespace Rest1ClientApplication.Contracts.Queries;
 
 /// <summary>
 /// Контракт получения одного элемента

@@ -1,7 +1,8 @@
-﻿using Rest1ClientDomain.Entities;
+﻿namespace Rest1ClientApplication.Interfaces.Repositories;
 
-namespace Rest1ClientApplication.Interfaces.Repositories;
-
+/// <summary>
+/// Репозиторий клиентов
+/// </summary>
 public interface IClientRepository : IKndRepositoryAsync<Client, int>
 {
 }

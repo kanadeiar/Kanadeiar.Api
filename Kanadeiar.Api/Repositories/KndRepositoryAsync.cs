@@ -34,20 +34,20 @@ public class KndRepositoryAsync<T, TId> : IKndRepositoryAsync<T, TId> where T : 
         }
     }
 
-    public async Task<T?> GetByIdAsync(int id)
+    public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
-        return await _context.Set<T>().FindAsync(id);
+        return await _context.Set<T>().FindAsync(new object[] { id }, cancellationToken);
     }
 
-    public async Task<T> AddAsync(T entity)
+    public async Task<T> AddAsync(T entity, CancellationToken cancellationToken)
     {
-        await _context.Set<T>().AddAsync(entity);
+        await _context.Set<T>().AddAsync(entity, cancellationToken);
         return entity;
     }
 
-    public async Task UpdateAsync(T entity)
+    public async Task UpdateAsync(T entity, CancellationToken cancellationToken)
     {
-        T exist = await _context.Set<T>().FindAsync(entity.Id);
+        T exist = await _context.Set<T>().FindAsync(new object[] { entity.Id }, cancellationToken);
         _context.Entry(exist).CurrentValues.SetValues(entity);
     }
 

@@ -28,21 +28,21 @@ public interface IKndRepositoryAsync<T, in TId> where T : class, IKndEntity<TId>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<T?> GetByIdAsync(int id);
+    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Добавить элемент
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task<T> AddAsync(T entity);
+    Task<T> AddAsync(T entity, CancellationToken cancellationToken);
 
     /// <summary>
     /// Обновить элемент
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task UpdateAsync(T entity);
+    Task UpdateAsync(T entity, CancellationToken cancellationToken);
 
     /// <summary>
     /// Удалить элемент
