@@ -53,6 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D5E5E570-9
 	ProjectSection(SolutionItems) = preProject
 		Docs\REST\Database.md = Docs\REST\Database.md
 		Docs\REST\FluentValidation.md = Docs\REST\FluentValidation.md
+		Docs\REST\Serilog.md = Docs\REST\Serilog.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rest1ClientApi", "Docs\REST\Samples\Rest1ClientApi\Rest1ClientApi.csproj", "{674D0B34-3502-4091-A64C-AFA82C21E84F}"

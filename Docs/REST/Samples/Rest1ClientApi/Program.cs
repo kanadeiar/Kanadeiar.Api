@@ -1,14 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ClientContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString"),
-        o => o.MigrationsAssembly("Rest1ClientInfrastructure")); //можно без этого
-#if DEBUG
-    options.EnableSensitiveDataLogging();
-#endif
-});
-builder.Services.AddScoped<DbContext, ClientContext>();
+builder.Services.MyDatabase(builder.Configuration);
 builder.Services.AddTransient<TestData>();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
@@ -21,13 +13,29 @@ builder.Services.KndAddMediatR(typeof(GetClientByIdHandler).Assembly);
 builder.Services.MyAddRepositories();
 builder.Services.MyAddFluentValidation();
 
+builder.Host.UseSerilog((host, log) =>
+{
+    log.ReadFrom.Configuration(host.Configuration)
+        .MinimumLevel.Debug()
+#if DEBUG
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
+#else
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+#endif
+        .WriteTo.RollingFile($@".\Logs\Osinit.Portal.News.Api_[{DateTime.Now:yyyy-MM-dd}].log")
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}]{SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}");
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Rest1ClientApi");
+    });
 }
 else
 {
