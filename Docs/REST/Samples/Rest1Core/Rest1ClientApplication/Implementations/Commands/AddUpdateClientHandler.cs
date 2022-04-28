@@ -7,6 +7,7 @@ public class AddUpdateClientHandler : IRequestHandler<AddUpdateClient, int>
 {
     private readonly IClientRepository _repository;
     private readonly ILogger<AddUpdateClientHandler> _logger;
+    /// <summary> </summary>
     public AddUpdateClientHandler(IClientRepository repository, ILogger<AddUpdateClientHandler> logger)
     {
         _repository = repository;
@@ -33,10 +34,11 @@ public class AddUpdateClientHandler : IRequestHandler<AddUpdateClient, int>
         else if (await _repository.GetByIdAsync(request.Id, cancellationToken) is { } entity)
         {
             item.Adapt(entity, config);
+            entity.Id = request.Id;
             await _repository.UpdateAsync(entity, cancellationToken);
             await _repository.CommitAsync(cancellationToken);
-            _logger.LogInformation("Обновление элемента - клиента с идентификатором id: {0}", request.Id);
-            return item.Id;
+            _logger.LogInformation("Обновление элемента - клиента с идентификатором id: {0}", entity.Id);
+            return entity.Id;
         }
         _logger.LogError("Не удалось добавить или обновить сущность с идентификатором id: {0}", request.Id);
         return 0;

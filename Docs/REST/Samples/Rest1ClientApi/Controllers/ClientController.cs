@@ -60,7 +60,7 @@ public class ClientController : ControllerBase
     /// <returns>Новый идентификатор</returns>
     [HttpPost]
     [Consumes(MediaTypeNames.Application.Json)]
-    [SwaggerOperation(Summary = "Добавить один элемент-клиент", Description = "Добавить данные по одному клиенту с получением его идентификатора")]
+    [SwaggerOperation(Summary = "Добавить один элемент", Description = "Добавить данные по одному клиенту с получением его идентификатора")]
     [SwaggerResponse(StatusCodes.Status200OK, "Полученный идентификатор", Type = typeof(int))]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
@@ -78,9 +78,9 @@ public class ClientController : ControllerBase
     /// <returns>Успешность</returns>
     [HttpPut("{id}")]
     [Consumes(MediaTypeNames.Application.Json)]
-    [SwaggerOperation(Summary = "Обновить один элемент-клиент", Description = "Обновить данные по одному клиенту по его идентификатору")]
+    [SwaggerOperation(Summary = "Обновить один элемент", Description = "Обновить данные по одному клиенту по его идентификатору")]
     [SwaggerResponse(StatusCodes.Status200OK, "Успешность обновления", Type = typeof(bool))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найдено")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найдено", Type = typeof(bool))]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Update(int id, [FromBody] ClientDto dto)
@@ -92,13 +92,58 @@ public class ClientController : ControllerBase
         return NotFound(false);
     }
 
+    /// <summary>
+    /// Изменить один элемент
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <param name="patch">Изменения элемента</param>
+    /// <remarks>
+    /// Пример запроса:
+    /// 
+    ///     [
+    ///         { "op": "test", "path": "property_name", "value": "value" },
+    ///         { "op": "remove", "path": "property_name" },
+    ///         { "op": "add", "path": "property_name", "value": [ "value1", "value2" ] },
+    ///         { "op": "replace", "path": "property_name", "value": 12 },
+    ///         { "op": "move", "from": "property_name", "path": "other_property_name" },
+    ///         { "op": "copy", "from": "property_name", "path": "other_property_name" }
+    ///     ]
+    /// 
+    /// </remarks>
+    /// <returns>Успешность</returns>
+    [HttpPatch("{id}")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [SwaggerOperation(Summary = "Изменить один элемент", Description = "Произвести изменения в элементе согласно запроса")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Успешное изменение", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найдено", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Change(int id, [FromBody] JsonPatchDocument<Client> patch)
     {
-        return Ok();
+        if (await _mediator.Send(new PatchClient(id, patch), HttpContext.RequestAborted))
+        {
+            return Ok(true);
+        }
+        return NotFound(false);
     }
 
+    /// <summary>
+    /// Удалить элемент
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <returns>Успешность</returns>
+    [HttpDelete("{id}")]
+    [SwaggerOperation(Summary = "Удалить элемент", Description = "Удалить элемент с определенным идентификатором")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Успешное удаление", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найдено", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Delete(int id)
     {
-        return Ok();
+        if (await _mediator.Send(new DeleteClient(id), HttpContext.RequestAborted))
+        {
+            return Ok(true);
+        }
+        return NotFound(false);
     }
 }

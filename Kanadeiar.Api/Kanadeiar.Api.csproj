@@ -44,9 +44,10 @@
 	 <PackageReference Include="MediatR" Version="10.0.1" />
 	 <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
 	 <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
-	 <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.0" />
-	 <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+	 <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+	 <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
 	 <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+	 <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
