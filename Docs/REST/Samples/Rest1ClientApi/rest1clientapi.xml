@@ -17,6 +17,12 @@
             <param name="count">количество</param>
             <returns>Асинхронная коллекция</returns>
         </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.GetCount">
+            <summary>
+            Получение количества элементов
+            </summary>
+            <returns>Количество</returns>
+        </member>
         <member name="M:Rest1ClientApi.Controllers.ClientController.Get(System.Int32)">
             <summary>
             Получение одного элемента

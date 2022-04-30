@@ -3,7 +3,7 @@
 /// <summary>
 /// Добавление или обновление сущности
 /// </summary>
-public class AddUpdateClient : IRequest<int>
+public class AddUpdateClientCommand : IRequest<int>
 {
     /// <summary>
     /// Идентификатор
@@ -20,7 +20,7 @@ public class AddUpdateClient : IRequest<int>
     /// </summary>
     /// <param name="id">Идентификатор обновляемой сущности или 0 - добавление модели</param>
     /// <param name="model">Новые данные</param>
-    public AddUpdateClient(int id, ClientDto model)
+    public AddUpdateClientCommand(int id, ClientDto model)
     {
         Id = id;
         Model = model;

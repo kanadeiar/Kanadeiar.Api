@@ -27,10 +27,25 @@ public class ClientController : ControllerBase
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async IAsyncEnumerable<ClientDto> GetPaged(int offset, int count)
     {
-        await foreach (var item in _mediator.CreateStream(new GetPagedClient(offset, count), HttpContext.RequestAborted))
+        await foreach (var item in _mediator.CreateStream(new GetPagedClientQuery(offset, count), HttpContext.RequestAborted))
         {
             yield return item;
         }
+    }
+
+    /// <summary>
+    /// Получение количества элементов
+    /// </summary>
+    /// <returns>Количество</returns>
+    [HttpGet("count")]
+    [SwaggerOperation(Summary = "Получить количество элементов", Description = "Получить данные по количеству элементов")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Количество", Type = typeof(int))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
+    public async Task<int> GetCount()
+    {
+        var count = await _mediator.Send(new GetClientCountQuery());
+        return count;
     }
 
     /// <summary>
@@ -46,7 +61,7 @@ public class ClientController : ControllerBase
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Get(int id)
     {
-        if (await _mediator.Send(new GetClientById(id), HttpContext.RequestAborted) is { } entity)
+        if (await _mediator.Send(new GetClientByIdQuery(id), HttpContext.RequestAborted) is { } entity)
         {
             return Ok(entity);
         }
@@ -66,7 +81,7 @@ public class ClientController : ControllerBase
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Add([FromBody] ClientDto dto)
     {
-        var result = await _mediator.Send(new AddUpdateClient(0, dto), HttpContext.RequestAborted);
+        var result = await _mediator.Send(new AddUpdateClientCommand(0, dto), HttpContext.RequestAborted);
         return Ok(result);
     }
 
@@ -85,7 +100,7 @@ public class ClientController : ControllerBase
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Update(int id, [FromBody] ClientDto dto)
     {
-        if (await _mediator.Send(new AddUpdateClient(id, dto), HttpContext.RequestAborted) > 0)
+        if (await _mediator.Send(new AddUpdateClientCommand(id, dto), HttpContext.RequestAborted) > 0)
         {
             return Ok(true);
         }
@@ -120,7 +135,7 @@ public class ClientController : ControllerBase
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Change(int id, [FromBody] JsonPatchDocument<Client> patch)
     {
-        if (await _mediator.Send(new PatchClient(id, patch), HttpContext.RequestAborted))
+        if (await _mediator.Send(new PatchClientCommand(id, patch), HttpContext.RequestAborted))
         {
             return Ok(true);
         }
@@ -140,7 +155,7 @@ public class ClientController : ControllerBase
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
     public async Task<IActionResult> Delete(int id)
     {
-        if (await _mediator.Send(new DeleteClient(id), HttpContext.RequestAborted))
+        if (await _mediator.Send(new DeleteClientCommand(id), HttpContext.RequestAborted))
         {
             return Ok(true);
         }

@@ -3,11 +3,11 @@
 /// <summary>
 /// Обработчик запроса одного элемента
 /// </summary>
-public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
+public class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, ClientDto?>
 {
     private readonly IClientRepository _repository;
 
-    public GetClientByIdHandler(IClientRepository repository)
+    public GetClientByIdQueryHandler(IClientRepository repository)
     {
         _repository = repository;
     }
@@ -18,7 +18,7 @@ public class GetClientByIdHandler : IRequestHandler<GetClientById, ClientDto?>
     /// <param name="request">Запрос</param>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Элемент</returns>
-    public async Task<ClientDto?> Handle(GetClientById request, CancellationToken cancellationToken)
+    public async Task<ClientDto?> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
     {
         if (await _repository.GetByIdAsync(request.Id, cancellationToken) is Client item)
         {

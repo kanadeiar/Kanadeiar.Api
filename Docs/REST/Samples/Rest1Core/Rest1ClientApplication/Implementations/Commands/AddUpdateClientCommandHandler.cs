@@ -3,12 +3,12 @@
 /// <summary>
 /// Обработчик команда добавления и обновления элемента
 /// </summary>
-public class AddUpdateClientHandler : IRequestHandler<AddUpdateClient, int>
+public class AddUpdateClientCommandHandler : IRequestHandler<AddUpdateClientCommand, int>
 {
     private readonly IClientRepository _repository;
-    private readonly ILogger<AddUpdateClientHandler> _logger;
+    private readonly ILogger<AddUpdateClientCommandHandler> _logger;
     /// <summary> </summary>
-    public AddUpdateClientHandler(IClientRepository repository, ILogger<AddUpdateClientHandler> logger)
+    public AddUpdateClientCommandHandler(IClientRepository repository, ILogger<AddUpdateClientCommandHandler> logger)
     {
         _repository = repository;
         _logger = logger;
@@ -20,7 +20,7 @@ public class AddUpdateClientHandler : IRequestHandler<AddUpdateClient, int>
     /// <param name="request">запрос</param>
     /// <param name="cancellationToken">токен отмены</param>
     /// <returns>Идентификатор элемента</returns>
-    public async Task<int> Handle(AddUpdateClient request, CancellationToken cancellationToken)
+    public async Task<int> Handle(AddUpdateClientCommand request, CancellationToken cancellationToken)
     {
         var config = new TypeAdapterConfig().ForType<ClientDto, Client>().Ignore(x => x.Id).Config;
         var item = request.Model.Adapt<Client>(config);

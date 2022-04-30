@@ -3,11 +3,11 @@
 /// <summary>
 /// Обработчик запроса множества элементов
 /// </summary>
-public class GetPagedClientHandler : IStreamRequestHandler<GetPagedClient, ClientDto>
+public class GetPagedClientQueryHandler : IStreamRequestHandler<GetPagedClientQuery, ClientDto>
 {
     private readonly IClientRepository _repository;
 
-    public GetPagedClientHandler(IClientRepository repository)
+    public GetPagedClientQueryHandler(IClientRepository repository)
     {
         _repository = repository;
     }
@@ -18,7 +18,7 @@ public class GetPagedClientHandler : IStreamRequestHandler<GetPagedClient, Clien
     /// <param name="request">Запрос</param>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Асинхронная коллекция</returns>
-    public async IAsyncEnumerable<ClientDto> Handle(GetPagedClient request, CancellationToken cancellationToken)
+    public async IAsyncEnumerable<ClientDto> Handle(GetPagedClientQuery request, CancellationToken cancellationToken)
     {
         var offset = request.Offset;
         var count = request.Count;

@@ -5,7 +5,7 @@ namespace Rest1ClientApplication.Contracts.Commands;
 /// <summary>
 /// Изменить элемент
 /// </summary>
-public class PatchClient : IRequest<bool>
+public class PatchClientCommand : IRequest<bool>
 {
     /// <summary>
     /// Идентификатор изменяемого элемента
@@ -22,7 +22,7 @@ public class PatchClient : IRequest<bool>
     /// </summary>
     /// <param name="id">Идентификатор</param>
     /// <param name="patch">Изменения</param>
-    public PatchClient(int id, JsonPatchDocument<Client> patch)
+    public PatchClientCommand(int id, JsonPatchDocument<Client> patch)
     {
         Id = id;
         Patch = patch;

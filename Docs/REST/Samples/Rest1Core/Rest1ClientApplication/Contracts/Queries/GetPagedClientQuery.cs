@@ -3,7 +3,7 @@
 /// <summary>
 /// Получение клиентов со смещением и количеством
 /// </summary>
-public class GetPagedClient : IStreamRequest<ClientDto>
+public class GetPagedClientQuery : IStreamRequest<ClientDto>
 {
     /// <summary>
     /// Смещение
@@ -18,7 +18,7 @@ public class GetPagedClient : IStreamRequest<ClientDto>
     /// <summary>
     /// Получение клиентов со сменением и количеством
     /// </summary>
-    public GetPagedClient(int offset, int count)
+    public GetPagedClientQuery(int offset, int count)
     {
         Offset = offset;
         Count = count;

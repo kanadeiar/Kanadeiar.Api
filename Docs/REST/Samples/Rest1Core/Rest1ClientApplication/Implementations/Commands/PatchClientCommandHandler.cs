@@ -3,12 +3,12 @@
 /// <summary>
 /// Обработчик изменения элемента
 /// </summary>
-public class PatchClientHandler : IRequestHandler<PatchClient, bool>
+public class PatchClientCommandHandler : IRequestHandler<PatchClientCommand, bool>
 {
     private readonly IClientRepository _repository;
-    private readonly ILogger<PatchClientHandler> _logger;
+    private readonly ILogger<PatchClientCommandHandler> _logger;
     /// <summary> </summary>
-    public PatchClientHandler(IClientRepository repository, ILogger<PatchClientHandler> logger)
+    public PatchClientCommandHandler(IClientRepository repository, ILogger<PatchClientCommandHandler> logger)
     {
         _repository = repository;
         _logger = logger;
@@ -20,7 +20,7 @@ public class PatchClientHandler : IRequestHandler<PatchClient, bool>
     /// <param name="request">Запрос</param>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Успешность удаления</returns>
-    public async Task<bool> Handle(PatchClient request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(PatchClientCommand request, CancellationToken cancellationToken)
     {
         if (!request.Patch.Operations.Any())
             throw new ArgumentNullException(nameof(request.Patch.Operations));

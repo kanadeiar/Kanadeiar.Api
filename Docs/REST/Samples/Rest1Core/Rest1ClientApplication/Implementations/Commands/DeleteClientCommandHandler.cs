@@ -3,12 +3,12 @@
 /// <summary>
 /// Обработчик удаления элемента
 /// </summary>
-public class DeleteClientHandler : IRequestHandler<DeleteClient, bool>
+public class DeleteClientCommandHandler : IRequestHandler<DeleteClientCommand, bool>
 {
     private readonly IClientRepository _repository;
-    private readonly ILogger<AddUpdateClientHandler> _logger;
+    private readonly ILogger<AddUpdateClientCommandHandler> _logger;
     /// <summary> </summary>
-    public DeleteClientHandler(IClientRepository repository, ILogger<AddUpdateClientHandler> logger)
+    public DeleteClientCommandHandler(IClientRepository repository, ILogger<AddUpdateClientCommandHandler> logger)
     {
         _repository = repository;
         _logger = logger;
@@ -20,7 +20,7 @@ public class DeleteClientHandler : IRequestHandler<DeleteClient, bool>
     /// <param name="request">Запрос</param>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Успешность удаления</returns>
-    public async Task<bool> Handle(DeleteClient request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(DeleteClientCommand request, CancellationToken cancellationToken)
     {
         if (await _repository.GetByIdAsync(request.Id, cancellationToken) is { } entity)
         {

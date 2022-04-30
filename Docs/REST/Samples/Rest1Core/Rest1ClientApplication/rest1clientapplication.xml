@@ -4,111 +4,121 @@
         <name>Rest1ClientApplication</name>
     </assembly>
     <members>
-        <member name="T:Rest1ClientApplication.Contracts.Commands.AddUpdateClient">
+        <member name="T:Rest1ClientApplication.Contracts.Commands.AddUpdateClientCommand">
             <summary>
             Добавление или обновление сущности
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Commands.AddUpdateClient.Id">
+        <member name="P:Rest1ClientApplication.Contracts.Commands.AddUpdateClientCommand.Id">
             <summary>
             Идентификатор
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Commands.AddUpdateClient.Model">
+        <member name="P:Rest1ClientApplication.Contracts.Commands.AddUpdateClientCommand.Model">
             <summary>
             Данные модели
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Contracts.Commands.AddUpdateClient.#ctor(System.Int32,Rest1Application.Dto.ClientDto)">
+        <member name="M:Rest1ClientApplication.Contracts.Commands.AddUpdateClientCommand.#ctor(System.Int32,Rest1Application.Dto.ClientDto)">
             <summary>
             Добавление или обновление сущности
             </summary>
             <param name="id">Идентификатор обновляемой сущности или 0 - добавление модели</param>
             <param name="model">Новые данные</param>
         </member>
-        <member name="T:Rest1ClientApplication.Contracts.Commands.DeleteClient">
+        <member name="T:Rest1ClientApplication.Contracts.Commands.DeleteClientCommand">
             <summary>
             Удалить элемент
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Commands.DeleteClient.Id">
+        <member name="P:Rest1ClientApplication.Contracts.Commands.DeleteClientCommand.Id">
             <summary>
             Идентификатор элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Contracts.Commands.DeleteClient.#ctor(System.Int32)">
+        <member name="M:Rest1ClientApplication.Contracts.Commands.DeleteClientCommand.#ctor(System.Int32)">
             <summary>
             Удалить элемент
             </summary>
             <param name="id">Идентификатор элемента</param>
         </member>
-        <member name="T:Rest1ClientApplication.Contracts.Commands.PatchClient">
+        <member name="T:Rest1ClientApplication.Contracts.Commands.PatchClientCommand">
             <summary>
             Изменить элемент
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Commands.PatchClient.Id">
+        <member name="P:Rest1ClientApplication.Contracts.Commands.PatchClientCommand.Id">
             <summary>
             Идентификатор изменяемого элемента
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Commands.PatchClient.Patch">
+        <member name="P:Rest1ClientApplication.Contracts.Commands.PatchClientCommand.Patch">
             <summary>
             Изменения элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Contracts.Commands.PatchClient.#ctor(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Rest1ClientDomain.Entities.Client})">
+        <member name="M:Rest1ClientApplication.Contracts.Commands.PatchClientCommand.#ctor(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Rest1ClientDomain.Entities.Client})">
             <summary>
             Изменить элемент
             </summary>
             <param name="id">Идентификатор</param>
             <param name="patch">Изменения</param>
         </member>
-        <member name="T:Rest1ClientApplication.Contracts.Queries.GetClientById">
+        <member name="T:Rest1ClientApplication.Contracts.Queries.GetClientByIdQuery">
             <summary>
             Контракт получения одного элемента
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Queries.GetClientById.Id">
+        <member name="P:Rest1ClientApplication.Contracts.Queries.GetClientByIdQuery.Id">
             <summary>
             Идентификатор элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Contracts.Queries.GetClientById.#ctor(System.Int32)">
+        <member name="M:Rest1ClientApplication.Contracts.Queries.GetClientByIdQuery.#ctor(System.Int32)">
             <summary>
             Получение одного элемента
             </summary>
             <param name="id">Идентификатор элемента</param>
         </member>
-        <member name="T:Rest1ClientApplication.Contracts.Queries.GetPagedClient">
+        <member name="T:Rest1ClientApplication.Contracts.Queries.GetClientCountQuery">
+            <summary>
+            Получение количества элементов
+            </summary>
+        </member>
+        <member name="M:Rest1ClientApplication.Contracts.Queries.GetClientCountQuery.#ctor">
+            <summary>
+            Получение количества элементов
+            </summary>
+        </member>
+        <member name="T:Rest1ClientApplication.Contracts.Queries.GetPagedClientQuery">
             <summary>
             Получение клиентов со смещением и количеством
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Queries.GetPagedClient.Offset">
+        <member name="P:Rest1ClientApplication.Contracts.Queries.GetPagedClientQuery.Offset">
             <summary>
             Смещение
             </summary>
         </member>
-        <member name="P:Rest1ClientApplication.Contracts.Queries.GetPagedClient.Count">
+        <member name="P:Rest1ClientApplication.Contracts.Queries.GetPagedClientQuery.Count">
             <summary>
             Количество
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Contracts.Queries.GetPagedClient.#ctor(System.Int32,System.Int32)">
+        <member name="M:Rest1ClientApplication.Contracts.Queries.GetPagedClientQuery.#ctor(System.Int32,System.Int32)">
             <summary>
             Получение клиентов со сменением и количеством
             </summary>
         </member>
-        <member name="T:Rest1ClientApplication.Implementations.Commands.AddUpdateClientHandler">
+        <member name="T:Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler">
             <summary>
             Обработчик команда добавления и обновления элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientHandler})">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler})">
             <summary> </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientHandler.Handle(Rest1ClientApplication.Contracts.Commands.AddUpdateClient,System.Threading.CancellationToken)">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler.Handle(Rest1ClientApplication.Contracts.Commands.AddUpdateClientCommand,System.Threading.CancellationToken)">
             <summary>
             Команда добавления или обновления элемента
             </summary>
@@ -116,15 +126,15 @@
             <param name="cancellationToken">токен отмены</param>
             <returns>Идентификатор элемента</returns>
         </member>
-        <member name="T:Rest1ClientApplication.Implementations.Commands.DeleteClientHandler">
+        <member name="T:Rest1ClientApplication.Implementations.Commands.DeleteClientCommandHandler">
             <summary>
             Обработчик удаления элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientHandler})">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler})">
             <summary> </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientHandler.Handle(Rest1ClientApplication.Contracts.Commands.DeleteClient,System.Threading.CancellationToken)">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientCommandHandler.Handle(Rest1ClientApplication.Contracts.Commands.DeleteClientCommand,System.Threading.CancellationToken)">
             <summary>
             Обработка удаления элемента
             </summary>
@@ -132,15 +142,15 @@
             <param name="cancellationToken">Токен отмены</param>
             <returns>Успешность удаления</returns>
         </member>
-        <member name="T:Rest1ClientApplication.Implementations.Commands.PatchClientHandler">
+        <member name="T:Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler">
             <summary>
             Обработчик изменения элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.PatchClientHandler})">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler})">
             <summary> </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientHandler.Handle(Rest1ClientApplication.Contracts.Commands.PatchClient,System.Threading.CancellationToken)">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler.Handle(Rest1ClientApplication.Contracts.Commands.PatchClientCommand,System.Threading.CancellationToken)">
             <summary>
             Обработка изменения элемента
             </summary>
@@ -148,12 +158,12 @@
             <param name="cancellationToken">Токен отмены</param>
             <returns>Успешность удаления</returns>
         </member>
-        <member name="T:Rest1ClientApplication.Implementations.Queries.GetClientByIdHandler">
+        <member name="T:Rest1ClientApplication.Implementations.Queries.GetClientByIdQueryHandler">
             <summary>
             Обработчик запроса одного элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Queries.GetClientByIdHandler.Handle(Rest1ClientApplication.Contracts.Queries.GetClientById,System.Threading.CancellationToken)">
+        <member name="M:Rest1ClientApplication.Implementations.Queries.GetClientByIdQueryHandler.Handle(Rest1ClientApplication.Contracts.Queries.GetClientByIdQuery,System.Threading.CancellationToken)">
             <summary>
             Запрос одного элемента
             </summary>
@@ -161,12 +171,25 @@
             <param name="cancellationToken">Токен отмены</param>
             <returns>Элемент</returns>
         </member>
-        <member name="T:Rest1ClientApplication.Implementations.Queries.GetPagedClientHandler">
+        <member name="T:Rest1ClientApplication.Implementations.Queries.GetClientCountQueryHanlder">
+            <summary>
+            Обработчик запроса количества элементов
+            </summary>
+        </member>
+        <member name="M:Rest1ClientApplication.Implementations.Queries.GetClientCountQueryHanlder.Handle(Rest1ClientApplication.Contracts.Queries.GetClientCountQuery,System.Threading.CancellationToken)">
+            <summary>
+            Обработка запроса количества элементов
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns>Количество элементов</returns>
+        </member>
+        <member name="T:Rest1ClientApplication.Implementations.Queries.GetPagedClientQueryHandler">
             <summary>
             Обработчик запроса множества элементов
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Queries.GetPagedClientHandler.Handle(Rest1ClientApplication.Contracts.Queries.GetPagedClient,System.Threading.CancellationToken)">
+        <member name="M:Rest1ClientApplication.Implementations.Queries.GetPagedClientQueryHandler.Handle(Rest1ClientApplication.Contracts.Queries.GetPagedClientQuery,System.Threading.CancellationToken)">
             <summary>
             Запрос множества элементов
             </summary>

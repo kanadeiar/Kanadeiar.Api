@@ -23,7 +23,7 @@ public class KndRepositoryAsync<T, TId> : IKndRepositoryAsync<T, TId> where T : 
     {
         foreach (var item in _context
             .Set<T>()
-            .OrderByDescending(_ => _.Id)
+            .OrderBy(_ => _.Id)
             .Skip(offset)
             .Take(count)
             .AsNoTracking())
