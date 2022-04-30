@@ -12,4 +12,10 @@ abstract public class Entity : IKndEntity<int>
     /// </summary>
     [Key]
     public int Id { get; set; }
+
+    /// <summary> 
+    /// Маркер версии 
+    /// </summary>
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }

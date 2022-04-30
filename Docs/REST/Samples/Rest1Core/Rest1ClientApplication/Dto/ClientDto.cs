@@ -34,4 +34,9 @@ public class ClientDto
     /// Дата рождения
     /// </summary>
     public DateTime BirthDay { get; set; }
+
+    /// <summary> 
+    /// Маркер версии 
+    /// </summary>
+    public byte[] RowVersion { get; set; }
 }

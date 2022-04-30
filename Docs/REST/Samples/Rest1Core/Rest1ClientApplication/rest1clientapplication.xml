@@ -237,5 +237,10 @@
             Дата рождения
             </summary>
         </member>
+        <member name="P:Rest1Application.Dto.ClientDto.RowVersion">
+            <summary> 
+            Маркер версии 
+            </summary>
+        </member>
     </members>
 </doc>
