@@ -59,3 +59,9 @@ public class ValuesController : ControllerBase
 Использование средств платформы
 
 [Интрукции по настройке проверки](./Docs/HealthCheck.md).
+
+## HTTP Json Клиент
+
+Клиент - оболочка над стандартным клиентом
+
+[Интрукции по использованию клиента](./Docs/JsonClient.md).

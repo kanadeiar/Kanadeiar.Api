@@ -149,6 +149,15 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 services.AddControllers().AddNewtonsoftJson();
 ```
 
+### HTTP Json Клиент
+
+Клиент - оболочка над стандартным клиентом
+
+Добавить пакет в приложение:
+```sharp
+dotnet add package Kanadeiar.Api
+```
+Остальные инструкции смотреть в инструкциях библиотеки.
 
 ### Простые образцы в api-контроллере приложения
 
