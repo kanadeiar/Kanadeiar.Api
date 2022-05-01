@@ -1,11 +1,6 @@
-# Медиатор MediatR
+﻿# MediatR
 
-[Назад](./Index.md)
-
-Добавить пакет в Application:
-```sharp
-dotnet add package Kanadeiar.Api
-```
+[Назад](./../README.md)
 
 Регистрация MediatR в сервисах приложения:
 

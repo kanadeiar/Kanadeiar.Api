@@ -1,9 +1,9 @@
-﻿namespace Rest1ClientApplication.Contracts;
+﻿namespace Rest1ClientApplication.Contracts.Commands;
 
 /// <summary>
-/// Контракт получения одного элемента
+/// Удалить элемент
 /// </summary>
-public class GetClientById : IRequest<ClientDto?>
+public class DeleteClientCommand : IRequest<bool>
 {
     /// <summary>
     /// Идентификатор элемента
@@ -11,10 +11,10 @@ public class GetClientById : IRequest<ClientDto?>
     public int Id { get; }
 
     /// <summary>
-    /// Получение одного элемента
+    /// Удалить элемент
     /// </summary>
     /// <param name="id">Идентификатор элемента</param>
-    public GetClientById(int id)
+    public DeleteClientCommand(int id)
     {
         Id = id;
     }

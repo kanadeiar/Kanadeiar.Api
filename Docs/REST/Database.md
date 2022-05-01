@@ -55,35 +55,4 @@ dotnet ef migrations add init
 dotnet ef --startup-project ../../Rest1ClientApi/ migrations add init --context ClientContext
 ```
 
-## Ќачальные тестовые данные
 
-ƒобавить пакеты в приложение:
-```sharp
-dotnet add package Kanadeiar.Api
-```
-
-¬ приложении определить класс заполнени€ тестовыми данными:
-
-```sharp
-public class TestData : IKndTestData
-{
-...
-
-    public async Task SeedTestData(IServiceProvider provider)
-    {
-...
-    }
-}
-```
-
-«арегистрировать в сервисах приложени€:
-
-```sharp
-builder.Services.AddTransient<TestData>();
-```
-
-¬ конце конвейера приложени€ установить заполнение базы данных тестовыми данными:
-
-```sharp
-app.KndSeedTestData<TestData>();
-```

@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using Kanadeiar.Api.Tools;
+using Mapster;
 using MapsterMapper;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -76,6 +77,18 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection KndAddMediatR(this IServiceCollection services, Assembly mediatrAssembly)
     {
         services.AddMediatR(Assembly.GetExecutingAssembly(), mediatrAssembly);
+        return services;
+    }
+
+    /// <summary>
+    /// Регистрация сервиса проверки работоспособности
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
+    public static IServiceCollection KndAddHealthCheck(this IServiceCollection services)
+    {
+        services.AddHealthChecks().AddCheck<ServiceHealthCheck>("Alive");
+
         return services;
     }
 }

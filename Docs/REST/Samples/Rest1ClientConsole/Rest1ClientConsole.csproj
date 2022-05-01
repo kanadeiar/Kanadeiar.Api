@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Kanadeiar.Core" Version="0.0.4" />
+    <ProjectReference Include="..\..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
+    <ProjectReference Include="..\Rest1Core\Rest1ClientApplication\Rest1ClientApplication.csproj" />
   </ItemGroup>
 
 </Project>

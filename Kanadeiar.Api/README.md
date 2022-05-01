@@ -4,68 +4,64 @@
 
 ## Быстрый старт :rocket:
 
+Установить базовый NuGet пакет командой:
+```sharp
+dotnet add package Kanadeiar.Core
+```
+
 Установить NuGet пакет командой:
 ```sharp
 dotnet add package Kanadeiar.Api
 ```
 
-### Swagger
+## Swagger
 
 Удобный интерфейс пользователя для работы с REST API сервисами.
 
-Регистрация в сервисах:
-```sharp
-builder.Services.KndAddSwagger("WebApiTest1");
-builder.Services.KndAddSwagger("WebApiTest1", filename: "info.xml");
-builder.Services.KndAddSwagger("WebApiTest1", filename: "info.xml", domainFilenames: new[] { "sample.application.xml" });
+[Интрукции по Swagger](./Docs/Swagger.md).
 
-```
+## Mapster
 
-Зарегистрировать использование в конвейере, желательно в самом начале, и в среде разработки приложения:
-```sharp
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-else
-{
-    app.UseHsts(); //если нужно
-}
-```
+Удобный маппер моделек
 
-> Обязательно зарегать в сервисах для корректной работы Swagger: 
+[Интрукции по Swagger](./Docs/Mapster.md).
 
-```sharp
-builder.Services.AddEndpointsApiExplorer();
-```
-
-### Mapster
-
-Удобный маппер
-
-Регистрация в сервисах:
-```sharp
-builder.Services.KarAddMapster();
-```
-
-Примеры использования 
-```sharp
-var config = new TypeAdapterConfig().ForType<NewsUnitDto, NewsUnit>().Ignore(x => x.Id).Config; //конфигурация
-var item = request.Model.Adapt<NewsUnit>(config); //получение нового с учетом конфигурации
-request.Model.Adapt(entity, config); //обновление согласно конфигурации, не получение нового объекта
-var test = request.Model.Adapt<NewsUnit>(); //получение нового объекта
-persons.Adapt<IEnumerable<PersonDto>>(); //коллекция новых объектов
-```
-
-### Фильтры
+## Фильтры
 
 Свой удобный фильр для обработки исключений -> в коды ошибок
 
 Использование фильра в API-контроллере:
 ```sharp
-[KarExceptionHandling]
+[KndExceptionHandling]
 public class ValuesController : ControllerBase
 ```
 
+## Репозиторий
+
+Базовые обобщенные интерфейс и реализация интерфейса
+
+[Интрукции по Репозиторию](./Docs/Repository.md).
+
+## Начальные тестовые данные
+
+Заполнение базы данных тестовыми данными начальными.
+
+[Интрукции по Тестовым данным](./Docs/TestData.md).
+
+## MediatR
+
+Для использования шаблона CQRS в проекте.
+
+[Интрукции по MediatR](./Docs/MediatR.md).
+
+## Проверка работоспособности микросервиса
+
+Использование средств платформы
+
+[Интрукции по настройке проверки](./Docs/HealthCheck.md).
+
+## HTTP Json Клиент
+
+Клиент - оболочка над стандартным клиентом
+
+[Интрукции по использованию клиента](./Docs/JsonClient.md).

@@ -4,6 +4,75 @@
         <name>Rest1ClientApi</name>
     </assembly>
     <members>
+        <member name="T:Rest1ClientApi.Controllers.ClientController">
+            <summary>
+            Клиенты
+            </summary>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.GetPaged(System.Int32,System.Int32)">
+            <summary>
+            Получение элементов со смещением и количеством
+            </summary>
+            <param name="offset">смещение</param>
+            <param name="count">количество</param>
+            <returns>Асинхронная коллекция</returns>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.GetCount">
+            <summary>
+            Получение количества элементов
+            </summary>
+            <returns>Количество</returns>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.Get(System.Int32)">
+            <summary>
+            Получение одного элемента
+            </summary>
+            <param name="id">Индекс</param>
+            <returns>Элемент</returns>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.Add(Rest1Application.Dto.ClientDto)">
+            <summary>
+            Добавить один элемент
+            </summary>
+            <param name="dto">данные элемента</param>
+            <returns>Новый идентификатор</returns>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.Update(System.Int32,Rest1Application.Dto.ClientDto)">
+            <summary>
+            Обновить один элемент
+            </summary>
+            <param name="id">Идентификатор</param>
+            <param name="dto">Новые данные</param>
+            <returns>Успешность</returns>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.Change(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Rest1ClientDomain.Entities.Client})">
+            <summary>
+            Изменить один элемент
+            </summary>
+            <param name="id">Идентификатор</param>
+            <param name="patch">Изменения элемента</param>
+            <remarks>
+            Пример запроса:
+            
+                [
+                    { "op": "test", "path": "property_name", "value": "value" },
+                    { "op": "remove", "path": "property_name" },
+                    { "op": "add", "path": "property_name", "value": [ "value1", "value2" ] },
+                    { "op": "replace", "path": "property_name", "value": 12 },
+                    { "op": "move", "from": "property_name", "path": "other_property_name" },
+                    { "op": "copy", "from": "property_name", "path": "other_property_name" }
+                ]
+            
+            </remarks>
+            <returns>Успешность</returns>
+        </member>
+        <member name="M:Rest1ClientApi.Controllers.ClientController.Delete(System.Int32)">
+            <summary>
+            Удалить элемент
+            </summary>
+            <param name="id">Идентификатор</param>
+            <returns>Успешность</returns>
+        </member>
         <member name="T:Rest1ClientApi.TestData">
             <summary>
             Заполнение тестовыми данными
