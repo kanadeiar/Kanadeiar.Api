@@ -83,14 +83,14 @@ app.MapGrpcService<ClientGrpcService>(); //в конвейере
 2. Образец кода клиента для запроса ответа с сервера:
 
 ```sharp
-using var channel = GrpcChannel.ForAddress(new Uri("https://localhost:5001"));
-var client = new PersonInform.PersonInformClient(channel);
+var channel = GrpcChannel.ForAddress(new Uri("https://localhost:5001"));
+var client = new ClientInfo.ClientInfoClient(channel);
 
 while (true)
 {
     try
     {
-        var response = await client.GetPersonsAsync(new PersonRequest { Count = 10 });
+        var data = await client.GetByIdAsync(new GetByIdRequest { Id = 1 });
         ...
     }
     catch ...
