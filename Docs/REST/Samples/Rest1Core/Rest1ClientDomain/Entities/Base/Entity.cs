@@ -1,6 +1,4 @@
-﻿using Kanadeiar.Core.Domain.Base;
-
-namespace Rest1ClientDomain.Entities.Base;
+﻿namespace Rest1ClientDomain.Entities.Base;
 
 /// <summary>
 /// Базовая сущность

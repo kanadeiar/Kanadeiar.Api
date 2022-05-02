@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "gRpc1ClientApi";
+
+package client;
+
+service ClientInfo {
+  rpc GetById (IdRequest) returns (ClientDto);
+}
+
+message IdRequest {
+  int32 Id = 1;
+}
+
+message ClientDto {
+  int32 Id = 1;
+  int32 UserId = 2;
+  string LastName = 3;
+  string FirstName = 4;
+  string Patronymic = 5;
+  google.protobuf.Timestamp BirthDay = 6;
+  bytes RowVersion = 7;
+}

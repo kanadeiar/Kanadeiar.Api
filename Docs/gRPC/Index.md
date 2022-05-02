@@ -4,61 +4,76 @@
 
 ## Главное
 
+Начальный шаг - создать gRpc сервис:
+
+```sharp
+dotnet new grpc
+```
+
+0. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), бизнес-логика и общее - в Application (ссылки на Domain), База данных и специфическое - в Infrastructure (ссылки на Application), детальная реализация - в Api (ссылки на Infrastructure)
+
+
 ### Серверная часть
 
-1. Создать "файл буфера протокола" и поместить его в папку "Protos" в проекте сервера.
+1. Создать "файл буфера протокола" и поместить его в папку "Protos" в Application.
 
-Содержимое-образец "protobuf.proto":
+Содержимое-образец "client.proto":
+
 ```sharp
 syntax = "proto3";
 
-service PersonInform {
-  rpc GetPersons (PersonRequest) returns (PersonsResponse);
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "gRpc1ClientApplication";
+
+package client;
+
+service ClientInfo {
+  rpc GetById (IdRequest) returns (ClientDto);
 }
 
-message PersonRequest {
-  int32 count = 1;
+message IdRequest {
+  int Id = 1;
 }
 
-message Person {
-	int32 id = 1;
-	string surname = 2;
-	string firstname = 3;
-	int32 age = 4;
+message ClientDto {
+  int Id = 1;
+  int UserId = 2;
+  string LastName = 3;
+  string FirstName = 4;
+  string Patronymic = 5;
+  google.protobuf.Timestamp BirthDay = 6;
+  bytes RowVersion = 7;
 }
 
-message PersonsResponse {
-  repeated Person persons = 1;
-}
+syntax = "proto3";
 ```
 
-2. Добавить пакет Grpc.AspNetCore
-
-3. Добавить файл протокола в серверную часть:
+2. Добавить файл протокола в серверную часть:
 
 ```sharp
 <ItemGroup>
-    <Protobuf Include="Protos\protobuf.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\client.proto" GrpcServices="Server" />
 </ItemGroup>
 ```
-4. Создать сервис обработки запроса на основе протокола в проекте сервера:
+3. Создать сервис обработки запроса на основе протокола в проекте сервера:
 
 ```sharp
-public class PersonInfoService : PersonInform.PersonInformBase
+public class ClientService : ClientInfo.ClientInfoBase
 {
-    public override async Task<PersonsResponse> GetPersons(PersonRequest request, ServerCallContext context)
+    public override Task<ClientDto> GetById(IdRequest request, ServerCallContext context)
     {
-        var count = request.Count;
-        return new PersonsResponse(new { ... });
+        var client = new ClientDto { ... };
+        return Task.FromResult(client);
     }
 }
 ```
 
-5. Настроить серверное приложение для использования gRPC и включить сервис-обработчик:
+4. Проверить настройки серверного приложения для использования gRPC и включить сервис-обработчик:
 
 ```sharp
 builder.Services.AddGrpc(); //сервисы
-app.MapGrpcService<PersonInfoService>(); //конвейер
+app.MapGrpcService<ClientGrpcService>(); //в конвейере
 ```
 
 ## Клиентская часть
