@@ -1,11 +1,19 @@
+using gRpc1ClientApplication.Contracts.Queries;
+using gRpc1ClientApplication.Interfaces.Repositories;
+using gRpc1ClientDomain.Entities;
+using Mapster;
+
 namespace gRpc1ClientApi.Services;
 
 public class ClientGrpcService : ClientInfo.ClientInfoBase
 {
-    private readonly ILogger<ClientGrpcService> _logger;
-    public ClientGrpcService(ILogger<ClientGrpcService> logger)
+    private readonly IMediator _mediator;
+    private readonly IClientRepository _repository;
+
+    public ClientGrpcService(IMediator mediator, IClientRepository repository)
     {
-        _logger = logger;
+        _mediator = mediator;
+        _repository = repository;
     }
 
     public override Task<PagedResponse> GetPaged(PagedRequest request, ServerCallContext context)
@@ -34,18 +42,17 @@ public class ClientGrpcService : ClientInfo.ClientInfoBase
         return Task.FromResult(response);
     }
 
-    public override Task<ClientDto> GetById(IdRequest request, ServerCallContext context)
+    public override async Task<ClientDto?> GetById(IdRequest request, ServerCallContext context)
     {
-        var client = new ClientDto { 
-            Id = request.Id, 
-            UserId = 1,
-            LastName = "dd11", 
-            FirstName = "aa22", 
-            Patronymic = "dd", 
-            BirthDay = Timestamp.FromDateTime(DateTime.UtcNow),
-            RowVersion = ByteString.CopyFrom(new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 }),
-        };
-        return Task.FromResult(client);
+        var config = new TypeAdapterConfig().ForType<Client, ClientDto>()
+            .Map(d => d.BirthDay, s => Timestamp.FromDateTime(s.BirthDay.ToUniversalTime()))
+            .Map(d => d.RowVersion, s => ByteString.CopyFrom(s.RowVersion))
+            .Config;
+        if (await _mediator.Send(new GetClientByIdQuery(request.Id)) is { } data)
+        {
+            return data.Adapt<ClientDto>(config);
+        }
+        return null;
     }
 
     public override Task<AddedResponse> Add(ClientDto request, ServerCallContext context)

@@ -9,6 +9,7 @@
 public class ClientController : ControllerBase
 {
     private readonly IMediator _mediator;
+
     public ClientController(IMediator mediator)
     {
         _mediator = mediator;

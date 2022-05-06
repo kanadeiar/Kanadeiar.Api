@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
     <ProjectReference Include="..\gRpc1ClientDomain\gRpc1ClientDomain.csproj" />
   </ItemGroup>
 
