@@ -3,6 +3,7 @@
 public class ClientRepository : IClientRepository
 {
     private IList<Client> _clients;
+    private int _maxId;
 
     public ClientRepository()
     {
@@ -16,6 +17,7 @@ public class ClientRepository : IClientRepository
             BirthDay = DateTime.Today.AddYears(-20),
             RowVersion = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
         }).ToList();
+        _maxId = _clients.Max(x => x.Id);
     }
 
     public IQueryable<Client> Query => _clients.AsQueryable();
@@ -38,6 +40,7 @@ public class ClientRepository : IClientRepository
 
     public Task<Client> AddAsync(Client entity, CancellationToken cancellationToken)
     {
+        entity.Id = ++_maxId;
         _clients.Add(entity);
         return Task.FromResult(entity);
     }

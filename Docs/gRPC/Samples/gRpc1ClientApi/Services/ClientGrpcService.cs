@@ -1,45 +1,35 @@
-using gRpc1ClientApplication.Contracts.Queries;
-using gRpc1ClientApplication.Interfaces.Repositories;
-using gRpc1ClientDomain.Entities;
-using Mapster;
+using gRpc1ClientApplication.Contracts.Commands;
 
 namespace gRpc1ClientApi.Services;
 
 public class ClientGrpcService : ClientInfo.ClientInfoBase
 {
     private readonly IMediator _mediator;
-    private readonly IClientRepository _repository;
 
-    public ClientGrpcService(IMediator mediator, IClientRepository repository)
+    public ClientGrpcService(IMediator mediator)
     {
         _mediator = mediator;
-        _repository = repository;
     }
 
-    public override Task<PagedResponse> GetPaged(PagedRequest request, ServerCallContext context)
+    public override async Task<PagedResponse> GetPaged(PagedRequest request, ServerCallContext context)
     {
-        var clients = Enumerable.Range(1, request.Count).Select(x => new ClientDto 
-        {
-            Id = x + request.Offset,
-            UserId = 1,
-            LastName = "dd11",
-            FirstName = "aa22",
-            Patronymic = "dd",
-            BirthDay = Timestamp.FromDateTime(DateTime.UtcNow),
-            RowVersion = ByteString.CopyFrom(new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 }),
-        });
+        var items = await _mediator.CreateStream(new GetPagedClientQuery(request.Offset, request.Count), new CancellationToken()).ToArrayAsync();
         var response = new PagedResponse();
-        foreach (var item in clients)
+        var config = new TypeAdapterConfig().ForType<Client, ClientDto>()
+            .Map(d => d.BirthDay, s => Timestamp.FromDateTime(s.BirthDay.ToUniversalTime()))
+            .Map(d => d.RowVersion, s => ByteString.CopyFrom(s.RowVersion))
+            .Config;
+        foreach (var item in items)
         {
-            response.Clients.Add(item);
+            response.Clients.Add(item.Adapt<ClientDto>(config));
         }
-        return Task.FromResult(response);
+        return response;
     }
 
-    public override Task<CountRespose> GetCount(Empty request, ServerCallContext context)
+    public override async Task<CountRespose> GetCount(Empty request, ServerCallContext context)
     {
-        var response = new CountRespose { Count = 100 };
-        return Task.FromResult(response);
+        var count = await _mediator.Send(new GetClientCountQuery());
+        return new CountRespose { Count = count };
     }
 
     public override async Task<ClientDto?> GetById(IdRequest request, ServerCallContext context)
@@ -55,21 +45,31 @@ public class ClientGrpcService : ClientInfo.ClientInfoBase
         return null;
     }
 
-    public override Task<AddedResponse> Add(ClientDto request, ServerCallContext context)
+    public override async Task<AddedResponse> Add(ClientDto request, ServerCallContext context)
     {
-        var added = new AddedResponse { Id = 101 };
-        return Task.FromResult(added);
+        var config = new TypeAdapterConfig().ForType<ClientDto, Client>()
+            .Map(d => d.BirthDay, s => s.BirthDay.ToDateTime().ToUniversalTime())
+            .Map(d => d.RowVersion, s => s.ToByteArray())
+            .Config;
+        var item = request.Adapt<Client>(config);
+        var result = await _mediator.Send(new AddUpdateClientCommand(0, item));
+        return new AddedResponse { Id = result };
     }
 
-    public override Task<SuccessResponse> Update(ClientDto request, ServerCallContext context)
+    public override async Task<SuccessResponse> Update(ClientDto request, ServerCallContext context)
     {
-        var success = new SuccessResponse { Success = true };
-        return Task.FromResult(success);
+        var config = new TypeAdapterConfig().ForType<ClientDto, Client>()
+            .Map(d => d.BirthDay, s => s.BirthDay.ToDateTime().ToUniversalTime())
+            .Map(d => d.RowVersion, s => s.ToByteArray())
+            .Config;
+        var item = request.Adapt<Client>(config);
+        var result = await _mediator.Send(new AddUpdateClientCommand(request.Id, item));
+        return new SuccessResponse { Success = result > 0 };
     }
 
-    public override Task<SuccessResponse> Delete(IdRequest request, ServerCallContext context)
+    public override async Task<SuccessResponse> Delete(IdRequest request, ServerCallContext context)
     {
-        var success = new SuccessResponse { Success = true };
-        return Task.FromResult(success);
+        var result = await _mediator.Send(new DeleteClientCommand(request.Id));
+        return new SuccessResponse { Success = result };
     }
 }
