@@ -32,9 +32,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gRPC", "gRPC", "{892D9636-0
 		Docs\gRPC\Index.md = Docs\gRPC\Index.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MassTransit", "MassTransit", "{B963D207-84E4-4D13-A911-5ED29D73A933}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMq", "RabbitMq", "{B963D207-84E4-4D13-A911-5ED29D73A933}"
 	ProjectSection(SolutionItems) = preProject
-		Docs\MassTransit\Index.md = Docs\MassTransit\Index.md
+		Docs\RabbitMq\Index.md = Docs\RabbitMq\Index.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{213D50D4-6651-4549-A81B-C00EA3E80667}"
@@ -64,17 +64,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{74EB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gRpc1Core", "gRpc1Core", "{8FE822CE-23D0-44F2-A275-01B5E872C551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRpc1ClientDomain", "Docs\gRPC\Samples\gRpc1Core\gRpc1ClientDomain\gRpc1ClientDomain.csproj", "{470F17FD-1802-4D11-B08D-2E5582071B1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc1ClientDomain", "Docs\gRPC\Samples\gRpc1Core\gRpc1ClientDomain\gRpc1ClientDomain.csproj", "{470F17FD-1802-4D11-B08D-2E5582071B1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRpc1ClientApplication", "Docs\gRPC\Samples\gRpc1Core\gRpc1ClientApplication\gRpc1ClientApplication.csproj", "{AF52D899-DCF3-4D32-8545-259A7165D5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc1ClientApplication", "Docs\gRPC\Samples\gRpc1Core\gRpc1ClientApplication\gRpc1ClientApplication.csproj", "{AF52D899-DCF3-4D32-8545-259A7165D5DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRpc1ClientApi", "Docs\gRPC\Samples\gRpc1ClientApi\gRpc1ClientApi.csproj", "{DE416915-B6A8-4414-807A-2521C28D2587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc1ClientApi", "Docs\gRPC\Samples\gRpc1ClientApi\gRpc1ClientApi.csproj", "{DE416915-B6A8-4414-807A-2521C28D2587}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gRpc1Infrastructure", "gRpc1Infrastructure", "{6649D4CC-B8AE-4331-AD0D-8121C1D4C354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRpc1ClientInfrastructure", "Docs\gRPC\Samples\gRpc1Infrastructure\gRpc1ClientInfrastructure\gRpc1ClientInfrastructure.csproj", "{20B8BA86-3BFF-43A3-A5BF-3E10DFD284F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc1ClientInfrastructure", "Docs\gRPC\Samples\gRpc1Infrastructure\gRpc1ClientInfrastructure\gRpc1ClientInfrastructure.csproj", "{20B8BA86-3BFF-43A3-A5BF-3E10DFD284F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRpc1ClientConsoleApp", "Docs\gRPC\Samples\gRpc1ClientConsole\gRpc1ClientConsoleApp.csproj", "{9CEA3FA0-7D67-45DD-911C-DAD287AE8486}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc1ClientConsoleApp", "Docs\gRPC\Samples\gRpc1ClientConsole\gRpc1ClientConsoleApp.csproj", "{9CEA3FA0-7D67-45DD-911C-DAD287AE8486}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{CB10D9E6-321B-4665-99D7-334923BFC938}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{06883B40-2819-42D9-BD56-5F6FC7935187}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMq1Core", "RabbitMq1Core", "{E8CF881B-15A7-4501-B8E8-371A4876817B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMq1Infrastructure", "RabbitMq1Infrastructure", "{BE2CD5A7-B1DF-4565-BD34-44900FCF28BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMq1ClientDomain", "Docs\RabbitMq\Samples\RabbitMq1Core\RabbitMq1ClientDomain\RabbitMq1ClientDomain.csproj", "{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientApplication", "Docs\RabbitMq\Samples\RabbitMq1Core\RabbitMq1ClientApplication\RabbitMq1ClientApplication.csproj", "{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientInfrastructure", "Docs\RabbitMq\Samples\RabbitMq1Infrastructure\RabbitMq1ClientInfrastructure\RabbitMq1ClientInfrastructure.csproj", "{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientApi", "Docs\RabbitMq\Samples\RabbitMq1ClientApi\RabbitMq1ClientApi.csproj", "{4FA2E685-2223-4A67-A3FD-A443975A6301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientConsoleApp", "Docs\RabbitMq\Samples\RabbitMq1ClientConsole\RabbitMq1ClientConsoleApp.csproj", "{C742A5D2-7574-4AE3-95BB-C1E208550277}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -180,6 +198,46 @@ Global
 		{9CEA3FA0-7D67-45DD-911C-DAD287AE8486}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CEA3FA0-7D67-45DD-911C-DAD287AE8486}.Release|x86.ActiveCfg = Release|Any CPU
 		{9CEA3FA0-7D67-45DD-911C-DAD287AE8486}.Release|x86.Build.0 = Release|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}.Release|x86.Build.0 = Release|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Debug|x86.Build.0 = Debug|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Release|x86.ActiveCfg = Release|Any CPU
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}.Release|x86.Build.0 = Release|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Debug|x86.Build.0 = Debug|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Release|x86.ActiveCfg = Release|Any CPU
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}.Release|x86.Build.0 = Release|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Debug|x86.Build.0 = Debug|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Release|x86.ActiveCfg = Release|Any CPU
+		{4FA2E685-2223-4A67-A3FD-A443975A6301}.Release|x86.Build.0 = Release|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Debug|x86.Build.0 = Debug|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Release|x86.ActiveCfg = Release|Any CPU
+		{C742A5D2-7574-4AE3-95BB-C1E208550277}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +265,15 @@ Global
 		{6649D4CC-B8AE-4331-AD0D-8121C1D4C354} = {74EB56F0-DEF8-49A6-BA0C-3118396524EB}
 		{20B8BA86-3BFF-43A3-A5BF-3E10DFD284F3} = {6649D4CC-B8AE-4331-AD0D-8121C1D4C354}
 		{9CEA3FA0-7D67-45DD-911C-DAD287AE8486} = {74EB56F0-DEF8-49A6-BA0C-3118396524EB}
+		{CB10D9E6-321B-4665-99D7-334923BFC938} = {B963D207-84E4-4D13-A911-5ED29D73A933}
+		{06883B40-2819-42D9-BD56-5F6FC7935187} = {B963D207-84E4-4D13-A911-5ED29D73A933}
+		{E8CF881B-15A7-4501-B8E8-371A4876817B} = {06883B40-2819-42D9-BD56-5F6FC7935187}
+		{BE2CD5A7-B1DF-4565-BD34-44900FCF28BB} = {06883B40-2819-42D9-BD56-5F6FC7935187}
+		{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C} = {E8CF881B-15A7-4501-B8E8-371A4876817B}
+		{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4} = {E8CF881B-15A7-4501-B8E8-371A4876817B}
+		{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826} = {BE2CD5A7-B1DF-4565-BD34-44900FCF28BB}
+		{4FA2E685-2223-4A67-A3FD-A443975A6301} = {06883B40-2819-42D9-BD56-5F6FC7935187}
+		{C742A5D2-7574-4AE3-95BB-C1E208550277} = {06883B40-2819-42D9-BD56-5F6FC7935187}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7B7EDE6-642D-44D6-8288-482121084D55}
