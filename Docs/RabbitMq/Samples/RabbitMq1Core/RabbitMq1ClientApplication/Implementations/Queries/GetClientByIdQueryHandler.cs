@@ -6,10 +6,8 @@
 public class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, ClientDto?>
 {
     private readonly IClientRepository _repository;
-    public GetClientByIdQueryHandler(IClientRepository repository)
-    {
-        _repository = repository;
-    }
+    public GetClientByIdQueryHandler(IClientRepository repository) 
+        => _repository = repository;
 
     /// <summary>
     /// Запрос одного элемента
