@@ -6,7 +6,7 @@ public class ClientCreatedConsumer : IConsumer<IClientCreated>
     {
         await Task.Run(() =>
         {
-            Console.WriteLine($"Получение сообщения от отправителя: номер: {context.Message.Data.Number} название: {context.Message.Data.Model.Name}");
+            Console.WriteLine($"Получение сообщения от отправителя о создании: номер: {context.Message.Data.Number} название: {context.Message.Data.Model.Name}");
         });
     }
 }

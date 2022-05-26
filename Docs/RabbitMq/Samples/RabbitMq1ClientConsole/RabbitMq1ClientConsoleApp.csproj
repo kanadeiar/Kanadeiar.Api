@@ -15,8 +15,4 @@
     <ProjectReference Include="..\RabbitMq1Core\RabbitMq1ClientApplication\RabbitMq1ClientApplication.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Requests\" />
-  </ItemGroup>
-
 </Project>

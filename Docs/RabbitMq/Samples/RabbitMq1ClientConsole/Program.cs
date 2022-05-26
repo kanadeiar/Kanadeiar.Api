@@ -20,15 +20,14 @@ await busControl.StartAsync(source.Token);
 var keyCount = 0;
 try
 {
-    Console.WriteLine("Нажмите кнопку для отправки запроса получателю или Q для выхода");
+    Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
         keyCount++;
-        //await SendRequestForInvoiceCreated(busControl, keyCount, $"Name_{keyCount}");
-        var client = busControl.CreateRequestClient<IGetClient>();
-        var response = await client.GetResponse<IGetClientResult>(new { Value = keyCount });
-        Console.WriteLine($"Ответ: {response.Message.Value} {response.Message.Name}");
-        Console.WriteLine($"Нажмите кнопку для отправки запроса получателю или Q для выхода, количество раз: {keyCount}");
+        await CreateCommand.SendRequestForInvoiceCreated(busControl, keyCount, $"Name_{keyCount}");
+        var response = await GetQuery.SendQueryGetClient(busControl, keyCount);
+        Console.WriteLine($"Ответ: {response.Value} {response.Name}");        
+        Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода, количество раз: {keyCount}");
     }
 }
 finally
@@ -36,15 +35,5 @@ finally
     await busControl.StopAsync();
 }
 
-static async Task SendRequestForInvoiceCreated(IPublishEndpoint endpoint, int key, string name)
-{    
-    await endpoint.Publish<IClientToCreate>(new
-    {
-        CutomerNumber = key,
-        Model = new
-        {
-            Name = name,
-        }
-    });
-}
+
 

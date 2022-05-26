@@ -12,11 +12,11 @@ IHost host = Host.CreateDefaultBuilder(args)
                     h.Username("guest");
                     h.Password("guest");
                 });
-                //config.ReceiveEndpoint("RabbitMq1ClientApi", e => 
-                //{
-                //    e.UseInMemoryOutbox();
-                //    e.Consumer<ClientToCreateConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
-                //});
+                config.ReceiveEndpoint("RabbitMq1ClientApi", e => 
+                {
+                    e.UseInMemoryOutbox();
+                    e.Consumer<ClientToCreateConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
+                });
                 config.ConfigureEndpoints(context);
             });
             //x.AddRequestClient<GetClientConsumer>(new Uri("exchange:order-status"));
