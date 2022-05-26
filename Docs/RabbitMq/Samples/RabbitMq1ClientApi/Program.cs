@@ -1,11 +1,21 @@
+using MediatR;
+using RabbitMq1ClientApplication.Implementations.Queries;
+using RabbitMq1ClientApplication.Interfaces.Repositories;
+using RabbitMq1ClientInfrastructure.Repositories;
+using System.Reflection;
+
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
         services.MyDatabase(hostContext.Configuration);
         services.AddTransient<TestData>();
+        services.AddScoped<IClientRepository, ClientRepository>();
+        services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(GetClientByIdQueryHandler).Assembly);
+
         services.AddMassTransit(x => 
         {
             x.AddConsumer<GetClientConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
+            x.AddConsumer<ClientConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
 
             x.UsingRabbitMq((context, config) =>
             {

@@ -1,4 +1,7 @@
-﻿Console.WriteLine("Ожидание старта сервисов");
+﻿using RabbitMq1Integrations.Client.Requests;
+using RabbitMq1Integrations.Client.Responses;
+
+Console.WriteLine("Ожидание старта сервисов");
 await Task.Delay(3000);
 
 var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
@@ -23,11 +26,15 @@ try
     Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
-        keyCount++;
-        await CreateCommand.SendRequestForInvoiceCreated(busControl, keyCount, $"Name_{keyCount}");
-        var response = await GetQuery.SendQueryGetClient(busControl, keyCount);
-        Console.WriteLine($"Ответ: {response.Value} {response.Name}");        
-        Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода, количество раз: {keyCount}");
+        //keyCount++;
+        //await CreateCommand.SendRequestForInvoiceCreated(busControl, keyCount, $"Name_{keyCount}");
+        //var response = await GetQuery.SendQueryGetClient(busControl, keyCount);
+        //Console.WriteLine($"Ответ: {response.Value} {response.Name}");        
+        //Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода, количество раз: {keyCount}");
+        var client = busControl.CreateRequestClient<IGetClientByIdQuery>();
+        var response = await client.GetResponse<IGetClientByIdQueryResult>(new { Id = 1 });
+        Console.WriteLine($"Ответ: {response.Message.Client.Id} {response.Message.Client.FirstName}");
+        Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода");
     }
 }
 finally
