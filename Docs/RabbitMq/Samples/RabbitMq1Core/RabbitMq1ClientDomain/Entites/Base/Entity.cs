@@ -1,4 +1,4 @@
-﻿namespace Rest1ClientDomain.Entities.Base;
+﻿namespace RabbitMq1ClientDomain.Entites.Base;
 
 /// <summary>
 /// Базовая сущность

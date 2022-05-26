@@ -77,6 +77,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc1ClientConsoleApp", "Docs\gRPC\Samples\gRpc1ClientConsole\gRpc1ClientConsoleApp.csproj", "{9CEA3FA0-7D67-45DD-911C-DAD287AE8486}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{CB10D9E6-321B-4665-99D7-334923BFC938}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\RabbitMq\Database.md = Docs\RabbitMq\Database.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{06883B40-2819-42D9-BD56-5F6FC7935187}"
 EndProject
@@ -86,13 +89,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMq1Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMq1ClientDomain", "Docs\RabbitMq\Samples\RabbitMq1Core\RabbitMq1ClientDomain\RabbitMq1ClientDomain.csproj", "{E5D47F1C-5727-4E32-AA8C-6FCCBF7BA63C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientApplication", "Docs\RabbitMq\Samples\RabbitMq1Core\RabbitMq1ClientApplication\RabbitMq1ClientApplication.csproj", "{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMq1ClientApplication", "Docs\RabbitMq\Samples\RabbitMq1Core\RabbitMq1ClientApplication\RabbitMq1ClientApplication.csproj", "{943CAD75-3A56-4A79-A6AD-29DDBAB27CB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientInfrastructure", "Docs\RabbitMq\Samples\RabbitMq1Infrastructure\RabbitMq1ClientInfrastructure\RabbitMq1ClientInfrastructure.csproj", "{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMq1ClientInfrastructure", "Docs\RabbitMq\Samples\RabbitMq1Infrastructure\RabbitMq1ClientInfrastructure\RabbitMq1ClientInfrastructure.csproj", "{2E2BD04B-7FCB-4A69-930A-0F1C90EB3826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientApi", "Docs\RabbitMq\Samples\RabbitMq1ClientApi\RabbitMq1ClientApi.csproj", "{4FA2E685-2223-4A67-A3FD-A443975A6301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMq1ClientApi", "Docs\RabbitMq\Samples\RabbitMq1ClientApi\RabbitMq1ClientApi.csproj", "{4FA2E685-2223-4A67-A3FD-A443975A6301}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq1ClientConsoleApp", "Docs\RabbitMq\Samples\RabbitMq1ClientConsole\RabbitMq1ClientConsoleApp.csproj", "{C742A5D2-7574-4AE3-95BB-C1E208550277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMq1ClientConsoleApp", "Docs\RabbitMq\Samples\RabbitMq1ClientConsole\RabbitMq1ClientConsoleApp.csproj", "{C742A5D2-7574-4AE3-95BB-C1E208550277}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,10 @@
 
+using RabbitMq1ClientInfrastructure.Registrations;
+
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
+        services.MyDatabase(hostContext.Configuration);
         services.AddMassTransit(x => 
         {
             x.AddConsumer<GetClientConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));

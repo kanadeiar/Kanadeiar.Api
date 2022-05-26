@@ -29,7 +29,7 @@ public class ClientContext : DbContext
 
 Строка подключения в файле конфигурации приложения appsettings.json:
 ```xml
-"ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=ClientService;MultipleActiveResultSets=True;Integrated Security=true"
+"ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=ClientServiceRabbitMq;MultipleActiveResultSets=True;Integrated Security=true"
 ```
 
 Образец регистрации в сервисах приложения:
@@ -58,7 +58,7 @@ dotnet ef migrations add init
 Если добавлять в отдельную библиотеку от проекта приложения, то образец команды c указанием контекста:
 
 ```cmd
-dotnet ef --startup-project ../../Rest1ClientApi/ migrations add init --context ClientContext
+dotnet ef --startup-project ../../RabbitMq1ClientApi/ migrations add init --context ClientDbContext
 ```
 
 

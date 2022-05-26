@@ -1,6 +1,4 @@
-﻿using Rest1ClientConsole.Interfaces;
-
-namespace Rest1ClientConsole.Clients;
+﻿namespace Rest1ClientConsole.Clients;
 
 /// <summary>
 /// Апи клиент данных клиентов

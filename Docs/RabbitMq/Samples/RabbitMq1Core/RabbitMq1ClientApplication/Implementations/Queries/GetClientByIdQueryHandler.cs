@@ -1,4 +1,4 @@
-﻿namespace Rest1ClientApplication.Implementations.Queries;
+﻿namespace RabbitMq1ClientApplication.Implementations.Queries;
 
 /// <summary>
 /// Обработчик запроса одного элемента
