@@ -1,4 +1,5 @@
 ﻿global using Dapper;
+global using Dapper.Logging;
 global using Kanadeiar.Api.Interfaces.Repositories;
 global using Mapster;
 global using MediatR;

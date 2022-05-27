@@ -77,7 +77,7 @@ app.UseHttpsRedirection(); //перед app.UseRouting()
 app.UseHsts();
 ```
 
-### База данных EF
+### База данных на ORM Entity Framework
 
 [Интрукции по базе данных](./Database.md).
 
@@ -86,14 +86,19 @@ app.UseHsts();
 Добавить пакеты в Application:
 ```sharp
 dotnet add package Dapper
+dotnet add package Dapper.Logging
 dotnet add package Microsoft.Data.SqlClient
+```
+
+Зарегистрировать в сервисах приложения:
+```sharp
+builder.Services.AddDbConnectionFactory(provider => new SqlConnection(builder.Configuration.GetValue<string>("ConnectionString")));
 ```
 
 Пример использования:
 
 ```sharp
-var connectionString = _configuration.GetValue<string>("ConnectionString");
-using var db = new SqlConnection(connectionString);
+using var db = _connectionFactory.CreateConnection();
 var item = (await db.QueryAsync<Client>(@"
 SELECT * FROM Clients 
 WHERE Id = @id",

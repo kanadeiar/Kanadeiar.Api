@@ -1,4 +1,4 @@
-# База данных EF
+# База данных на ORM Entity Framework
 
 [Назад](./Index.md)
 

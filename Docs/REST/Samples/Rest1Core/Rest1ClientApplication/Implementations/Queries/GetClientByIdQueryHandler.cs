@@ -6,11 +6,11 @@
 public class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, ClientDto?>
 {
     private readonly IClientRepository _repository;
-    private readonly IConfiguration _configuration;
-    public GetClientByIdQueryHandler(IClientRepository repository, IConfiguration configuration)
+    private readonly IDbConnectionFactory _connectionFactory;
+    public GetClientByIdQueryHandler(IClientRepository repository, IDbConnectionFactory connectionFactory)
     {
         _repository = repository;
-        _configuration = configuration;
+        _connectionFactory = connectionFactory;
     }
 
     /// <summary>
@@ -21,8 +21,7 @@ public class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, Cli
     /// <returns>Элемент</returns>
     public async Task<ClientDto?> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
     {
-        var connectionString = _configuration.GetValue<string>("ConnectionString");
-        using var db = new SqlConnection(connectionString);
+        using var db = _connectionFactory.CreateConnection();
         var item = (await db.QueryAsync<Client>(@"
 SELECT * FROM Clients 
 WHERE Id = @id",
