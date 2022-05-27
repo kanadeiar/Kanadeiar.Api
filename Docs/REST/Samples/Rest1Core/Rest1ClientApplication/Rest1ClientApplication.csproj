@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
     <ProjectReference Include="..\Rest1ClientDomain\Rest1ClientDomain.csproj" />
   </ItemGroup>

@@ -81,6 +81,25 @@ app.UseHsts();
 
 [Интрукции по базе данных](./Database.md).
 
+### Использование ORM Dapper
+
+Добавить пакеты в Application:
+```sharp
+dotnet add package Dapper
+dotnet add package Microsoft.Data.SqlClient
+```
+
+Пример использования:
+
+```sharp
+var connectionString = _configuration.GetValue<string>("ConnectionString");
+using var db = new SqlConnection(connectionString);
+var item = (await db.QueryAsync<Client>(@"
+SELECT * FROM Clients 
+WHERE Id = @id",
+new { request.Id })).FirstOrDefault();
+```
+
 ### Репозитории
 
 Добавление слабосвязаности между бизнес-логикой и базой данных.
