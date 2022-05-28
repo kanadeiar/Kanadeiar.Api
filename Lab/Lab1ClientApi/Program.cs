@@ -7,7 +7,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 
         services.AddMassTransit(x => 
         {
-            x.AddConsumer<ClientConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
+            x.AddConsumer<ClientQueryConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
 
             x.UsingRabbitMq((context, config) => 
             {

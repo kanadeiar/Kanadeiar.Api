@@ -19,21 +19,32 @@ await busControl.StartAsync(source.Token);
 try
 {
     Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
-    var client = busControl.CreateRequestClient<GetClientByIdQuery>();
+    var clientCountQuery = busControl.CreateRequestClient<GetClientCountQuery>();
+    var clientPagedQuery = busControl.CreateRequestClient<GetPagedClientQuery>();
+    var clientByIdQuery = busControl.CreateRequestClient<GetClientByIdQuery>();
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
-        var (ok, _) = await client.GetResponse<GetClientByIdQuery.IOk, GetClientByIdQuery.IError>(new GetClientByIdQuery(1));
+        var count = await clientCountQuery.GetResponse<GetClientCountQuery.IOk>(new GetClientCountQuery());
+        Console.WriteLine("Всего: {0} элементов", count.Message.Count);
+        var datas = await clientPagedQuery.GetResponse<GetPagedClientQuery.IOk>(new GetPagedClientQuery(0, 5));
+        Console.Write("Несколько: ");
+        foreach (var item in datas.Message.Clients)
+        {
+            Console.Write("{0} {1} ", item.Id, item.LastName);
+        }
+        Console.WriteLine();
+        var (ok, _) = await clientByIdQuery.GetResponse<GetClientByIdQuery.IOk, GetClientByIdQuery.INotFound>(new GetClientByIdQuery(1));
         if (ok.IsCompletedSuccessfully)
         {
             var item = (await ok).Message.Client;
-            Console.WriteLine($"Ответ: {item.Id} {item.FirstName} {item.Patronymic}");
+            Console.WriteLine("Ответ: {0} {1} {2}", item.Id, item.FirstName, item.Patronymic);
         }
         else
         {
             Console.WriteLine("Элемент не найден");
         }
 
-        Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода");
+        Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
     }
 }
 finally

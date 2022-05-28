@@ -14,8 +14,7 @@ public class GetClientByIdQuery : IRequest<Client?>
         Client Client { get; set; }
     }
 
-    public interface IError
+    public interface INotFound
     {
-        string Message { get; set; }
     }
 }
