@@ -1,9 +1,12 @@
-﻿global using FluentValidation;
+﻿global using Dapper;
+global using Dapper.Logging;
+global using FluentValidation;
 global using FluentValidation.AspNetCore;
 global using Kanadeiar.Api.Repositories;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
 global using Rest1Application.Dto;
 global using Rest1ClientApplication.Interfaces.Repositories;
 global using Rest1ClientDomain.Entities;

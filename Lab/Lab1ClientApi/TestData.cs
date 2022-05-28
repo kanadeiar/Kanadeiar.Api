@@ -1,8 +1,5 @@
-﻿namespace RabbitMq1ClientApi;
+﻿namespace Lab1ClientApi;
 
-/// <summary>
-/// Заполнение тестовыми данными
-/// </summary>
 public class TestData : IKndTestData
 {
     private class InternalData
@@ -28,12 +25,6 @@ public class TestData : IKndTestData
         }
     }
 
-    /// <summary>
-    /// Заполнение тестовыми данными
-    /// </summary>
-    /// <param name="provider"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentNullException"></exception>
     public async Task SeedTestData(IServiceProvider provider)
     {
         var logger = provider.GetRequiredService<ILogger<TestData>>();

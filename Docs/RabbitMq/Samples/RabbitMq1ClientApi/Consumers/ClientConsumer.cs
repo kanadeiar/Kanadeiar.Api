@@ -1,9 +1,4 @@
-﻿using MediatR;
-using RabbitMq1ClientApplication.Contracts.Queries;
-using RabbitMq1Integrations.Client.Requests;
-using RabbitMq1Integrations.Client.Responses;
-
-namespace RabbitMq1ClientApi.Consumers;
+﻿namespace RabbitMq1ClientApi.Consumers;
 
 public class ClientConsumer : IConsumer<IGetClientByIdQuery>
 {

@@ -1,12 +1,9 @@
-﻿using RabbitMq1Integrations.Client.Requests;
-using RabbitMq1Integrations.Client.Responses;
-
-Console.WriteLine("Ожидание старта сервисов");
+﻿Console.WriteLine("Ожидание старта сервисов");
 await Task.Delay(3000);
 
 var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
 {
-    config.Host("localhost", "/", h => {
+    config.Host("localhost", h => {
         h.Username("guest");
         h.Password("guest");
     });
@@ -20,7 +17,7 @@ var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
 var source = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 await busControl.StartAsync(source.Token);
 
-var keyCount = 0;
+//var keyCount = 0;
 try
 {
     Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");

@@ -81,30 +81,6 @@ app.UseHsts();
 
 [Интрукции по базе данных](./Database.md).
 
-### Использование ORM Dapper
-
-Добавить пакеты в Application:
-```sharp
-dotnet add package Dapper
-dotnet add package Dapper.Logging
-dotnet add package Microsoft.Data.SqlClient
-```
-
-Зарегистрировать в сервисах приложения:
-```sharp
-builder.Services.AddDbConnectionFactory(provider => new SqlConnection(builder.Configuration.GetValue<string>("ConnectionString")));
-```
-
-Пример использования:
-
-```sharp
-using var db = _connectionFactory.CreateConnection();
-var item = (await db.QueryAsync<Client>(@"
-SELECT * FROM Clients 
-WHERE Id = @id",
-new { request.Id })).FirstOrDefault();
-```
-
 ### Репозитории
 
 Добавление слабосвязаности между бизнес-логикой и базой данных.
@@ -119,6 +95,22 @@ dotnet add package Kanadeiar.Api
 ```
 
 Остальные инструкции смотреть в инструкциях библиотеки.
+
+### Использование ORM Dapper
+
+Добавить пакеты в Application:
+```sharp
+dotnet add package Dapper
+dotnet add package Dapper.Logging
+dotnet add package Microsoft.Data.SqlClient
+```
+Создать специальный репозиторий для работы с использованием ORM Dapper
+
+Зарегистрировать в сервисах приложения:
+```sharp
+builder.Services.AddDbConnectionFactory(provider => new SqlConnection(builder.Configuration.GetValue<string>("ConnectionString")));
+builder.Services.AddScoped<IClientRepository, ClientDapperRepository>();
+```
 
 ### Начальные тестовые данные
 

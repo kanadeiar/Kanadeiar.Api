@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RabbitMq1Infrastructure\RabbitMq1Integrations\RabbitMq1Integrations.csproj" />
+    <ProjectReference Include="..\Lab1Infrastructure\Lab1ClientInfrastructure\Lab1ClientInfrastructure.csproj" />
   </ItemGroup>
 
 </Project>

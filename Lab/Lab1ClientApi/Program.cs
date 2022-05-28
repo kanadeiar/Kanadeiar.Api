@@ -7,19 +7,17 @@ IHost host = Host.CreateDefaultBuilder(args)
 
         services.AddMassTransit(x => 
         {
-            x.AddConsumer<GetClientConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
             x.AddConsumer<ClientConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
 
-            x.UsingRabbitMq((context, config) =>
+            x.UsingRabbitMq((context, config) => 
             {
                 config.Host("localhost", h => {
                     h.Username("guest");
                     h.Password("guest");
                 });
-                config.ReceiveEndpoint("RabbitMq1ClientApi", e => 
+                config.ReceiveEndpoint("Lab1ClientApi", e =>
                 {
                     e.UseInMemoryOutbox();
-                    e.Consumer<ClientToCreateConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
                 });
                 config.ConfigureEndpoints(context);
             });

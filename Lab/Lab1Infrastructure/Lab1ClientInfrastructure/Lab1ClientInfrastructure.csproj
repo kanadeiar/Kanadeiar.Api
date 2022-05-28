@@ -1,18 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RabbitMq1Infrastructure\RabbitMq1Integrations\RabbitMq1Integrations.csproj" />
+    <ProjectReference Include="..\..\Lab1Core\Lab1ClientApplication\Lab1ClientApplication.csproj" />
   </ItemGroup>
 
 </Project>
