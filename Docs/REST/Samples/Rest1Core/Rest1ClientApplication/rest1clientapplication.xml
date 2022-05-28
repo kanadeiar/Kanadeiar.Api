@@ -115,7 +115,7 @@
             Обработчик команда добавления и обновления элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler})">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Dapper.Logging.IDbConnectionFactory,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler})">
             <summary> </summary>
         </member>
         <member name="M:Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler.Handle(Rest1ClientApplication.Contracts.Commands.AddUpdateClientCommand,System.Threading.CancellationToken)">
@@ -131,7 +131,7 @@
             Обработчик удаления элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler})">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Dapper.Logging.IDbConnectionFactory,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.AddUpdateClientCommandHandler})">
             <summary> </summary>
         </member>
         <member name="M:Rest1ClientApplication.Implementations.Commands.DeleteClientCommandHandler.Handle(Rest1ClientApplication.Contracts.Commands.DeleteClientCommand,System.Threading.CancellationToken)">
@@ -147,7 +147,7 @@
             Обработчик изменения элемента
             </summary>
         </member>
-        <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler})">
+        <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler.#ctor(Rest1ClientApplication.Interfaces.Repositories.IClientRepository,Dapper.Logging.IDbConnectionFactory,Microsoft.Extensions.Logging.ILogger{Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler})">
             <summary> </summary>
         </member>
         <member name="M:Rest1ClientApplication.Implementations.Commands.PatchClientCommandHandler.Handle(Rest1ClientApplication.Contracts.Commands.PatchClientCommand,System.Threading.CancellationToken)">
