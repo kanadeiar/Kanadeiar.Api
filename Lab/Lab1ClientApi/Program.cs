@@ -19,6 +19,7 @@ IHost host = Host.CreateDefaultBuilder(args)
                 {
                     e.UseInMemoryOutbox();
                 });
+
                 config.ConfigureEndpoints(context);
             });
         });

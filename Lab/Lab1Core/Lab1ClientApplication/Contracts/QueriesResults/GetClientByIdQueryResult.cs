@@ -9,3 +9,7 @@ public class GetClientByIdQueryResult
         Client = client;
     }
 }
+
+public class GetClientByIdQueryNotFound
+{
+}

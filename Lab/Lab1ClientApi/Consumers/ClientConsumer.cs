@@ -14,5 +14,9 @@ public class ClientConsumer : IConsumer<GetClientByIdQuery>
         {
             await context.RespondAsync(result);
         }
+        else
+        {
+            await context.RespondAsync(new GetClientByIdQueryNotFound());
+        }
     }
 }

@@ -19,10 +19,20 @@ await busControl.StartAsync(source.Token);
 try
 {
     Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
+    var client = busControl.CreateRequestClient<GetClientByIdQuery>();
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
+        var (response, responseNotFound) = await client.GetResponse<GetClientByIdQueryResult, GetClientByIdQueryNotFound>(new GetClientByIdQuery(1999));
+        if (response.IsCompletedSuccessfully)
+        {
+            var value = (await response).Message.Client;
+            Console.WriteLine($"Ответ: {value.Id} {value.FirstName} {value.Patronymic}");
+        }
+        else
+        {
+            Console.WriteLine($"Элемент не найден");
+        }
 
-        //Console.WriteLine($"Ответ: {response.Message.Client.Id} {response.Message.Client.FirstName}");
         Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода");
     }
 }
