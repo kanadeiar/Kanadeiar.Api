@@ -22,15 +22,15 @@ try
     var client = busControl.CreateRequestClient<GetClientByIdQuery>();
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
-        var (response, responseNotFound) = await client.GetResponse<GetClientByIdQueryResult, GetClientByIdQueryNotFound>(new GetClientByIdQuery(1999));
-        if (response.IsCompletedSuccessfully)
+        var (ok, _) = await client.GetResponse<GetClientByIdQuery.IOk, GetClientByIdQuery.IError>(new GetClientByIdQuery(1));
+        if (ok.IsCompletedSuccessfully)
         {
-            var value = (await response).Message.Client;
-            Console.WriteLine($"Ответ: {value.Id} {value.FirstName} {value.Patronymic}");
+            var item = (await ok).Message.Client;
+            Console.WriteLine($"Ответ: {item.Id} {item.FirstName} {item.Patronymic}");
         }
         else
         {
-            Console.WriteLine($"Элемент не найден");
+            Console.WriteLine("Элемент не найден");
         }
 
         Console.WriteLine($"- Нажмите кнопку для отправки запроса получателю или Q для выхода");

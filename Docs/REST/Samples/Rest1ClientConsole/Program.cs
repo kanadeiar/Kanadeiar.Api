@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Нажмите кнопку для начала:> ");
+﻿Console.WriteLine("Нажмите кнопку для начала тестирования:> ");
 Console.ReadKey(true);
 
 HttpClient httpClient = new HttpClient();

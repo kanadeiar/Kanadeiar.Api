@@ -10,13 +10,13 @@ public class ClientConsumer : IConsumer<GetClientByIdQuery>
 
     public async Task Consume(ConsumeContext<GetClientByIdQuery> context)
     {
-        if (await _mediator.Send(context.Message) is GetClientByIdQueryResult result)
+        if (await _mediator.Send(context.Message) is Client entity)
         {
-            await context.RespondAsync(result);
+            await context.RespondAsync<GetClientByIdQuery.IOk>(new { Client = entity });
         }
         else
         {
-            await context.RespondAsync(new GetClientByIdQueryNotFound());
-        }
+            await context.RespondAsync<GetClientByIdQuery.IError>(new { });
+        }        
     }
 }
