@@ -26,6 +26,7 @@ while (true)
         {
             Console.WriteLine("Элемент не найден");
         }
+
         var newclient = new Client { UserId = 1, LastName = "Тестов", FirstName = "Тест", Patronymic = "Тестович", BirthDay = DateTime.Today.AddYears(-20), RowVersion = Array.Empty<byte>() };
         var id = await client.AddAsync(newclient);
         Console.WriteLine("Клиент добавлен, идентификатор: {0}", id);

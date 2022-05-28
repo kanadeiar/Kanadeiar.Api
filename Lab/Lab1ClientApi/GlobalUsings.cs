@@ -2,6 +2,7 @@
 global using Lab1ClientApi;
 global using Lab1ClientApi.BackgroundServices;
 global using Lab1ClientApi.Consumers;
+global using Lab1ClientApplication.Contracts.Commands;
 global using Lab1ClientApplication.Contracts.Queries;
 global using Lab1ClientApplication.Implementations.Queries;
 global using Lab1ClientDomain.Entites;
