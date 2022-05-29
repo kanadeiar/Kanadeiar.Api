@@ -15,4 +15,4 @@
 
 [gRPC API](./Docs/gRPC/Index.md)
 
-[RabbitMQ API](./Docs/RabbitMq/Index.md)
+[MassTransit + RabbitMQ API](./Docs/MT/Index.md)

@@ -1,5 +1,8 @@
 ﻿namespace Rest1ClientConsole.Interfaces;
 
+/// <summary>
+/// REST клиент
+/// </summary>
 public interface IClientApiClient
 {
     Task<IEnumerable<Client>> GetPagedAsync(int offset, int count);

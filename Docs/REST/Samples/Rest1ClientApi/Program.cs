@@ -1,6 +1,3 @@
-using Dapper.Logging;
-using Microsoft.Data.SqlClient;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.MyDatabase(builder.Configuration);

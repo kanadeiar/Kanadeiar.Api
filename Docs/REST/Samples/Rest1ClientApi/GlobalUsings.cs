@@ -1,9 +1,11 @@
-﻿global using Kanadeiar.Api.Filters;
+﻿global using Dapper.Logging;
+global using Kanadeiar.Api.Filters;
 global using Kanadeiar.Api.Interfaces;
 global using Kanadeiar.Api.Registrations;
 global using MediatR;
 global using Microsoft.AspNetCore.JsonPatch;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Data.SqlClient;
 global using Microsoft.EntityFrameworkCore;
 global using Rest1Application.Dto;
 global using Rest1ClientApi;
