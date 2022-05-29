@@ -13,11 +13,7 @@ public class ClientCommandConsumer : IConsumer<AddClientCommand>, IConsumer<Upda
         var result = await _mediator.Send(context.Message);
         if (result > 0)
         {
-            await context.RespondAsync<AddClientCommand.IOk>(new { Id = result });
-        }
-        else
-        {
-            await context.RespondAsync<AddClientCommand.IError>(new { });
+            await context.Publish<AddClientCommand.IClientAdded>(new { Client = context.Message.Client });
         }
     }
 
@@ -26,11 +22,7 @@ public class ClientCommandConsumer : IConsumer<AddClientCommand>, IConsumer<Upda
         var result = await _mediator.Send(context.Message);
         if (result)
         {
-            await context.RespondAsync<UpdateClientCommand.IOk>(new { Success = result });
-        }
-        else
-        {
-            await context.RespondAsync<UpdateClientCommand.IError>(new { });
+            await context.Publish<UpdateClientCommand.IClientUpdated>(new { Id = context.Message.Id, Client = context.Message.Client });
         }
     }
 
@@ -39,11 +31,7 @@ public class ClientCommandConsumer : IConsumer<AddClientCommand>, IConsumer<Upda
         var result = await _mediator.Send(context.Message);
         if (result)
         {
-            await context.RespondAsync<DeleteClientCommand.IOk>(new { Success = result });
-        }
-        else
-        {
-            await context.RespondAsync<DeleteClientCommand.IError>(new { });
+            await context.Publish<DeleteClientCommand.IClientDeleted>(new { Id = context.Message.Id });
         }
     }
 }

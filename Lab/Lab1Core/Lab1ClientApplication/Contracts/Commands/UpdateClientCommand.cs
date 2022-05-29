@@ -11,11 +11,9 @@ public class UpdateClientCommand : IRequest<bool>
         Client = client;
     }
 
-    public interface IOk
+    public interface IClientUpdated
     {
-        public bool Success { get; set; }
+        public int Id { get; set; }
+        Client Client { get; set; }
     }
-
-    public interface IError
-    { }
 }

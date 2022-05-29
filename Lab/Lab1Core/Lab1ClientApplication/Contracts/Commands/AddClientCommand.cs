@@ -9,11 +9,8 @@ public class AddClientCommand : IRequest<int>
         Client = client;
     }
 
-    public interface IOk
+    public interface IClientAdded
     {
-        public int Id { get; set; }
+        Client Client { get; set; }
     }
-
-    public interface IError
-    { }
 }

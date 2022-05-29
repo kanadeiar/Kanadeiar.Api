@@ -4,7 +4,6 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.MyDatabase(hostContext.Configuration);
         services.MyAddRepositories();
         services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(GetClientByIdQueryHandler).Assembly);
-
         services.AddMassTransit(x => 
         {
             x.AddConsumer<ClientQueryConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
@@ -19,12 +18,12 @@ IHost host = Host.CreateDefaultBuilder(args)
                 config.ReceiveEndpoint("Lab1ClientApi", e =>
                 {
                     e.UseInMemoryOutbox();
+                    e.ConfigureConsumer<ClientCommandConsumer>(context);
                 });
 
                 config.ConfigureEndpoints(context);
             });
         });
-
         services.AddTransient<TestData>();
         services.AddHostedService<TestDataBackgroundService>();
     })

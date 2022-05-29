@@ -9,11 +9,8 @@ public class DeleteClientCommand : IRequest<bool>
         Id = id;
     }
 
-    public interface IOk
+    public interface IClientDeleted
     {
-        public bool Success { get; set; }
+        public int Id { get; set; }
     }
-
-    public interface IError
-    { }
 }
