@@ -33,6 +33,12 @@ public class ClientRepository : IClientRepository
         }
     }
 
+    public Task<IEnumerable<Client>> GetPaged(int offset, int count, CancellationToken cancellationToken)
+    {
+        var elements = _clients.OrderBy(_ => _.Id).Skip(offset).Take(count);
+        return Task.FromResult(elements);
+    }
+
     public Task<Client?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         return Task.FromResult(_clients.FirstOrDefault(x => x.Id == id));

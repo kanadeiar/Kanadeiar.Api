@@ -3,12 +3,34 @@
 /// <summary>
 /// Потребитель запросов клиентов
 /// </summary>
-public class ClientQueryConsumer : IConsumer<GetClientByIdQuery>
+public class ClientQueryConsumer : IConsumer<GetPagedClientQuery>, IConsumer<GetClientCountQuery>, IConsumer<GetClientByIdQuery> 
 {
     private readonly IMediator _mediator;
     public ClientQueryConsumer(IMediator mediator)
     {
         _mediator = mediator;
+    }
+
+    /// <summary>
+    /// Получение элементов с постраничной разбивкой
+    /// </summary>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    public async Task Consume(ConsumeContext<GetPagedClientQuery> context)
+    {
+        var items = await _mediator.Send(context.Message);
+        await context.RespondAsync<GetPagedClientQuery.IOk>(new { Clients = items });
+    }
+
+    /// <summary>
+    /// Получение количества элементов
+    /// </summary>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    public async Task Consume(ConsumeContext<GetClientCountQuery> context)
+    {
+        var count = await _mediator.Send(context.Message);
+        await context.RespondAsync<GetClientCountQuery.IOk>(new { Count = count });
     }
 
     /// <summary>

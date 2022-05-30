@@ -15,13 +15,22 @@ public interface IKndRepositoryAsync<T, in TId> where T : class, IKndEntity<TId>
     IQueryable<T> Query { get; }
 
     /// <summary>
-    /// Все сущности с пагинацией
+    /// Асинхронная коллекция всех сущностей с пагинацией
     /// </summary>
     /// <param name="offset">количество пропускаемых элементов</param>
     /// <param name="count">количество захватываемых</param>
     /// <param name="cancellationToken"></param>
-    /// <returns></returns>
+    /// <returns>Асинхронная коллекция</returns>
     IAsyncEnumerable<T> GetPagedAsync(int offset, int count, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Обычная коллекция всех сущностей с пагинацией
+    /// </summary>
+    /// <param name="offset">количество элементов пропускаемых</param>
+    /// <param name="count">количество захватываемых</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Обычная коллекция</returns>
+    Task<IEnumerable<T>> GetPaged(int offset, int count, CancellationToken cancellationToken);
 
     /// <summary>
     /// Получить один элемент

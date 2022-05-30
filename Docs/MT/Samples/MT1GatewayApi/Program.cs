@@ -4,9 +4,8 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors();
 
-builder.Services.KndAddSwagger("MT1Gateway", "v1");
+builder.Services.KndAddSwagger("MT1Gateway", "v1", domainFilenames: new[] { "mt1gateway.xml" });
 builder.Services.KndAddMapster();
-
 
 builder.Services.AddMassTransit(x =>
 {

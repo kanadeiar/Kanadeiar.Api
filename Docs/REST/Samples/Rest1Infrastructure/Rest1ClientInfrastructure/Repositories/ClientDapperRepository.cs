@@ -41,6 +41,17 @@ OFFSET @offset ROWS FETCH NEXT @count ROWS ONLY",
         }
     }
 
+    public async Task<IEnumerable<Client>> GetPaged(int offset, int count, CancellationToken cancellationToken)
+    {
+        using var db = _connectionFactory.CreateConnection();
+        var items = await db.QueryAsync<Client>(@"
+SELECT * FROM Clients
+ORDER BY Id
+OFFSET @offset ROWS FETCH NEXT @count ROWS ONLY",
+        new { offset = offset, count = count });
+        return items;
+    }
+
     public async Task<Client?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         using var db = _connectionFactory.CreateConnection();

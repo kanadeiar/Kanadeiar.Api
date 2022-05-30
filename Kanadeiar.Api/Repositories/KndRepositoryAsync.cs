@@ -34,6 +34,12 @@ public class KndRepositoryAsync<T, TId> : IKndRepositoryAsync<T, TId> where T : 
         }
     }
 
+    public async Task<IEnumerable<T>> GetPaged(int offset, int count, CancellationToken cancellationToken)
+    {
+        var query = _context.Set<T>().OrderBy(_ => _.Id).Skip(offset).Take(count).AsNoTracking();
+        return await query.ToArrayAsync();
+    }
+
     public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         return await _context.Set<T>().FindAsync(new object[] { id }, cancellationToken);
