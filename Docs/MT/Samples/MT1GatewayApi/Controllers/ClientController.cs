@@ -3,7 +3,7 @@
 /// <summary>
 /// Клиенты
 /// </summary>
-[Route("api/[controller]")]
+[Route("client")]
 [ApiController]
 public class ClientController : ControllerBase
 {

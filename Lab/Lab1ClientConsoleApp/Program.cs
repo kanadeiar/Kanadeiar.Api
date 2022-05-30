@@ -1,6 +1,4 @@
-﻿using Lab1ClientConsoleApp;
-
-Console.WriteLine("Ожидание старта сервисов");
+﻿Console.WriteLine("Ожидание старта сервисов");
 await Task.Delay(3000);
 
 var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
@@ -21,7 +19,8 @@ await busControl.StartAsync(source.Token);
 var clientQueryRequest = new ClientQueryRequest(busControl);
 
 try
-{    Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
+{    
+    Console.WriteLine("- Нажмите кнопку для отправки запроса получателю или Q для выхода");
 
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
@@ -37,7 +36,7 @@ try
         var itemById = await clientQueryRequest.GetClientByIdQuery(1);
         if (itemById is { })
         {
-            Console.WriteLine("Ответ: {0} {1} {2}", itemById.Id, itemById.FirstName, itemById.Patronymic);
+            Console.WriteLine("Один элемент: {0} {1} {2}", itemById.Id, itemById.FirstName, itemById.Patronymic);
         }
         else
         {

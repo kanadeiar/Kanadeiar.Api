@@ -1,7 +1,7 @@
-﻿namespace Rest1ClientConsoleApp.Interfaces;
+﻿namespace MT1ConsoleApp.Interfaces;
 
 /// <summary>
-/// REST клиент
+/// HTTP REST клиент
 /// </summary>
 public interface IClientApiClient
 {

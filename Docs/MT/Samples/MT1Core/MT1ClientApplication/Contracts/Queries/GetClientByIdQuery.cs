@@ -31,7 +31,7 @@ public class GetClientByIdQuery : IRequest<Client?>
     }
 
     /// <summary>
-    /// Неудачный результат
+    /// Элемент не найден
     /// </summary>
     public interface INotFound
     {

@@ -100,17 +100,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MT1Core", "MT1Core", "{B9A8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MT1Infra", "MT1Infra", "{81200588-EEB4-4185-8A84-5D37E039BD92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT1ClientDomain", "Docs\MT\Samples\MT1Core\MT1ClientDomain\MT1ClientDomain.csproj", "{9AB4532B-D54D-4395-8186-4FCFEC5BA91F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1ClientDomain", "Docs\MT\Samples\MT1Core\MT1ClientDomain\MT1ClientDomain.csproj", "{9AB4532B-D54D-4395-8186-4FCFEC5BA91F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT1ClientApplication", "Docs\MT\Samples\MT1Core\MT1ClientApplication\MT1ClientApplication.csproj", "{DD4A0AD3-D5AE-472A-BCE6-F1D3F78E2C97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1ClientApplication", "Docs\MT\Samples\MT1Core\MT1ClientApplication\MT1ClientApplication.csproj", "{DD4A0AD3-D5AE-472A-BCE6-F1D3F78E2C97}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1ClientInfra", "Docs\MT\Samples\MT1Infra\MT1ClientInfra\MT1ClientInfra.csproj", "{17FA16D2-CD0D-4F9A-96A1-57FD1A94948A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT1ClientApi", "Docs\MT\Samples\MT1ClientApi\MT1ClientApi.csproj", "{AD80FA39-8E5C-4281-B818-5B4DE40155DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1ClientApi", "Docs\MT\Samples\MT1ClientApi\MT1ClientApi.csproj", "{AD80FA39-8E5C-4281-B818-5B4DE40155DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT1GatewayInfra", "Docs\MT\Samples\MT1Infra\MT1GatewayInfra\MT1GatewayInfra.csproj", "{607A3406-3B24-4402-8601-C2316019DA1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1GatewayInfra", "Docs\MT\Samples\MT1Infra\MT1GatewayInfra\MT1GatewayInfra.csproj", "{607A3406-3B24-4402-8601-C2316019DA1B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1GatewayApi", "Docs\MT\Samples\MT1GatewayApi\MT1GatewayApi.csproj", "{9D61E18B-E3EA-424E-949A-0AE6C3E1B688}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT1ConsoleApp", "Docs\MT\Samples\MT1ConsoleApp\MT1ConsoleApp.csproj", "{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -304,6 +306,14 @@ Global
 		{9D61E18B-E3EA-424E-949A-0AE6C3E1B688}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D61E18B-E3EA-424E-949A-0AE6C3E1B688}.Release|x86.ActiveCfg = Release|Any CPU
 		{9D61E18B-E3EA-424E-949A-0AE6C3E1B688}.Release|x86.Build.0 = Release|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -348,6 +358,7 @@ Global
 		{AD80FA39-8E5C-4281-B818-5B4DE40155DA} = {4FAC74E9-DA8A-4165-8C91-69219B32222A}
 		{607A3406-3B24-4402-8601-C2316019DA1B} = {81200588-EEB4-4185-8A84-5D37E039BD92}
 		{9D61E18B-E3EA-424E-949A-0AE6C3E1B688} = {4FAC74E9-DA8A-4165-8C91-69219B32222A}
+		{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25} = {4FAC74E9-DA8A-4165-8C91-69219B32222A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7B7EDE6-642D-44D6-8288-482121084D55}
