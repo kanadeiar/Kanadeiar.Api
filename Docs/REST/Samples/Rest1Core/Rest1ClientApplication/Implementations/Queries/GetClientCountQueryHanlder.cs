@@ -6,7 +6,6 @@
 public class GetClientCountQueryHanlder : IRequestHandler<GetClientCountQuery, int>
 {
     private readonly IClientRepository _repository;
-
     public GetClientCountQueryHanlder(IClientRepository repository)
     {
         _repository = repository;
@@ -18,9 +17,9 @@ public class GetClientCountQueryHanlder : IRequestHandler<GetClientCountQuery, i
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Количество элементов</returns>
-    public Task<int> Handle(GetClientCountQuery request, CancellationToken cancellationToken)
+    public async Task<int> Handle(GetClientCountQuery request, CancellationToken cancellationToken)
     {
         var count = _repository.Query.Count();
-        return Task.FromResult(count);
+        return count;
     }
 }

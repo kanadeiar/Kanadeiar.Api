@@ -7,6 +7,7 @@ public class DeleteClientCommandHandler : IRequestHandler<DeleteClientCommand, b
 {
     private readonly IClientRepository _repository;
     private readonly ILogger<AddUpdateClientCommandHandler> _logger;
+
     /// <summary> </summary>
     public DeleteClientCommandHandler(IClientRepository repository, ILogger<AddUpdateClientCommandHandler> logger)
     {

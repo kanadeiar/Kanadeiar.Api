@@ -4,13 +4,12 @@
 
 ## Напоминалки:
 
-Не забывать включить Api анализатор в файле cproj в раздел "PropertyGroup":
+! Не забывать включить Api анализатор в файле cproj в раздел "PropertyGroup":
 ```xml
 <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
 ```
 
-Не забывать регистрировать используемые в конечных точках контроллеров сервисы в зависимостях
-
+! Не забывать регистрировать используемые в конечных точках контроллеров сервисы в зависимостях
 
 ## Главное
 
@@ -20,7 +19,7 @@
 dotnet new web
 ```
 
-1. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), бизнес-логика и общее - в Application (ссылки на Kanadeiar.Api и Domain), База данных и специфическое - в Infrastructure (ссылки на Application), детальная реализация - в Api (ссылки на Infrastructure)
+0. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), бизнес-логика и общее - в Application (ссылки на Kanadeiar.Api и Domain), База данных и специфическое - в Infrastructure (ссылки на Application), детальная реализация - в Api (ссылки на Infrastructure)
 
 1. В пустой проект в файл Program зарегистрировать необходимые сервисы:
 
@@ -78,7 +77,7 @@ app.UseHttpsRedirection(); //перед app.UseRouting()
 app.UseHsts();
 ```
 
-### База данных EF
+### База данных на ORM Entity Framework
 
 [Интрукции по базе данных](./Database.md).
 
@@ -96,6 +95,22 @@ dotnet add package Kanadeiar.Api
 ```
 
 Остальные инструкции смотреть в инструкциях библиотеки.
+
+### Использование ORM Dapper
+
+Добавить пакеты в Application:
+```sharp
+dotnet add package Dapper
+dotnet add package Dapper.Logging
+dotnet add package Microsoft.Data.SqlClient
+```
+Создать специальный репозиторий для работы с использованием ORM Dapper
+
+Зарегистрировать в сервисах приложения:
+```sharp
+builder.Services.AddDbConnectionFactory(provider => new SqlConnection(builder.Configuration.GetValue<string>("ConnectionString")));
+builder.Services.AddScoped<IClientRepository, ClientDapperRepository>();
+```
 
 ### Начальные тестовые данные
 

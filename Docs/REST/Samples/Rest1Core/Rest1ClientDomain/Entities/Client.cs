@@ -1,6 +1,4 @@
-﻿using Rest1ClientDomain.Entities.Base;
-
-namespace Rest1ClientDomain.Entities;
+﻿namespace Rest1ClientDomain.Entities;
 
 /// <summary>
 /// Клиент

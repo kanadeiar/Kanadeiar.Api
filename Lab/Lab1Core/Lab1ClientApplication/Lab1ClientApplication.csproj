@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Kanadeiar.Api\Kanadeiar.Api.csproj" />
+    <ProjectReference Include="..\Lab1ClientDomain\Lab1ClientDomain.csproj" />
+  </ItemGroup>
+
+</Project>

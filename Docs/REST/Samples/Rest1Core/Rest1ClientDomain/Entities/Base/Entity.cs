@@ -1,11 +1,9 @@
-﻿using Kanadeiar.Core.Domain.Base;
-
-namespace Rest1ClientDomain.Entities.Base;
+﻿namespace Rest1ClientDomain.Entities.Base;
 
 /// <summary>
 /// Базовая сущность
 /// </summary>
-abstract public class Entity : IKndEntity<int>
+public abstract class Entity : IKndEntity<int>
 {
     /// <summary>
     /// Идентификатор

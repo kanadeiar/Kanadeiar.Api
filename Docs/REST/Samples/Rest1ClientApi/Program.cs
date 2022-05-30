@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.MyDatabase(builder.Configuration);
+builder.Services.AddDbConnectionFactory(provider => new SqlConnection(builder.Configuration.GetValue<string>("ConnectionString")));
 builder.Services.AddTransient<TestData>();
 
 builder.Services.AddControllers().AddNewtonsoftJson();

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
-
-namespace Rest1ClientApplication.Contracts.Commands;
+﻿namespace Rest1ClientApplication.Contracts.Commands;
 
 /// <summary>
 /// Изменить элемент

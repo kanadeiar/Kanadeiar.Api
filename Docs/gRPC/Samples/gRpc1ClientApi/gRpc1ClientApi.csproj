@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Grpc.AspNetCore" Version="2.45.0" />
+	<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+    <Protobuf Include="Protos\client.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\gRpc1Infrastructure\gRpc1ClientInfrastructure\gRpc1ClientInfrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

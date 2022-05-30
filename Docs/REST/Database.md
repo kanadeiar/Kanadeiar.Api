@@ -1,6 +1,12 @@
-# База данных EF
+# База данных на ORM Entity Framework
 
 [Назад](./Index.md)
+
+Консоль:
+```sharp
+dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef
+```
 
 Добавить пакеты в приложение:
 ```sharp
@@ -31,7 +37,7 @@ public class ClientContext : DbContext
 services.AddDbContext<ClientContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString"),
-        o => o.MigrationsAssembly("Rest1ClientInfrastructure")); 
+        o => o.MigrationsAssembly("RabbitMq1ClientInfrastructure")); 
 #if DEBUG
     options.EnableSensitiveDataLogging(); // писать в логи все сведения
 #endif

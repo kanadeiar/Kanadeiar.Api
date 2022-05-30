@@ -6,7 +6,6 @@
 public class GetPagedClientQueryHandler : IStreamRequestHandler<GetPagedClientQuery, ClientDto>
 {
     private readonly IClientRepository _repository;
-
     public GetPagedClientQueryHandler(IClientRepository repository)
     {
         _repository = repository;
@@ -20,9 +19,7 @@ public class GetPagedClientQueryHandler : IStreamRequestHandler<GetPagedClientQu
     /// <returns>Асинхронная коллекция</returns>
     public async IAsyncEnumerable<ClientDto> Handle(GetPagedClientQuery request, CancellationToken cancellationToken)
     {
-        var offset = request.Offset;
-        var count = request.Count;
-        await foreach (var item in _repository.GetPagedAsync(offset, count, cancellationToken))
+        await foreach (var item in _repository.GetPagedAsync(request.Offset, request.Count, cancellationToken))
         {
             yield return item.Adapt<ClientDto>();
         }

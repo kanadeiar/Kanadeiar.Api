@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "gRpc1ClientApi";
+
+package client;
+
+service ClientInfo {
+  rpc GetCount (google.protobuf.Empty) returns (CountRespose);
+  rpc GetPaged (PagedRequest) returns (PagedResponse);
+  rpc GetById (IdRequest) returns (ClientDto);
+  rpc Add (ClientDto) returns (AddedResponse);
+  rpc Update (ClientDto) returns (SuccessResponse);
+  rpc Delete (IdRequest) returns (SuccessResponse);
+}
+
+message CountRespose {
+  int32 Count = 1;
+}
+
+message PagedRequest {
+  int32 Offset = 1;
+  int32 Count = 2;
+}
+
+message PagedResponse {
+  repeated ClientDto Clients = 1;
+}
+
+message IdRequest {
+  int32 Id = 1;
+}
+
+message ClientDto {
+  int32 Id = 1;
+  int32 UserId = 2;
+  string LastName = 3;
+  string FirstName = 4;
+  string Patronymic = 5;
+  google.protobuf.Timestamp BirthDay = 6;
+  bytes RowVersion = 7;
+}
+
+message AddedResponse {
+  int32 Id = 1;
+}
+
+message SuccessResponse {
+  bool Success = 1;
+}
+

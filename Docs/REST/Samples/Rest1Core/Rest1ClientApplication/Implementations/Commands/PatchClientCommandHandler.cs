@@ -30,10 +30,10 @@ public class PatchClientCommandHandler : IRequestHandler<PatchClientCommand, boo
             var patch = request.Patch;
             patch.ApplyTo(item);
             await _repository.CommitAsync(cancellationToken);
-            _logger.LogInformation("Изменение новости с идентификатором Id: {0}", item.Id);
+            _logger.LogInformation("Изменение клиента с идентификатором Id: {0}", item.Id);
             return true;
         }
-        _logger.LogError("Не удалось изменить новость с идентификатором id: {0}", item?.Id);
+        _logger.LogError("Не удалось изменить клиента с идентификатором id: {0}", item?.Id);
         return false;
     }
 }

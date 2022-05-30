@@ -33,7 +33,8 @@ public static class ServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection MyAddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<IClientRepository, ClientRepository>();
+        services.AddScoped<IClientRepository, ClientDapperRepository>();
+        //services.AddScoped<IClientRepository, ClientRepository>();
 
         return services;
     }

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MT1GatewayInfra</name>
+    </assembly>
+    <members>
+        <member name="T:MT1GatewayInfra.Dtos.ClientDto">
+            <summary>
+            Просмотр и редактирование клиента
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.UserId">
+            <summary>
+            Идентификатор пользователя системы авторизации
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.Patronymic">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.BirthDay">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:MT1GatewayInfra.Dtos.ClientDto.RowVersion">
+            <summary> 
+            Маркер версии 
+            </summary>
+        </member>
+    </members>
+</doc>
