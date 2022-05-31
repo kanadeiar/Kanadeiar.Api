@@ -1,4 +1,4 @@
-﻿namespace MT1ClientApi.Consumers;
+﻿namespace MT1ClientApi.Consumers.Queries;
 
 /// <summary>
 /// Потребитель запросов получения количества элементов

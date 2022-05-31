@@ -20,9 +20,20 @@ public class AddClientCommand : IRequest<int>
     }
 
     /// <summary>
-    /// Уведомление о добавлении нового элемента
+    /// Успешный результат
     /// </summary>
-    public interface IClientAdded
+    public interface IOk
+    {
+        /// <summary>
+        /// Новый идентификатор элемента
+        /// </summary>
+        int Id { get; set; }
+    }
+
+    /// <summary>
+    /// Событие о добавлении нового элемента
+    /// </summary>
+    public interface IClientAddedEvent
     {
         Client Client { get; set; }
     }

@@ -29,6 +29,20 @@ try
             Console.WriteLine("Элемент не найден");
         }
 
+        var newclient = new Client { UserId = 1, LastName = "Тестов", FirstName = "Тест", Patronymic = "Тестович", BirthDay = DateTime.Today.AddYears(-20), RowVersion = Array.Empty<byte>() };
+        var newid = await client.AddAsync(newclient);
+        Console.WriteLine($"Добавлен элемент с новым ид: {newid}");
+        var updating = await client.GetByIdAsync(newid);
+        updating.FirstName = "Обновленное имя";
+        if (await client.UpdateAsync(updating))
+        {
+            Console.WriteLine($"Элемент обновлен");
+        }
+        if (await client.DeleteAsync(newid))
+        {
+            Console.WriteLine("Элемент успешно удален");
+        }
+
         Console.WriteLine("* Нажмите кнопку для отправки запроса получателю или Q для выхода");
     }
 }

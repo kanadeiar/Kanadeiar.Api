@@ -20,10 +20,21 @@ public class DeleteClientCommand : IRequest<bool>
     }
 
     /// <summary>
-    /// Уведомление о удалении элемента
+    /// Успешный результат
     /// </summary>
-    public interface IClientDeleted
+    public interface IOk
     {
-        public int Id { get; set; }
+        /// <summary>
+        /// Успешность
+        /// </summary>
+        bool Success { get; set; }
+    }
+
+    /// <summary>
+    /// Событие о удалении элемента
+    /// </summary>
+    public interface IClientDeletedEvent
+    {
+        int Id { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿namespace MT1ClientApi.Consumers;
+﻿namespace MT1ClientApi.Consumers.Queries;
 
 /// <summary>
 /// Потребитель запроса получения эелементов с костраничной разбивкой
 /// </summary>
-public class GetPagedClientQueryConsumer : IConsumer<GetPagedClientQuery> 
+public class GetPagedClientQueryConsumer : IConsumer<GetPagedClientQuery>
 {
     private readonly IMediator _mediator;
     public GetPagedClientQueryConsumer(IMediator mediator)

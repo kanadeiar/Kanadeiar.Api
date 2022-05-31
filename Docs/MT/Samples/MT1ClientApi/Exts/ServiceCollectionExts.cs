@@ -16,7 +16,10 @@ public static class ServiceCollectionExts
         {
             x.AddConsumer<GetPagedClientQueryConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
             x.AddConsumer<GetClientCountQueryConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
-
+            x.AddConsumer<GetClientByIdQueryConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
+            x.AddConsumer<AddClientCommandConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
+            x.AddConsumer<UpdateClientCommandConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
+            x.AddConsumer<DeleteClientCommandConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
             //x.AddConsumer<ClientCommandConsumer>(c => c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10))));
             x.UsingRabbitMq((context, config) =>
             {
