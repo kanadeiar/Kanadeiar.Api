@@ -10,6 +10,15 @@ try
 {
     while (Console.ReadKey(true).Key != ConsoleKey.Q)
     {
+        var count = await client.GetCountAsync();
+        Console.WriteLine($"Количетсво элементов: {count}");
+        var items = await client.GetPagedAsync(0, 5);
+        Console.Write("Несколько: ");
+        foreach (var item in items)
+        {
+            Console.Write("{0} {1} ", item.Id, item.LastName);
+        }
+        Console.WriteLine();
         try
         {
             var data = await client.GetByIdAsync(1);
