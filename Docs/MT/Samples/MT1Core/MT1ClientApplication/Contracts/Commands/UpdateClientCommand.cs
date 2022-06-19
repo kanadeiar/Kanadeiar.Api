@@ -26,11 +26,28 @@ public class UpdateClientCommand : IRequest<bool>
     }
 
     /// <summary>
-    /// Уведомление о обновлении элемента
+    /// Успешный результат
     /// </summary>
-    public interface IClientUpdated
+    public interface IOk
     {
-        public int Id { get; set; }
+        /// <summary>
+        /// Успешность
+        /// </summary>
+        bool Success { get; set; }
+    }
+
+    /// <summary>
+    /// Событие о обновлении элемента
+    /// </summary>
+    public interface IClientUpdatedEvent
+    {
+        /// <summary>
+        /// Идентификатор
+        /// </summary>
+        int Id { get; set; }
+        /// <summary>
+        /// Элемент
+        /// </summary>
         Client Client { get; set; }
     }
 }

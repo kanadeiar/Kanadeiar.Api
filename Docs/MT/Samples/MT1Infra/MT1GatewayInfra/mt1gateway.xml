@@ -44,5 +44,22 @@
             Маркер версии 
             </summary>
         </member>
+        <member name="M:MT1GatewayInfra.Registrations.ServiceCollectionExtensions.MyAddFluentValidation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация валидации
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MT1GatewayInfra.Validators.ClientDtoValidator">
+            <summary>
+            настройка валидации
+            </summary>
+        </member>
+        <member name="M:MT1GatewayInfra.Validators.ClientDtoValidator.#ctor">
+            <summary>
+            Настройка валидации
+            </summary>
+        </member>
     </members>
 </doc>

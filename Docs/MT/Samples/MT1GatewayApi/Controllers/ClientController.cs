@@ -1,4 +1,6 @@
-﻿namespace MT1Gateway.Controllers;
+﻿using MT1ClientDomain.Entites;
+
+namespace MT1Gateway.Controllers;
 
 /// <summary>
 /// Клиенты
@@ -8,9 +10,11 @@
 public class ClientController : ControllerBase
 {
     private readonly IBus _bus;
-    public ClientController(IBus bus)
+    private readonly IPublishEndpoint _endpoint;
+    public ClientController(IBus bus, IPublishEndpoint endpoint)
     {
         _bus = bus;
+        _endpoint = endpoint;
     }
 
     /// <summary>
@@ -69,5 +73,61 @@ public class ClientController : ControllerBase
             return Ok(item.Adapt<ClientDto>());
         }
         return NotFound();
+    }
+
+    /// <summary>
+    /// Добавить один элемент
+    /// </summary>
+    /// <param name="dto">данные элемента</param>
+    /// <returns>Новый идентификатор</returns>
+    [HttpPost]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [SwaggerOperation(Summary = "Добавить один элемент", Description = "Добавить данные по одному клиенту с получением его идентификатора")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Полученный идентификатор", Type = typeof(int))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
+    public async Task<IActionResult> Add([FromBody] ClientDto dto)
+    {
+        var client = _bus.CreateRequestClient<AddClientCommand>();
+        var ok = await client.GetResponse<AddClientCommand.IOk>(new AddClientCommand(dto.Adapt<Client>()));
+        return Ok(ok.Message.Id);
+    }
+
+    /// <summary>
+    /// Обновить один элемент
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <param name="dto">Новые данные</param>
+    /// <returns>Успешность</returns>
+    [HttpPut("{id}")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [SwaggerOperation(Summary = "Обновить один элемент", Description = "Обновить данные по одному клиенту по его идентификатору")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Успешность обновления", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найдено", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
+    public async Task<IActionResult> Update(int id, [FromBody] ClientDto dto)
+    {
+        var client = _bus.CreateRequestClient<UpdateClientCommand>();
+        var ok = await client.GetResponse<UpdateClientCommand.IOk>(new UpdateClientCommand(id, dto.Adapt<Client>()));
+        return Ok(ok.Message.Success);
+    }
+
+    /// <summary>
+    /// Удалить элемент
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <returns>Успешность</returns>
+    [HttpDelete("{id}")]
+    [SwaggerOperation(Summary = "Удалить элемент", Description = "Удалить элемент с определенным идентификатором")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Успешное удаление", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Не найдено", Type = typeof(bool))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Плохой запрос", Type = typeof(string))]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ошибка на сервере", Type = typeof(string))]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var client = _bus.CreateRequestClient<DeleteClientCommand>();
+        var ok = await client.GetResponse<DeleteClientCommand.IOk>(new DeleteClientCommand(id));
+        return Ok(ok.Message.Success);
     }
 }

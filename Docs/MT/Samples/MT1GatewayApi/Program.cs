@@ -6,6 +6,7 @@ builder.Services.AddCors();
 
 builder.Services.KndAddSwagger("MT1Gateway", "v1", domainFilenames: new[] { "mt1gateway.xml" });
 builder.Services.KndAddMapster();
+builder.Services.MyAddFluentValidation();
 
 builder.Services.AddMassTransit(x =>
 {
@@ -22,6 +23,19 @@ builder.Services.AddMassTransit(x =>
         });
         config.ConfigureEndpoints(context);
     });
+});
+
+builder.Host.UseSerilog((host, log) =>
+{
+    log.ReadFrom.Configuration(host.Configuration)
+        .MinimumLevel.Debug()
+#if DEBUG
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
+#else
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+#endif
+        .WriteTo.RollingFile($@".\Logs\MT1GatewayApi_[{DateTime.Now:yyyy-MM-dd}].log")
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}]{SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}");
 });
 
 var app = builder.Build();

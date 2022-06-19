@@ -24,7 +24,7 @@ builder.Host.UseSerilog((host, log) =>
 #else
         .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
 #endif
-        .WriteTo.RollingFile($@".\Logs\Osinit.Portal.News.Api_[{DateTime.Now:yyyy-MM-dd}].log")
+        .WriteTo.RollingFile($@".\Logs\Rest1ClientApi_[{DateTime.Now:yyyy-MM-dd}].log")
         .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}]{SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}");
 });
 

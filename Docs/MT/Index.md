@@ -2,7 +2,6 @@
 
 [Назад](./../../README.md)
 
-
 ## Главное
 
 Начальные шаги:
@@ -11,16 +10,38 @@
 dotnet new worker
 ```
 
+0. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), 
+бизнес-логика, контракты (с ответами) и реализация их и общее - в Application (ссылки на Kanadeiar.Api и Domain), 
+База данных, тестовые данные и специфическое - в Infra (ссылки на Application), 
+Транспортные модели и специфическое HTTP - в GatewayInfra (ссылки на Application),
+Реализация микросервиса - Api (ссылки на Infra),
+Реализация шлюза - GatewayApi (ссылки на GatewayInfra)
 
+### Микросервис
 
+1. Добавить потребители запросов, реализцющие этот интерфейс, где T - объявленные ранее контракты
 
+```sharp
+IConsumer<T>
+```
 
+2. Зарегистрировать потребители запросов используя метода-расширение:
 
+```sharp
+services.MyMassTransit();
+```
 
+3. Добавить базу данных
 
+4. Зарегать репозитории
 
+5. Добавить поддержку тестовых данных
 
-0. Основа приложения: сущности и интерфейсы - в Domain (ссылка на Kanadeiar.Core), бизнес-логика и общее - в Application (ссылки на Kanadeiar.Api и Domain), База данных и специфическое - в Infrastructure (ссылки на Application), детальная реализация - в Api (ссылки на Infrastructure)
+6. Иcпользовать библиотеку Kanadeiar.Api.
+
+[Документация по библиотеке](./../../Kanadeiar.Api/README.md)
+
+### Шлюз.
 
 1. В пустой проект в файл Program зарегистрировать необходимые сервисы:
 
@@ -105,6 +126,7 @@ dotnet add package Dapper
 dotnet add package Dapper.Logging
 dotnet add package Microsoft.Data.SqlClient
 ```
+
 Создать специальный репозиторий для работы с использованием ORM Dapper
 
 Зарегистрировать в сервисах приложения:
@@ -142,29 +164,6 @@ dotnet add package Kanadeiar.Api
 
 [Инструкции по логированию](./Serilog.md).
 
-### Проверка работоспособности микросервиса
-
-Использование средств платформы
-
-Добавить пакет в приложение:
-```sharp
-dotnet add package Kanadeiar.Api
-```
-
-Остальные инструкции смотреть в инструкциях библиотеки.
-
-### Сериализатор
-
-Добавить пакет 
-```sharp
-dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
-```
-Зарегать сериализатор в контроллерах:
-
-```sharp
-services.AddControllers().AddNewtonsoftJson();
-```
-
 ### HTTP Json Клиент
 
 Клиент - оболочка над стандартным клиентом
@@ -175,24 +174,6 @@ dotnet add package Kanadeiar.Api
 ```
 Остальные инструкции смотреть в инструкциях библиотеки.
 
-### Простые образцы в api-контроллере приложения
 
-Серверная часть:
-```csharp
-[HttpGet]
-[SwaggerOperation(Summary = "Получить значение", Description = "Получить ответ значение - ответ на запрос")]
-[SwaggerResponse(StatusCodes.Status200OK, "Ответ от сервера", Type = typeof(string))]
-[SwaggerResponse(StatusCodes.Status500InternalServerError, "Плохой запрос", Type = typeof(string))]
-public string Value(string value)
-{
-    return $"Hello, {value}!";
-}
-```
 
-Клиентская часть:
-```csharp
-HttpClient httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("https://localhost:6001");
-var response = await httpClient.GetAsync($"/value?value=Test");
-var message = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
-```
+
