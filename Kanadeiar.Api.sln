@@ -94,6 +94,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MT", "MT", "{7E31C24A-8957-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{419863ED-26FB-4FF0-A7D1-A1F1E7E5716B}"
 	ProjectSection(SolutionItems) = preProject
+		Docs\MT\Database.md = Docs\MT\Database.md
 		Docs\MT\FluentValidation.md = Docs\MT\FluentValidation.md
 		Docs\MT\Serilog.md = Docs\MT\Serilog.md
 	EndProjectSection
