@@ -93,6 +93,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MT", "MT", "{7E31C24A-8957-
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{419863ED-26FB-4FF0-A7D1-A1F1E7E5716B}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\MT\FluentValidation.md = Docs\MT\FluentValidation.md
+		Docs\MT\Serilog.md = Docs\MT\Serilog.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{4FAC74E9-DA8A-4165-8C91-69219B32222A}"
 EndProject
@@ -112,7 +116,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1GatewayInfra", "Docs\MT\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1GatewayApi", "Docs\MT\Samples\MT1GatewayApi\MT1GatewayApi.csproj", "{9D61E18B-E3EA-424E-949A-0AE6C3E1B688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT1ConsoleApp", "Docs\MT\Samples\MT1ConsoleApp\MT1ConsoleApp.csproj", "{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT1ConsoleApp", "Docs\MT\Samples\MT1ConsoleApp\MT1ConsoleApp.csproj", "{4B2BEF6C-5576-44D2-90BF-97F54BF8BD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
